@@ -1,0 +1,132 @@
+[
+  {
+    "studio_id": "TKYSA",
+    "studio_name": "東京スタジオA",
+    "official_url": "https://example.com/tokyo-a",
+    "room_id": "TKYSA_A1",
+    "room_name": "Room A1 (大)",
+    "area_sqm": 80,
+    "recommended_max": 20,
+    "notes": "音響設備充実。30分単位での利用も可能。",
+    
+    "rate_name": "平日昼間",
+    "days_of_week": "平日",
+    "start_time": "10:00",
+    "end_time": "18:00",
+    "min_price": 4000  
+  },
+  {
+    "studio_id": "TKYSA",
+    "studio_name": "東京スタジオA",
+    "official_url": "https://example.com/tokyo-a",
+    "room_id": "TKYSA_A1",
+    "room_name": "Room A1 (大)",
+    "area_sqm": 80,
+    "recommended_max": 20,
+    "notes": "音響設備充実。30分単位での利用も可能。",
+    
+    "rate_name": "平日夜間",
+    "days_of_week": "平日",
+    "start_time": "18:00",
+    "end_time": "23:00",
+    "min_price": 6000 
+  },
+  {
+    "studio_id": "TKYSA",
+    "studio_name": "東京スタジオA",
+    "official_url": "https://example.com/tokyo-a",
+    "room_id": "TKYSA_A1",
+    "room_name": "Room A1 (大)",
+    "area_sqm": 80,
+    "recommended_max": 20,
+    "notes": "音響設備充実。30分単位での利用も可能。",
+    
+    "rate_name": "土日祝日終日",
+    "days_of_week": "土曜,日曜",
+    "start_time": "10:00",
+    "end_time": "23:00",
+    "min_price": 7500 
+  },
+  {
+    "studio_id": "TKYSA",
+    "studio_name": "東京スタジオA",
+    "official_url": "https://example.com/tokyo-a",
+    "room_id": "TKYSA_A1",
+    "room_name": "Room A1 (大)",
+    "area_sqm": 80,
+    "recommended_max": 20,
+    "notes": "音響設備充実。30分単位での利用も可能。",
+    
+    "rate_name": "【特別】深夜パック",
+    "days_of_week": "毎日",
+    "start_time": "23:00",
+    "end_time": "06:00",
+    "min_price": 18000
+  },
+  
+  {
+    "studio_id": "OSKA_B",
+    "studio_name": "大阪スタジオB",
+    "official_url": "https://example.com/osaka-b",
+    "room_id": "OSKA_B2",
+    "room_name": "Room B2 (中)",
+    "area_sqm": 45,
+    "recommended_max": 10,
+    "notes": "更衣室あり。1時間単位のみ。",
+    
+    "rate_name": "終日均一",
+    "days_of_week": "毎日",
+    "start_time": "09:00",
+    "end_time": "22:00",
+    "min_price": 3000
+  },
+  {
+    "studio_id": "OSKA_B",
+    "studio_name": "大阪スタジオB",
+    "official_url": "https://example.com/osaka-b",
+    "room_id": "OSKA_B2",
+    "room_name": "Room B2 (中)",
+    "area_sqm": 45,
+    "recommended_max": 10,
+    "notes": "更衣室あり。1時間単位のみ。",
+    
+    "rate_name": "深夜ナイトパック",
+    "days_of_week": "毎日",
+    "start_time": "22:00",
+    "end_time": "08:00",
+    "min_price": 12000
+  },
+  
+  {
+    "studio_id": "SBYSA",
+    "studio_name": "渋谷スタジオC",
+    "official_url": "https://example.com/shibuya-c",
+    "room_id": "SBYSA_C1",
+    "room_name": "Room C1 (小)",
+    "area_sqm": 25,
+    "recommended_max": 5,
+    "notes": "ヨガ・個人練習向け。シャワー利用不可。",
+    
+    "rate_name": "平日均一",
+    "days_of_week": "平日",
+    "start_time": "10:00",
+    "end_time": "21:00",
+    "min_price": 2500
+  },
+  {
+    "studio_id": "SBYSA",
+    "studio_name": "渋谷スタジオC",
+    "official_url": "https://example.com/shibuya-c",
+    "room_id": "SBYSA_C1",
+    "room_name": "Room C1 (小)",
+    "area_sqm": 25,
+    "recommended_max": 5,
+    "notes": "ヨガ・個人練習向け。シャワー利用不可。",
+    
+    "rate_name": "週末割増",
+    "days_of_week": "土曜,日曜",
+    "start_time": "10:00",
+    "end_time": "21:00",
+    "min_price": 3500
+  }
+]

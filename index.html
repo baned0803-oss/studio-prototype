@@ -1,0 +1,58 @@
+<title>レンタルスタジオ比較（プロトタイプ）</title>
+    <link rel="stylesheet" href="styles.css"> 
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>レンタルスタジオ比較（プロトタイプ）</h1>
+            <p class="subtitle">あなたに最適なスタジオを見つけよう</p>
+        </header>
+
+        <div class="controls">
+            <div class="search-toggle">
+                <button id="searchModeDay" class="active">🌞 通常/時間貸し検索</button>
+                <button id="searchModeNight">🌜 深夜パック検索</button>
+            </div>
+            
+            <div class="form-grid">
+    <div class="form-group">
+        <label>利用日</label>
+        <input id="dateInput" type="date" />
+    </div>
+    <div class="form-group">
+        <label>開始時間</label>
+        <input id="startTimeInput" type="time" />
+    </div>
+    <div class="form-group">
+        <label>終了時間</label>
+        <input id="endTimeInput" type="time" />
+    </div>
+    <div class="form-group">
+        <label>最大価格 (円)</label>
+        <input id="priceInput" type="number" min="0" step="100" />
+    </div>
+    <div class="form-group">
+        <label>希望人数</label>
+        <input id="peopleInput" type="number" min="1" step="1" />
+    </div>
+</div>
+            <p id="areaInfo" class="area-info"></p>
+            
+            <button id="searchBtn">🔍 スタジオを検索</button>
+        </div>
+        
+        <div class="content-links">
+    <a href="column_area.html" class="link-button">一人当たりの広さ算出コラムを読む</a>
+    <a href="column_dance.html" class="link-button">ダンススタジオ記事を読む</a>
+        </div>
+     
+       
+
+        
+    </div>
+
+<script src="https://cdn.jsdelivr.net/npm/papaparse@5.3.2/papaparse.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
