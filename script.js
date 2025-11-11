@@ -159,17 +159,4 @@ function toMinutes(hhmm){
     if(!hhmm) return null;
     const [h,m] = hhmm.split(':').map(Number);
     return h*60 + m;
-
-    // --- 注意事項開閉機能 ---
-document.addEventListener('DOMContentLoaded', () => {
-    const toggleBtn = document.getElementById('toggleNotesBtn');
-    const notesContent = document.getElementById('notesContent');
-
-    if (toggleBtn && notesContent) {
-        toggleBtn.addEventListener('click', () => {
-            // open クラスをトグル（付けたり外したり）する
-            notesContent.classList.toggle('open');
-        });
-    }
-});
 }
