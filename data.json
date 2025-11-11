@@ -318,6 +318,7 @@
     "room_id": "-",
     "room_name": "新宿スタジオPRO",
     "area_sqm": 87,
+    "recommended_max": 20,
     "notes": "テスト",
     "rate_name": "平日早朝",
     "days_of_week": "平日",
