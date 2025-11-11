@@ -206,8 +206,8 @@
     "notes": "更衣スペース分狭い",
     "rate_name": "平日早朝",
     "days_of_week": "平日",
-    "start_time": "1899-12-30T14:00:00.000Z",
-    "end_time": "1899-12-30T20:00:00.000Z",
+    "start_time": "6:00",
+    "end_time": "12:00",
     "min_price": 1100
   },
   {
@@ -221,8 +221,8 @@
     "notes": "更衣スペース分狭い",
     "rate_name": "土日祝早朝",
     "days_of_week": "土曜,日曜",
-    "start_time": "1899-12-30T14:00:00.000Z",
-    "end_time": "1899-12-30T20:00:00.000Z",
+    "start_time": "6:00",
+    "end_time": "12:00",
     "min_price": 2100
   },
   {
@@ -236,8 +236,8 @@
     "notes": "更衣スペース分狭い",
     "rate_name": "平日昼",
     "days_of_week": "平日",
-    "start_time": "1899-12-30T20:00:00.000Z",
-    "end_time": "1899-12-31T02:00:00.000Z",
+    "start_time": "12:00",
+    "end_time": "18:00",
     "min_price": 2800
   },
   {
@@ -251,8 +251,8 @@
     "notes": "更衣スペース分狭い",
     "rate_name": "土日祝昼",
     "days_of_week": "土曜,日曜",
-    "start_time": "1899-12-30T20:00:00.000Z",
-    "end_time": "1899-12-31T02:00:00.000Z",
+    "start_time": "12:00",
+    "end_time": "18:00",
     "min_price": 3400
   },
   {
@@ -266,8 +266,8 @@
     "notes": "更衣スペース分狭い",
     "rate_name": "平日夜",
     "days_of_week": "平日",
-    "start_time": "1899-12-31T02:00:00.000Z",
-    "end_time": "1899-12-31T07:00:00.000Z",
+    "start_time": "18:00",
+    "end_time": "23:00",
     "min_price": 3800
   },
   {
@@ -281,8 +281,8 @@
     "notes": "更衣スペース分狭い",
     "rate_name": "土日祝夜",
     "days_of_week": "土曜,日曜",
-    "start_time": "1899-12-31T02:00:00.000Z",
-    "end_time": "1899-12-31T07:00:00.000Z",
+    "start_time": "18:00",
+    "end_time": "23:00",
     "min_price": 4400
   },
   {
@@ -296,8 +296,8 @@
     "notes": "更衣スペース分狭い",
     "rate_name": "深夜(7h一括)",
     "days_of_week": "毎日",
-    "start_time": "1899-12-31T07:00:00.000Z",
-    "end_time": "1899-12-30T14:00:00.000Z",
+    "start_time": "23:00",
+    "end_time": "6:00",
     "min_price": 6500
   },
   {
@@ -311,8 +311,8 @@
     "notes": "更衣スペース分狭い",
     "rate_name": "平日早朝",
     "days_of_week": "平日",
-    "start_time": "1899-12-30T14:00:00.000Z",
-    "end_time": "1899-12-30T20:00:00.000Z",
+    "start_time": "6:00",
+    "end_time": "12:00",
     "min_price": 1100
   },
   {
@@ -326,8 +326,8 @@
     "notes": "更衣スペース分狭い",
     "rate_name": "土日祝早朝",
     "days_of_week": "土曜,日曜",
-    "start_time": "1899-12-30T14:00:00.000Z",
-    "end_time": "1899-12-30T20:00:00.000Z",
+    "start_time": "6:00",
+    "end_time": "12:00",
     "min_price": 2100
   },
   {
@@ -341,8 +341,8 @@
     "notes": "更衣スペース分狭い",
     "rate_name": "平日昼",
     "days_of_week": "平日",
-    "start_time": "1899-12-30T20:00:00.000Z",
-    "end_time": "1899-12-31T02:00:00.000Z",
+    "start_time": "12:00",
+    "end_time": "18:00",
     "min_price": 2600
   },
   {
@@ -356,8 +356,8 @@
     "notes": "更衣スペース分狭い",
     "rate_name": "土日祝昼",
     "days_of_week": "土曜,日曜",
-    "start_time": "1899-12-30T20:00:00.000Z",
-    "end_time": "1899-12-31T02:00:00.000Z",
+    "start_time": "12:00",
+    "end_time": "18:00",
     "min_price": 3000
   },
   {
@@ -371,8 +371,8 @@
     "notes": "更衣スペース分狭い",
     "rate_name": "平日夜",
     "days_of_week": "平日",
-    "start_time": "1899-12-31T02:00:00.000Z",
-    "end_time": "1899-12-31T07:00:00.000Z",
+    "start_time": "18:00",
+    "end_time": "23:00",
     "min_price": 3600
   },
   {
@@ -386,8 +386,8 @@
     "notes": "更衣スペース分狭い",
     "rate_name": "土日祝夜",
     "days_of_week": "土曜,日曜",
-    "start_time": "1899-12-31T02:00:00.000Z",
-    "end_time": "1899-12-31T07:00:00.000Z",
+    "start_time": "18:00",
+    "end_time": "23:00",
     "min_price": 4000
   },
   {
@@ -401,8 +401,8 @@
     "notes": "更衣スペース分狭い",
     "rate_name": "深夜(7h一括)",
     "days_of_week": "毎日",
-    "start_time": "1899-12-31T07:00:00.000Z",
-    "end_time": "1899-12-30T14:00:00.000Z",
+    "start_time": "23:00",
+    "end_time": "6:00",
     "min_price": 5500
   },
   {
@@ -416,8 +416,8 @@
     "notes": "更衣スペース分狭い",
     "rate_name": "平日早朝",
     "days_of_week": "平日",
-    "start_time": "1899-12-30T14:00:00.000Z",
-    "end_time": "1899-12-30T20:00:00.000Z",
+    "start_time": "6:00",
+    "end_time": "12:00",
     "min_price": 2200
   },
   {
@@ -431,8 +431,8 @@
     "notes": "更衣スペース分狭い",
     "rate_name": "土日祝早朝",
     "days_of_week": "土曜,日曜",
-    "start_time": "1899-12-30T14:00:00.000Z",
-    "end_time": "1899-12-30T20:00:00.000Z",
+    "start_time": "6:00",
+    "end_time": "12:00",
     "min_price": 3200
   },
   {
@@ -446,8 +446,8 @@
     "notes": "更衣スペース分狭い",
     "rate_name": "平日昼",
     "days_of_week": "平日",
-    "start_time": "1899-12-30T20:00:00.000Z",
-    "end_time": "1899-12-31T02:00:00.000Z",
+    "start_time": "12:00",
+    "end_time": "18:00",
     "min_price": 4400
   },
   {
@@ -461,8 +461,8 @@
     "notes": "更衣スペース分狭い",
     "rate_name": "土日祝昼",
     "days_of_week": "土曜,日曜",
-    "start_time": "1899-12-30T20:00:00.000Z",
-    "end_time": "1899-12-31T02:00:00.000Z",
+    "start_time": "12:00",
+    "end_time": "18:00",
     "min_price": 5400
   },
   {
@@ -476,8 +476,8 @@
     "notes": "更衣スペース分狭い",
     "rate_name": "平日夜",
     "days_of_week": "平日",
-    "start_time": "1899-12-31T02:00:00.000Z",
-    "end_time": "1899-12-31T07:00:00.000Z",
+    "start_time": "18:00",
+    "end_time": "23:00",
     "min_price": 5400
   },
   {
@@ -491,8 +491,8 @@
     "notes": "更衣スペース分狭い",
     "rate_name": "土日祝夜",
     "days_of_week": "土曜,日曜",
-    "start_time": "1899-12-31T02:00:00.000Z",
-    "end_time": "1899-12-31T07:00:00.000Z",
+    "start_time": "18:00",
+    "end_time": "23:00",
     "min_price": 6400
   },
   {
@@ -506,8 +506,8 @@
     "notes": "更衣スペース分狭い",
     "rate_name": "深夜(7h一括)",
     "days_of_week": "毎日",
-    "start_time": "1899-12-31T07:00:00.000Z",
-    "end_time": "1899-12-30T14:00:00.000Z",
+    "start_time": "23:00",
+    "end_time": "6:00",
     "min_price": 11000
   },
   {
@@ -521,8 +521,8 @@
     "notes": "更衣スペース分狭い",
     "rate_name": "平日早朝",
     "days_of_week": "平日",
-    "start_time": "1899-12-30T14:00:00.000Z",
-    "end_time": "1899-12-30T20:00:00.000Z",
+    "start_time": "6:00",
+    "end_time": "12:00",
     "min_price": 2200
   },
   {
@@ -536,8 +536,8 @@
     "notes": "更衣スペース分狭い",
     "rate_name": "土日祝早朝",
     "days_of_week": "土曜,日曜",
-    "start_time": "1899-12-30T14:00:00.000Z",
-    "end_time": "1899-12-30T20:00:00.000Z",
+    "start_time": "6:00",
+    "end_time": "12:00",
     "min_price": 3200
   },
   {
@@ -551,8 +551,8 @@
     "notes": "更衣スペース分狭い",
     "rate_name": "平日昼",
     "days_of_week": "平日",
-    "start_time": "1899-12-30T20:00:00.000Z",
-    "end_time": "1899-12-31T02:00:00.000Z",
+    "start_time": "12:00",
+    "end_time": "18:00",
     "min_price": 4400
   },
   {
@@ -566,8 +566,8 @@
     "notes": "更衣スペース分狭い",
     "rate_name": "土日祝昼",
     "days_of_week": "土曜,日曜",
-    "start_time": "1899-12-30T20:00:00.000Z",
-    "end_time": "1899-12-31T02:00:00.000Z",
+    "start_time": "12:00",
+    "end_time": "18:00",
     "min_price": 5400
   },
   {
@@ -581,8 +581,8 @@
     "notes": "更衣スペース分狭い",
     "rate_name": "平日夜",
     "days_of_week": "平日",
-    "start_time": "1899-12-31T02:00:00.000Z",
-    "end_time": "1899-12-31T07:00:00.000Z",
+    "start_time": "18:00",
+    "end_time": "23:00",
     "min_price": 5400
   },
   {
@@ -596,8 +596,8 @@
     "notes": "更衣スペース分狭い",
     "rate_name": "土日祝夜",
     "days_of_week": "土曜,日曜",
-    "start_time": "1899-12-31T02:00:00.000Z",
-    "end_time": "1899-12-31T07:00:00.000Z",
+    "start_time": "18:00",
+    "end_time": "23:00",
     "min_price": 6400
   },
   {
@@ -611,8 +611,8 @@
     "notes": "更衣スペース分狭い",
     "rate_name": "深夜(7h一括)",
     "days_of_week": "平日",
-    "start_time": "1899-12-31T07:00:00.000Z",
-    "end_time": "1899-12-30T14:00:00.000Z",
+    "start_time": "23:00",
+    "end_time": "6:00",
     "min_price": 11000
   },
   {
@@ -626,8 +626,8 @@
     "notes": "更衣スペース分狭い",
     "rate_name": "平日早朝",
     "days_of_week": "平日",
-    "start_time": "1899-12-30T14:00:00.000Z",
-    "end_time": "1899-12-30T20:00:00.000Z",
+    "start_time": "6:00",
+    "end_time": "12:00",
     "min_price": 1100
   },
   {
@@ -641,8 +641,8 @@
     "notes": "更衣スペース分狭い",
     "rate_name": "土日祝早朝",
     "days_of_week": "土曜,日曜",
-    "start_time": "1899-12-30T14:00:00.000Z",
-    "end_time": "1899-12-30T20:00:00.000Z",
+    "start_time": "6:00",
+    "end_time": "12:00",
     "min_price": 2100
   },
   {
@@ -656,8 +656,8 @@
     "notes": "更衣スペース分狭い",
     "rate_name": "平日昼",
     "days_of_week": "平日",
-    "start_time": "1899-12-30T20:00:00.000Z",
-    "end_time": "1899-12-31T02:00:00.000Z",
+    "start_time": "12:00",
+    "end_time": "18:00",
     "min_price": 2800
   },
   {
@@ -671,8 +671,8 @@
     "notes": "更衣スペース分狭い",
     "rate_name": "土日祝昼",
     "days_of_week": "土曜,日曜",
-    "start_time": "1899-12-30T20:00:00.000Z",
-    "end_time": "1899-12-31T02:00:00.000Z",
+    "start_time": "12:00",
+    "end_time": "18:00",
     "min_price": 3300
   },
   {
@@ -686,8 +686,8 @@
     "notes": "更衣スペース分狭い",
     "rate_name": "平日夜",
     "days_of_week": "平日",
-    "start_time": "1899-12-31T02:00:00.000Z",
-    "end_time": "1899-12-31T07:00:00.000Z",
+    "start_time": "18:00",
+    "end_time": "23:00",
     "min_price": 3800
   },
   {
@@ -701,8 +701,8 @@
     "notes": "更衣スペース分狭い",
     "rate_name": "土日祝夜",
     "days_of_week": "土曜,日曜",
-    "start_time": "1899-12-31T02:00:00.000Z",
-    "end_time": "1899-12-31T07:00:00.000Z",
+    "start_time": "18:00",
+    "end_time": "23:00",
     "min_price": 4300
   },
   {
@@ -716,8 +716,8 @@
     "notes": "更衣スペース分狭い",
     "rate_name": "深夜(7h一括)",
     "days_of_week": "毎日",
-    "start_time": "1899-12-31T07:00:00.000Z",
-    "end_time": "1899-12-30T14:00:00.000Z",
+    "start_time": "23:00",
+    "end_time": "6:00",
     "min_price": 6500
   },
   {
@@ -731,8 +731,8 @@
     "notes": "更衣スペース分狭い",
     "rate_name": "平日早朝",
     "days_of_week": "平日",
-    "start_time": "1899-12-30T14:00:00.000Z",
-    "end_time": "1899-12-30T20:00:00.000Z",
+    "start_time": "6:00",
+    "end_time": "12:00",
     "min_price": 1100
   },
   {
@@ -746,8 +746,8 @@
     "notes": "更衣スペース分狭い",
     "rate_name": "土日祝早朝",
     "days_of_week": "土曜,日曜",
-    "start_time": "1899-12-30T14:00:00.000Z",
-    "end_time": "1899-12-30T20:00:00.000Z",
+    "start_time": "6:00",
+    "end_time": "12:00",
     "min_price": 1600
   },
   {
@@ -761,8 +761,8 @@
     "notes": "更衣スペース分狭い",
     "rate_name": "平日昼",
     "days_of_week": "平日",
-    "start_time": "1899-12-30T20:00:00.000Z",
-    "end_time": "1899-12-31T02:00:00.000Z",
+    "start_time": "12:00",
+    "end_time": "18:00",
     "min_price": 2800
   },
   {
@@ -776,8 +776,8 @@
     "notes": "更衣スペース分狭い",
     "rate_name": "土日祝昼",
     "days_of_week": "土曜,日曜",
-    "start_time": "1899-12-30T20:00:00.000Z",
-    "end_time": "1899-12-31T02:00:00.000Z",
+    "start_time": "12:00",
+    "end_time": "18:00",
     "min_price": 3300
   },
   {
@@ -791,8 +791,8 @@
     "notes": "更衣スペース分狭い",
     "rate_name": "平日夜",
     "days_of_week": "平日",
-    "start_time": "1899-12-31T02:00:00.000Z",
-    "end_time": "1899-12-31T07:00:00.000Z",
+    "start_time": "18:00",
+    "end_time": "23:00",
     "min_price": 3300
   },
   {
@@ -806,8 +806,8 @@
     "notes": "更衣スペース分狭い",
     "rate_name": "土日祝夜",
     "days_of_week": "土曜,日曜",
-    "start_time": "1899-12-31T02:00:00.000Z",
-    "end_time": "1899-12-31T07:00:00.000Z",
+    "start_time": "18:00",
+    "end_time": "23:00",
     "min_price": 3800
   },
   {
@@ -821,8 +821,8 @@
     "notes": "更衣スペース分狭い",
     "rate_name": "深夜(7h一括)",
     "days_of_week": "毎日",
-    "start_time": "1899-12-31T07:00:00.000Z",
-    "end_time": "1899-12-30T14:00:00.000Z",
+    "start_time": "23:00",
+    "end_time": "6:00",
     "min_price": 5500
   },
   {
@@ -836,8 +836,8 @@
     "notes": "更衣スペース分狭い",
     "rate_name": "平日早朝",
     "days_of_week": "平日",
-    "start_time": "1899-12-30T14:00:00.000Z",
-    "end_time": "1899-12-30T20:00:00.000Z",
+    "start_time": "6:00",
+    "end_time": "12:00",
     "min_price": 1000
   },
   {
@@ -851,8 +851,8 @@
     "notes": "更衣スペース分狭い",
     "rate_name": "土日祝早朝",
     "days_of_week": "土曜,日曜",
-    "start_time": "1899-12-30T14:00:00.000Z",
-    "end_time": "1899-12-30T20:00:00.000Z",
+    "start_time": "6:00",
+    "end_time": "12:00",
     "min_price": 2000
   },
   {
@@ -866,8 +866,8 @@
     "notes": "更衣スペース分狭い",
     "rate_name": "平日昼",
     "days_of_week": "平日",
-    "start_time": "1899-12-30T20:00:00.000Z",
-    "end_time": "1899-12-31T02:00:00.000Z",
+    "start_time": "12:00",
+    "end_time": "18:00",
     "min_price": 2600
   },
   {
@@ -881,8 +881,8 @@
     "notes": "更衣スペース分狭い",
     "rate_name": "土日祝昼",
     "days_of_week": "土曜,日曜",
-    "start_time": "1899-12-30T20:00:00.000Z",
-    "end_time": "1899-12-31T02:00:00.000Z",
+    "start_time": "12:00",
+    "end_time": "18:00",
     "min_price": 3100
   },
   {
@@ -896,8 +896,8 @@
     "notes": "更衣スペース分狭い",
     "rate_name": "平日夜",
     "days_of_week": "平日",
-    "start_time": "1899-12-31T02:00:00.000Z",
-    "end_time": "1899-12-31T07:00:00.000Z",
+    "start_time": "18:00",
+    "end_time": "23:00",
     "min_price": 3600
   },
   {
@@ -911,8 +911,8 @@
     "notes": "更衣スペース分狭い",
     "rate_name": "土日祝夜",
     "days_of_week": "土曜,日曜",
-    "start_time": "1899-12-31T02:00:00.000Z",
-    "end_time": "1899-12-31T07:00:00.000Z",
+    "start_time": "18:00",
+    "end_time": "23:00",
     "min_price": 4100
   },
   {
@@ -926,8 +926,8 @@
     "notes": "更衣スペース分狭い",
     "rate_name": "深夜(7h一括)",
     "days_of_week": "毎日",
-    "start_time": "1899-12-31T07:00:00.000Z",
-    "end_time": "1899-12-30T14:00:00.000Z",
+    "start_time": "23:00",
+    "end_time": "6:00",
     "min_price": 8200
   },
   {
@@ -940,8 +940,8 @@
     "recommended_max": 9,
     "rate_name": "平日早朝",
     "days_of_week": "平日",
-    "start_time": "1899-12-30T14:00:00.000Z",
-    "end_time": "1899-12-30T20:00:00.000Z",
+    "start_time": "6:00",
+    "end_time": "12:00",
     "min_price": 1000
   },
   {
@@ -954,8 +954,8 @@
     "recommended_max": 9,
     "rate_name": "土日祝早朝",
     "days_of_week": "土曜,日曜",
-    "start_time": "1899-12-30T14:00:00.000Z",
-    "end_time": "1899-12-30T20:00:00.000Z",
+    "start_time": "6:00",
+    "end_time": "12:00",
     "min_price": 2000
   },
   {
@@ -968,8 +968,8 @@
     "recommended_max": 9,
     "rate_name": "平日昼",
     "days_of_week": "平日",
-    "start_time": "1899-12-30T20:00:00.000Z",
-    "end_time": "1899-12-31T02:00:00.000Z",
+    "start_time": "12:00",
+    "end_time": "18:00",
     "min_price": 2500
   },
   {
@@ -982,8 +982,8 @@
     "recommended_max": 9,
     "rate_name": "土日祝昼",
     "days_of_week": "土曜,日曜",
-    "start_time": "1899-12-30T20:00:00.000Z",
-    "end_time": "1899-12-31T02:00:00.000Z",
+    "start_time": "12:00",
+    "end_time": "18:00",
     "min_price": 3000
   },
   {
@@ -996,8 +996,8 @@
     "recommended_max": 9,
     "rate_name": "平日夜",
     "days_of_week": "平日",
-    "start_time": "1899-12-31T02:00:00.000Z",
-    "end_time": "1899-12-31T07:00:00.000Z",
+    "start_time": "18:00",
+    "end_time": "23:00",
     "min_price": 4000
   },
   {
@@ -1010,8 +1010,8 @@
     "recommended_max": 9,
     "rate_name": "土日祝夜",
     "days_of_week": "土曜,日曜",
-    "start_time": "1899-12-31T02:00:00.000Z",
-    "end_time": "1899-12-31T07:00:00.000Z",
+    "start_time": "18:00",
+    "end_time": "23:00",
     "min_price": 4500
   },
   {
@@ -1024,8 +1024,8 @@
     "recommended_max": 9,
     "rate_name": "深夜(7h一括)",
     "days_of_week": "毎日",
-    "start_time": "1899-12-31T07:00:00.000Z",
-    "end_time": "1899-12-30T14:00:00.000Z",
+    "start_time": "23:00",
+    "end_time": "6:00",
     "min_price": 10000
   },
   {
@@ -1039,8 +1039,8 @@
     "notes": "バレエバー付き",
     "rate_name": "平日早朝",
     "days_of_week": "平日",
-    "start_time": "1899-12-30T14:00:00.000Z",
-    "end_time": "1899-12-30T20:00:00.000Z",
+    "start_time": "6:00",
+    "end_time": "12:00",
     "min_price": 1000
   },
   {
@@ -1054,8 +1054,8 @@
     "notes": "バレエバー付き",
     "rate_name": "土日祝早朝",
     "days_of_week": "土曜,日曜",
-    "start_time": "1899-12-30T14:00:00.000Z",
-    "end_time": "1899-12-30T20:00:00.000Z",
+    "start_time": "6:00",
+    "end_time": "12:00",
     "min_price": 1300
   },
   {
@@ -1069,8 +1069,8 @@
     "notes": "バレエバー付き",
     "rate_name": "平日昼",
     "days_of_week": "平日",
-    "start_time": "1899-12-30T20:00:00.000Z",
-    "end_time": "1899-12-31T02:00:00.000Z",
+    "start_time": "12:00",
+    "end_time": "18:00",
     "min_price": 1400
   },
   {
@@ -1084,8 +1084,8 @@
     "notes": "バレエバー付き",
     "rate_name": "土日祝昼",
     "days_of_week": "土曜,日曜",
-    "start_time": "1899-12-30T20:00:00.000Z",
-    "end_time": "1899-12-31T02:00:00.000Z",
+    "start_time": "12:00",
+    "end_time": "18:00",
     "min_price": 2200
   },
   {
@@ -1099,8 +1099,8 @@
     "notes": "バレエバー付き",
     "rate_name": "平日夜",
     "days_of_week": "平日",
-    "start_time": "1899-12-31T02:00:00.000Z",
-    "end_time": "1899-12-31T07:00:00.000Z",
+    "start_time": "18:00",
+    "end_time": "23:00",
     "min_price": 2200
   },
   {
@@ -1114,8 +1114,8 @@
     "notes": "バレエバー付き",
     "rate_name": "土日祝夜",
     "days_of_week": "土曜,日曜",
-    "start_time": "1899-12-31T02:00:00.000Z",
-    "end_time": "1899-12-31T07:00:00.000Z",
+    "start_time": "18:00",
+    "end_time": "23:00",
     "min_price": 2200
   },
   {
@@ -1129,8 +1129,8 @@
     "notes": "バレエバー付き",
     "rate_name": "深夜(7h一括)",
     "days_of_week": "毎日",
-    "start_time": "1899-12-31T07:00:00.000Z",
-    "end_time": "1899-12-30T14:00:00.000Z",
+    "start_time": "23:00",
+    "end_time": "6:00",
     "min_price": 2800
   },
   {
@@ -1144,8 +1144,8 @@
     "notes": "更衣スペース分狭い",
     "rate_name": "平日早朝",
     "days_of_week": "平日",
-    "start_time": "1899-12-30T16:00:00.000Z",
-    "end_time": "1899-12-30T20:00:00.000Z",
+    "start_time": "8:00",
+    "end_time": "12:00",
     "min_price": 1100
   },
   {
@@ -1159,8 +1159,8 @@
     "notes": "更衣スペース分狭い",
     "rate_name": "土日祝早朝",
     "days_of_week": "土曜,日曜",
-    "start_time": "1899-12-30T16:00:00.000Z",
-    "end_time": "1899-12-30T20:00:00.000Z",
+    "start_time": "8:00",
+    "end_time": "12:00",
     "min_price": 2100
   },
   {
@@ -1174,8 +1174,8 @@
     "notes": "更衣スペース分狭い",
     "rate_name": "平日昼",
     "days_of_week": "平日",
-    "start_time": "1899-12-30T20:00:00.000Z",
-    "end_time": "1899-12-31T02:00:00.000Z",
+    "start_time": "12:00",
+    "end_time": "18:00",
     "min_price": 2800
   },
   {
@@ -1189,8 +1189,8 @@
     "notes": "更衣スペース分狭い",
     "rate_name": "土日祝昼",
     "days_of_week": "土曜,日曜",
-    "start_time": "1899-12-30T20:00:00.000Z",
-    "end_time": "1899-12-31T02:00:00.000Z",
+    "start_time": "12:00",
+    "end_time": "18:00",
     "min_price": 3800
   },
   {
@@ -1204,8 +1204,8 @@
     "notes": "更衣スペース分狭い",
     "rate_name": "平日夜",
     "days_of_week": "平日",
-    "start_time": "1899-12-31T02:00:00.000Z",
-    "end_time": "1899-12-31T06:00:00.000Z",
+    "start_time": "18:00",
+    "end_time": "22:00",
     "min_price": 3800
   },
   {
@@ -1219,8 +1219,8 @@
     "notes": "更衣スペース分狭い",
     "rate_name": "土日祝夜",
     "days_of_week": "土曜,日曜",
-    "start_time": "1899-12-31T02:00:00.000Z",
-    "end_time": "1899-12-31T06:00:00.000Z",
+    "start_time": "18:00",
+    "end_time": "22:00",
     "min_price": 4100
   },
   {
@@ -1233,8 +1233,8 @@
     "recommended_max": 16,
     "rate_name": "平日早朝",
     "days_of_week": "平日",
-    "start_time": "1899-12-30T14:00:00.000Z",
-    "end_time": "1899-12-30T20:00:00.000Z",
+    "start_time": "6:00",
+    "end_time": "12:00",
     "min_price": 1500
   },
   {
@@ -1247,8 +1247,8 @@
     "recommended_max": 16,
     "rate_name": "土日祝早朝",
     "days_of_week": "土曜,日曜",
-    "start_time": "1899-12-30T14:00:00.000Z",
-    "end_time": "1899-12-30T20:00:00.000Z",
+    "start_time": "6:00",
+    "end_time": "12:00",
     "min_price": 2500
   },
   {
@@ -1261,8 +1261,8 @@
     "recommended_max": 16,
     "rate_name": "平日昼",
     "days_of_week": "平日",
-    "start_time": "1899-12-30T20:00:00.000Z",
-    "end_time": "1899-12-31T02:00:00.000Z",
+    "start_time": "12:00",
+    "end_time": "18:00",
     "min_price": 3500
   },
   {
@@ -1275,8 +1275,8 @@
     "recommended_max": 16,
     "rate_name": "土日祝昼",
     "days_of_week": "土曜,日曜",
-    "start_time": "1899-12-30T20:00:00.000Z",
-    "end_time": "1899-12-31T02:00:00.000Z",
+    "start_time": "12:00",
+    "end_time": "18:00",
     "min_price": 4000
   },
   {
@@ -1289,8 +1289,8 @@
     "recommended_max": 16,
     "rate_name": "平日夜",
     "days_of_week": "平日",
-    "start_time": "1899-12-31T02:00:00.000Z",
-    "end_time": "1899-12-31T07:00:00.000Z",
+    "start_time": "18:00",
+    "end_time": "23:00",
     "min_price": 4000
   },
   {
@@ -1303,8 +1303,8 @@
     "recommended_max": 16,
     "rate_name": "土日祝夜",
     "days_of_week": "土曜,日曜",
-    "start_time": "1899-12-31T02:00:00.000Z",
-    "end_time": "1899-12-31T07:00:00.000Z",
+    "start_time": "18:00",
+    "end_time": "23:00",
     "min_price": 4500
   },
   {
@@ -1317,8 +1317,8 @@
     "recommended_max": 16,
     "rate_name": "深夜(7h一括・条件付)",
     "days_of_week": "毎日",
-    "start_time": "1899-12-31T07:00:00.000Z",
-    "end_time": "1899-12-30T14:00:00.000Z",
+    "start_time": "23:00",
+    "end_time": "6:00",
     "min_price": 10000
   },
   {
@@ -1331,8 +1331,8 @@
     "recommended_max": 14,
     "rate_name": "平日早朝",
     "days_of_week": "平日",
-    "start_time": "1899-12-30T14:00:00.000Z",
-    "end_time": "1899-12-30T20:00:00.000Z",
+    "start_time": "6:00",
+    "end_time": "12:00",
     "min_price": 1000
   },
   {
@@ -1345,8 +1345,8 @@
     "recommended_max": 14,
     "rate_name": "土日祝早朝",
     "days_of_week": "土曜,日曜",
-    "start_time": "1899-12-30T14:00:00.000Z",
-    "end_time": "1899-12-30T20:00:00.000Z",
+    "start_time": "6:00",
+    "end_time": "12:00",
     "min_price": 1500
   },
   {
@@ -1359,8 +1359,8 @@
     "recommended_max": 14,
     "rate_name": "平日昼",
     "days_of_week": "平日",
-    "start_time": "1899-12-30T20:00:00.000Z",
-    "end_time": "1899-12-31T02:00:00.000Z",
+    "start_time": "12:00",
+    "end_time": "18:00",
     "min_price": 2100
   },
   {
@@ -1373,8 +1373,8 @@
     "recommended_max": 14,
     "rate_name": "土日祝昼",
     "days_of_week": "土曜,日曜",
-    "start_time": "1899-12-30T20:00:00.000Z",
-    "end_time": "1899-12-31T02:00:00.000Z",
+    "start_time": "12:00",
+    "end_time": "18:00",
     "min_price": 3000
   },
   {
@@ -1387,8 +1387,8 @@
     "recommended_max": 14,
     "rate_name": "平日夜",
     "days_of_week": "平日",
-    "start_time": "1899-12-31T02:00:00.000Z",
-    "end_time": "1899-12-31T07:00:00.000Z",
+    "start_time": "18:00",
+    "end_time": "23:00",
     "min_price": 3500
   },
   {
@@ -1401,8 +1401,8 @@
     "recommended_max": 14,
     "rate_name": "土日祝夜",
     "days_of_week": "土曜,日曜",
-    "start_time": "1899-12-31T02:00:00.000Z",
-    "end_time": "1899-12-31T07:00:00.000Z",
+    "start_time": "18:00",
+    "end_time": "23:00",
     "min_price": 4000
   },
   {
@@ -1415,8 +1415,8 @@
     "recommended_max": 14,
     "rate_name": "深夜(7h一括・条件付)",
     "days_of_week": "毎日",
-    "start_time": "1899-12-31T07:00:00.000Z",
-    "end_time": "1899-12-30T14:00:00.000Z",
+    "start_time": "23:00",
+    "end_time": "6:00",
     "min_price": 10000
   },
   {
@@ -1428,8 +1428,8 @@
     "area_sqm": 6,
     "recommended_max": 1,
     "days_of_week": "平日",
-    "start_time": "1899-12-30T14:00:00.000Z",
-    "end_time": "1899-12-30T20:00:00.000Z",
+    "start_time": "6:00",
+    "end_time": "12:00",
     "min_price": 500
   },
   {
@@ -1441,8 +1441,8 @@
     "area_sqm": 6,
     "recommended_max": 1,
     "days_of_week": "平日",
-    "start_time": "1899-12-30T20:00:00.000Z",
-    "end_time": "1899-12-31T07:00:00.000Z",
+    "start_time": "12:00",
+    "end_time": "23:00",
     "min_price": 1000
   },
   {
@@ -1454,8 +1454,8 @@
     "area_sqm": 6,
     "recommended_max": 1,
     "days_of_week": "土曜,日曜",
-    "start_time": "1899-12-30T14:00:00.000Z",
-    "end_time": "1899-12-31T07:00:00.000Z",
+    "start_time": "6:00",
+    "end_time": "23:00",
     "min_price": 1200
   },
   {
@@ -1468,8 +1468,8 @@
     "recommended_max": 1,
     "rate_name": "深夜7h",
     "days_of_week": "毎日",
-    "start_time": "1899-12-31T07:00:00.000Z",
-    "end_time": "1899-12-30T14:00:00.000Z",
+    "start_time": "23:00",
+    "end_time": "6:00",
     "min_price": 2700
   },
   {
@@ -1482,8 +1482,8 @@
     "recommended_max": 1,
     "notes": "2~3人可能",
     "days_of_week": "平日",
-    "start_time": "1899-12-30T14:00:00.000Z",
-    "end_time": "1899-12-30T20:00:00.000Z",
+    "start_time": "6:00",
+    "end_time": "12:00",
     "min_price": 750
   },
   {
@@ -1496,8 +1496,8 @@
     "recommended_max": 1,
     "notes": "2~3人可能",
     "days_of_week": "平日",
-    "start_time": "1899-12-30T20:00:00.000Z",
-    "end_time": "1899-12-31T07:00:00.000Z",
+    "start_time": "12:00",
+    "end_time": "23:00",
     "min_price": 1100
   },
   {
@@ -1510,8 +1510,8 @@
     "recommended_max": 1,
     "notes": "2~3人可能",
     "days_of_week": "土曜,日曜",
-    "start_time": "1899-12-30T14:00:00.000Z",
-    "end_time": "1899-12-31T07:00:00.000Z",
+    "start_time": "6:00",
+    "end_time": "23:00",
     "min_price": 1300
   },
   {
@@ -1525,8 +1525,8 @@
     "notes": "2~3人可能",
     "rate_name": "深夜7h",
     "days_of_week": "毎日",
-    "start_time": "1899-12-31T07:00:00.000Z",
-    "end_time": "1899-12-30T14:00:00.000Z",
+    "start_time": "23:00",
+    "end_time": "6:00",
     "min_price": 3000
   },
   {
@@ -1539,8 +1539,8 @@
     "recommended_max": 1,
     "notes": "2~3人可能",
     "days_of_week": "平日",
-    "start_time": "1899-12-30T14:00:00.000Z",
-    "end_time": "1899-12-30T20:00:00.000Z",
+    "start_time": "6:00",
+    "end_time": "12:00",
     "min_price": 850
   },
   {
@@ -1553,8 +1553,8 @@
     "recommended_max": 1,
     "notes": "2~3人可能",
     "days_of_week": "平日",
-    "start_time": "1899-12-30T20:00:00.000Z",
-    "end_time": "1899-12-31T07:00:00.000Z",
+    "start_time": "12:00",
+    "end_time": "23:00",
     "min_price": 1200
   },
   {
@@ -1567,8 +1567,8 @@
     "recommended_max": 1,
     "notes": "2~3人可能",
     "days_of_week": "土曜,日曜",
-    "start_time": "1899-12-30T14:00:00.000Z",
-    "end_time": "1899-12-31T07:00:00.000Z",
+    "start_time": "6:00",
+    "end_time": "23:00",
     "min_price": 1550
   },
   {
@@ -1582,8 +1582,8 @@
     "notes": "2~3人可能",
     "rate_name": "深夜7h",
     "days_of_week": "毎日",
-    "start_time": "1899-12-31T07:00:00.000Z",
-    "end_time": "1899-12-30T14:00:00.000Z",
+    "start_time": "23:00",
+    "end_time": "6:00",
     "min_price": 3300
   },
   {
@@ -1595,8 +1595,8 @@
     "area_sqm": 13,
     "recommended_max": 2,
     "days_of_week": "平日",
-    "start_time": "1899-12-30T14:00:00.000Z",
-    "end_time": "1899-12-30T20:00:00.000Z",
+    "start_time": "6:00",
+    "end_time": "12:00",
     "min_price": 850
   },
   {
@@ -1608,8 +1608,8 @@
     "area_sqm": 13,
     "recommended_max": 2,
     "days_of_week": "平日",
-    "start_time": "1899-12-30T20:00:00.000Z",
-    "end_time": "1899-12-31T07:00:00.000Z",
+    "start_time": "12:00",
+    "end_time": "23:00",
     "min_price": 1200
   },
   {
@@ -1621,8 +1621,8 @@
     "area_sqm": 13,
     "recommended_max": 2,
     "days_of_week": "土曜,日曜",
-    "start_time": "1899-12-30T14:00:00.000Z",
-    "end_time": "1899-12-31T07:00:00.000Z",
+    "start_time": "6:00",
+    "end_time": "23:00",
     "min_price": 1550
   },
   {
@@ -1635,8 +1635,8 @@
     "recommended_max": 2,
     "rate_name": "深夜7h",
     "days_of_week": "毎日",
-    "start_time": "1899-12-31T07:00:00.000Z",
-    "end_time": "1899-12-30T14:00:00.000Z",
+    "start_time": "23:00",
+    "end_time": "6:00",
     "min_price": 3300
   },
   {
@@ -1648,8 +1648,8 @@
     "area_sqm": 13,
     "recommended_max": 2,
     "days_of_week": "平日",
-    "start_time": "1899-12-30T14:00:00.000Z",
-    "end_time": "1899-12-30T20:00:00.000Z",
+    "start_time": "6:00",
+    "end_time": "12:00",
     "min_price": 900
   },
   {
@@ -1661,8 +1661,8 @@
     "area_sqm": 13,
     "recommended_max": 2,
     "days_of_week": "平日",
-    "start_time": "1899-12-30T20:00:00.000Z",
-    "end_time": "1899-12-31T07:00:00.000Z",
+    "start_time": "12:00",
+    "end_time": "23:00",
     "min_price": 1250
   },
   {
@@ -1674,8 +1674,8 @@
     "area_sqm": 13,
     "recommended_max": 2,
     "days_of_week": "土曜,日曜",
-    "start_time": "1899-12-30T14:00:00.000Z",
-    "end_time": "1899-12-31T07:00:00.000Z",
+    "start_time": "6:00",
+    "end_time": "23:00",
     "min_price": 1600
   },
   {
@@ -1688,8 +1688,8 @@
     "recommended_max": 2,
     "rate_name": "深夜7h",
     "days_of_week": "毎日",
-    "start_time": "1899-12-31T07:00:00.000Z",
-    "end_time": "1899-12-30T14:00:00.000Z",
+    "start_time": "23:00",
+    "end_time": "6:00",
     "min_price": 3500
   },
   {
@@ -1701,8 +1701,8 @@
     "area_sqm": 25,
     "recommended_max": 5,
     "days_of_week": "平日",
-    "start_time": "1899-12-30T14:00:00.000Z",
-    "end_time": "1899-12-30T20:00:00.000Z",
+    "start_time": "6:00",
+    "end_time": "12:00",
     "min_price": 1100
   },
   {
@@ -1714,8 +1714,8 @@
     "area_sqm": 25,
     "recommended_max": 5,
     "days_of_week": "平日",
-    "start_time": "1899-12-30T20:00:00.000Z",
-    "end_time": "1899-12-31T07:00:00.000Z",
+    "start_time": "12:00",
+    "end_time": "23:00",
     "min_price": 1300
   },
   {
@@ -1727,8 +1727,8 @@
     "area_sqm": 25,
     "recommended_max": 5,
     "days_of_week": "土曜,日曜",
-    "start_time": "1899-12-30T14:00:00.000Z",
-    "end_time": "1899-12-31T07:00:00.000Z",
+    "start_time": "6:00",
+    "end_time": "23:00",
     "min_price": 1500
   },
   {
@@ -1740,8 +1740,8 @@
     "area_sqm": 12,
     "recommended_max": 2,
     "days_of_week": "平日",
-    "start_time": "1899-12-30T14:00:00.000Z",
-    "end_time": "1899-12-30T20:00:00.000Z",
+    "start_time": "6:00",
+    "end_time": "12:00",
     "min_price": 1050
   },
   {
@@ -1753,8 +1753,8 @@
     "area_sqm": 12,
     "recommended_max": 2,
     "days_of_week": "平日",
-    "start_time": "1899-12-30T20:00:00.000Z",
-    "end_time": "1899-12-31T07:00:00.000Z",
+    "start_time": "12:00",
+    "end_time": "23:00",
     "min_price": 1200
   },
   {
@@ -1766,8 +1766,8 @@
     "area_sqm": 12,
     "recommended_max": 2,
     "days_of_week": "土曜,日曜",
-    "start_time": "1899-12-30T14:00:00.000Z",
-    "end_time": "1899-12-31T07:00:00.000Z",
+    "start_time": "6:00",
+    "end_time": "23:00",
     "min_price": 1400
   },
   {
@@ -1780,8 +1780,8 @@
     "recommended_max": 2,
     "rate_name": "深夜7h",
     "days_of_week": "毎日",
-    "start_time": "1899-12-31T07:00:00.000Z",
-    "end_time": "1899-12-30T14:00:00.000Z",
+    "start_time": "23:00",
+    "end_time": "6:00",
     "min_price": 3500
   },
   {
@@ -1793,8 +1793,8 @@
     "area_sqm": 32,
     "recommended_max": 6,
     "days_of_week": "平日",
-    "start_time": "1899-12-30T14:00:00.000Z",
-    "end_time": "1899-12-30T20:00:00.000Z",
+    "start_time": "6:00",
+    "end_time": "12:00",
     "min_price": 1200
   },
   {
@@ -1806,8 +1806,8 @@
     "area_sqm": 32,
     "recommended_max": 6,
     "days_of_week": "平日",
-    "start_time": "1899-12-30T20:00:00.000Z",
-    "end_time": "1899-12-31T07:00:00.000Z",
+    "start_time": "12:00",
+    "end_time": "23:00",
     "min_price": 1700
   },
   {
@@ -1819,8 +1819,8 @@
     "area_sqm": 32,
     "recommended_max": 6,
     "days_of_week": "土曜,日曜",
-    "start_time": "1899-12-30T14:00:00.000Z",
-    "end_time": "1899-12-31T07:00:00.000Z",
+    "start_time": "6:00",
+    "end_time": "23:00",
     "min_price": 2350
   },
   {
@@ -1833,8 +1833,8 @@
     "recommended_max": 6,
     "rate_name": "深夜7h",
     "days_of_week": "毎日",
-    "start_time": "1899-12-31T07:00:00.000Z",
-    "end_time": "1899-12-30T14:00:00.000Z",
+    "start_time": "23:00",
+    "end_time": "6:00",
     "min_price": 4200
   },
   {
@@ -1846,8 +1846,8 @@
     "area_sqm": 32,
     "recommended_max": 6,
     "days_of_week": "平日",
-    "start_time": "1899-12-30T14:00:00.000Z",
-    "end_time": "1899-12-30T20:00:00.000Z",
+    "start_time": "6:00",
+    "end_time": "12:00",
     "min_price": 1200
   },
   {
@@ -1859,8 +1859,8 @@
     "area_sqm": 32,
     "recommended_max": 6,
     "days_of_week": "平日",
-    "start_time": "1899-12-30T20:00:00.000Z",
-    "end_time": "1899-12-31T07:00:00.000Z",
+    "start_time": "12:00",
+    "end_time": "23:00",
     "min_price": 1700
   },
   {
@@ -1872,8 +1872,8 @@
     "area_sqm": 32,
     "recommended_max": 6,
     "days_of_week": "土曜,日曜",
-    "start_time": "1899-12-30T14:00:00.000Z",
-    "end_time": "1899-12-31T07:00:00.000Z",
+    "start_time": "6:00",
+    "end_time": "23:00",
     "min_price": 2350
   },
   {
@@ -1886,8 +1886,8 @@
     "recommended_max": 6,
     "rate_name": "深夜7h",
     "days_of_week": "毎日",
-    "start_time": "1899-12-31T07:00:00.000Z",
-    "end_time": "1899-12-30T14:00:00.000Z",
+    "start_time": "23:00",
+    "end_time": "6:00",
     "min_price": 4200
   },
   {
@@ -1899,8 +1899,8 @@
     "area_sqm": 25,
     "recommended_max": 5,
     "days_of_week": "平日",
-    "start_time": "1899-12-30T14:00:00.000Z",
-    "end_time": "1899-12-30T20:00:00.000Z",
+    "start_time": "6:00",
+    "end_time": "12:00",
     "min_price": 1250
   },
   {
@@ -1912,8 +1912,8 @@
     "area_sqm": 25,
     "recommended_max": 5,
     "days_of_week": "平日",
-    "start_time": "1899-12-30T20:00:00.000Z",
-    "end_time": "1899-12-31T07:00:00.000Z",
+    "start_time": "12:00",
+    "end_time": "23:00",
     "min_price": 1600
   },
   {
@@ -1925,8 +1925,8 @@
     "area_sqm": 25,
     "recommended_max": 5,
     "days_of_week": "土曜,日曜",
-    "start_time": "1899-12-30T14:00:00.000Z",
-    "end_time": "1899-12-31T07:00:00.000Z",
+    "start_time": "6:00",
+    "end_time": "23:00",
     "min_price": 1800
   },
   {
@@ -1939,8 +1939,8 @@
     "recommended_max": 5,
     "rate_name": "深夜7h",
     "days_of_week": "毎日",
-    "start_time": "1899-12-31T07:00:00.000Z",
-    "end_time": "1899-12-30T14:00:00.000Z",
+    "start_time": "23:00",
+    "end_time": "6:00",
     "min_price": 4200
   },
   {
@@ -1952,8 +1952,8 @@
     "area_sqm": 27,
     "recommended_max": 5,
     "days_of_week": "平日",
-    "start_time": "1899-12-30T14:00:00.000Z",
-    "end_time": "1899-12-30T20:00:00.000Z",
+    "start_time": "6:00",
+    "end_time": "12:00",
     "min_price": 1500
   },
   {
@@ -1965,8 +1965,8 @@
     "area_sqm": 27,
     "recommended_max": 5,
     "days_of_week": "平日",
-    "start_time": "1899-12-30T20:00:00.000Z",
-    "end_time": "1899-12-31T07:00:00.000Z",
+    "start_time": "12:00",
+    "end_time": "23:00",
     "min_price": 1800
   },
   {
@@ -1978,8 +1978,8 @@
     "area_sqm": 27,
     "recommended_max": 5,
     "days_of_week": "土曜,日曜",
-    "start_time": "1899-12-30T14:00:00.000Z",
-    "end_time": "1899-12-31T07:00:00.000Z",
+    "start_time": "6:00",
+    "end_time": "23:00",
     "min_price": 2300
   },
   {
@@ -1992,8 +1992,8 @@
     "recommended_max": 5,
     "rate_name": "深夜7h",
     "days_of_week": "毎日",
-    "start_time": "1899-12-31T07:00:00.000Z",
-    "end_time": "1899-12-30T14:00:00.000Z",
+    "start_time": "23:00",
+    "end_time": "6:00",
     "min_price": 5400
   },
   {
@@ -2006,8 +2006,8 @@
     "recommended_max": 8,
     "notes": "更衣スペース分狭い",
     "days_of_week": "平日",
-    "start_time": "1899-12-30T14:00:00.000Z",
-    "end_time": "1899-12-30T20:00:00.000Z",
+    "start_time": "6:00",
+    "end_time": "12:00",
     "min_price": 1550
   },
   {
@@ -2020,8 +2020,8 @@
     "recommended_max": 8,
     "notes": "更衣スペース分狭い",
     "days_of_week": "平日",
-    "start_time": "1899-12-30T20:00:00.000Z",
-    "end_time": "1899-12-31T07:00:00.000Z",
+    "start_time": "12:00",
+    "end_time": "23:00",
     "min_price": 2000
   },
   {
@@ -2034,8 +2034,8 @@
     "recommended_max": 8,
     "notes": "更衣スペース分狭い",
     "days_of_week": "土曜,日曜",
-    "start_time": "1899-12-30T14:00:00.000Z",
-    "end_time": "1899-12-31T07:00:00.000Z",
+    "start_time": "6:00",
+    "end_time": "23:00",
     "min_price": 2500
   },
   {
@@ -2049,8 +2049,8 @@
     "notes": "更衣スペース分狭い",
     "rate_name": "深夜7h",
     "days_of_week": "毎日",
-    "start_time": "1899-12-31T07:00:00.000Z",
-    "end_time": "1899-12-30T14:00:00.000Z",
+    "start_time": "23:00",
+    "end_time": "6:00",
     "min_price": 6300
   },
   {
@@ -2062,8 +2062,8 @@
     "area_sqm": 50,
     "recommended_max": 10,
     "days_of_week": "平日",
-    "start_time": "1899-12-30T14:00:00.000Z",
-    "end_time": "1899-12-30T20:00:00.000Z",
+    "start_time": "6:00",
+    "end_time": "12:00",
     "min_price": 1550
   },
   {
@@ -2075,8 +2075,8 @@
     "area_sqm": 50,
     "recommended_max": 10,
     "days_of_week": "平日",
-    "start_time": "1899-12-30T20:00:00.000Z",
-    "end_time": "1899-12-31T07:00:00.000Z",
+    "start_time": "12:00",
+    "end_time": "23:00",
     "min_price": 2000
   },
   {
@@ -2088,8 +2088,8 @@
     "area_sqm": 50,
     "recommended_max": 10,
     "days_of_week": "土曜,日曜",
-    "start_time": "1899-12-30T14:00:00.000Z",
-    "end_time": "1899-12-31T07:00:00.000Z",
+    "start_time": "6:00",
+    "end_time": "23:00",
     "min_price": 2500
   },
   {
@@ -2102,8 +2102,8 @@
     "recommended_max": 10,
     "rate_name": "深夜7h",
     "days_of_week": "毎日",
-    "start_time": "1899-12-31T07:00:00.000Z",
-    "end_time": "1899-12-30T14:00:00.000Z",
+    "start_time": "23:00",
+    "end_time": "6:00",
     "min_price": 6300
   },
   {
@@ -2115,8 +2115,8 @@
     "area_sqm": 40,
     "recommended_max": 8,
     "days_of_week": "平日",
-    "start_time": "1899-12-30T14:00:00.000Z",
-    "end_time": "1899-12-30T20:00:00.000Z",
+    "start_time": "6:00",
+    "end_time": "12:00",
     "min_price": 1500
   },
   {
@@ -2128,8 +2128,8 @@
     "area_sqm": 40,
     "recommended_max": 8,
     "days_of_week": "平日",
-    "start_time": "1899-12-30T20:00:00.000Z",
-    "end_time": "1899-12-31T07:00:00.000Z",
+    "start_time": "12:00",
+    "end_time": "23:00",
     "min_price": 2300
   },
   {
@@ -2141,8 +2141,8 @@
     "area_sqm": 40,
     "recommended_max": 8,
     "days_of_week": "土曜,日曜",
-    "start_time": "1899-12-30T14:00:00.000Z",
-    "end_time": "1899-12-31T07:00:00.000Z",
+    "start_time": "6:00",
+    "end_time": "23:00",
     "min_price": 2800
   },
   {
@@ -2155,8 +2155,8 @@
     "recommended_max": 16,
     "notes": "更衣スペース分狭い",
     "days_of_week": "平日",
-    "start_time": "1899-12-30T14:00:00.000Z",
-    "end_time": "1899-12-30T20:00:00.000Z",
+    "start_time": "6:00",
+    "end_time": "12:00",
     "min_price": 1550
   },
   {
@@ -2169,8 +2169,8 @@
     "recommended_max": 16,
     "notes": "更衣スペース分狭い",
     "days_of_week": "平日",
-    "start_time": "1899-12-30T20:00:00.000Z",
-    "end_time": "1899-12-31T07:00:00.000Z",
+    "start_time": "12:00",
+    "end_time": "23:00",
     "min_price": 2200
   },
   {
@@ -2183,8 +2183,8 @@
     "recommended_max": 16,
     "notes": "更衣スペース分狭い",
     "days_of_week": "土曜,日曜",
-    "start_time": "1899-12-30T14:00:00.000Z",
-    "end_time": "1899-12-31T07:00:00.000Z",
+    "start_time": "6:00",
+    "end_time": "23:00",
     "min_price": 3250
   },
   {
@@ -2198,8 +2198,8 @@
     "notes": "更衣スペース分狭い",
     "rate_name": "深夜7h",
     "days_of_week": "毎日",
-    "start_time": "1899-12-31T07:00:00.000Z",
-    "end_time": "1899-12-30T14:00:00.000Z",
+    "start_time": "23:00",
+    "end_time": "6:00",
     "min_price": 6800
   },
   {
@@ -2212,8 +2212,8 @@
     "recommended_max": 11,
     "notes": "更衣スペース分狭い",
     "days_of_week": "平日",
-    "start_time": "1899-12-30T14:00:00.000Z",
-    "end_time": "1899-12-30T20:00:00.000Z",
+    "start_time": "6:00",
+    "end_time": "12:00",
     "min_price": 1750
   },
   {
@@ -2226,8 +2226,8 @@
     "recommended_max": 11,
     "notes": "更衣スペース分狭い",
     "days_of_week": "平日",
-    "start_time": "1899-12-30T20:00:00.000Z",
-    "end_time": "1899-12-31T07:00:00.000Z",
+    "start_time": "12:00",
+    "end_time": "23:00",
     "min_price": 2500
   },
   {
@@ -2240,8 +2240,8 @@
     "recommended_max": 11,
     "notes": "更衣スペース分狭い",
     "days_of_week": "土曜,日曜",
-    "start_time": "1899-12-30T14:00:00.000Z",
-    "end_time": "1899-12-31T07:00:00.000Z",
+    "start_time": "6:00",
+    "end_time": "23:00",
     "min_price": 3450
   },
   {
@@ -2255,8 +2255,8 @@
     "notes": "更衣スペース分狭い",
     "rate_name": "深夜7h",
     "days_of_week": "毎日",
-    "start_time": "1899-12-31T07:00:00.000Z",
-    "end_time": "1899-12-30T14:00:00.000Z",
+    "start_time": "23:00",
+    "end_time": "6:00",
     "min_price": 6900
   },
   {
@@ -2268,8 +2268,8 @@
     "area_sqm": 45,
     "recommended_max": 9,
     "days_of_week": "平日",
-    "start_time": "1899-12-30T14:00:00.000Z",
-    "end_time": "1899-12-30T20:00:00.000Z",
+    "start_time": "6:00",
+    "end_time": "12:00",
     "min_price": 2400
   },
   {
@@ -2281,8 +2281,8 @@
     "area_sqm": 45,
     "recommended_max": 9,
     "days_of_week": "平日",
-    "start_time": "1899-12-30T20:00:00.000Z",
-    "end_time": "1899-12-31T07:00:00.000Z",
+    "start_time": "12:00",
+    "end_time": "23:00",
     "min_price": 3100
   },
   {
@@ -2294,8 +2294,8 @@
     "area_sqm": 45,
     "recommended_max": 9,
     "days_of_week": "土曜,日曜",
-    "start_time": "1899-12-30T14:00:00.000Z",
-    "end_time": "1899-12-31T07:00:00.000Z",
+    "start_time": "6:00",
+    "end_time": "23:00",
     "min_price": 3700
   },
   {
@@ -2307,8 +2307,8 @@
     "area_sqm": 45,
     "recommended_max": 9,
     "days_of_week": "平日",
-    "start_time": "1899-12-30T14:00:00.000Z",
-    "end_time": "1899-12-30T20:00:00.000Z",
+    "start_time": "6:00",
+    "end_time": "12:00",
     "min_price": 2400
   },
   {
@@ -2320,8 +2320,8 @@
     "area_sqm": 45,
     "recommended_max": 9,
     "days_of_week": "平日",
-    "start_time": "1899-12-30T20:00:00.000Z",
-    "end_time": "1899-12-31T07:00:00.000Z",
+    "start_time": "12:00",
+    "end_time": "23:00",
     "min_price": 3100
   },
   {
@@ -2333,8 +2333,8 @@
     "area_sqm": 45,
     "recommended_max": 9,
     "days_of_week": "土曜,日曜",
-    "start_time": "1899-12-30T14:00:00.000Z",
-    "end_time": "1899-12-31T07:00:00.000Z",
+    "start_time": "6:00",
+    "end_time": "23:00",
     "min_price": 3700
   },
   {
@@ -2346,8 +2346,8 @@
     "area_sqm": 80,
     "recommended_max": 16,
     "days_of_week": "平日",
-    "start_time": "1899-12-30T14:00:00.000Z",
-    "end_time": "1899-12-30T20:00:00.000Z",
+    "start_time": "6:00",
+    "end_time": "12:00",
     "min_price": 2300
   },
   {
@@ -2359,8 +2359,8 @@
     "area_sqm": 80,
     "recommended_max": 16,
     "days_of_week": "平日",
-    "start_time": "1899-12-30T20:00:00.000Z",
-    "end_time": "1899-12-31T07:00:00.000Z",
+    "start_time": "12:00",
+    "end_time": "23:00",
     "min_price": 3100
   },
   {
@@ -2372,8 +2372,8 @@
     "area_sqm": 80,
     "recommended_max": 16,
     "days_of_week": "土曜,日曜",
-    "start_time": "1899-12-30T14:00:00.000Z",
-    "end_time": "1899-12-31T07:00:00.000Z",
+    "start_time": "6:00",
+    "end_time": "23:00",
     "min_price": 3800
   },
   {
@@ -2386,8 +2386,8 @@
     "recommended_max": 16,
     "rate_name": "深夜7h",
     "days_of_week": "毎日",
-    "start_time": "1899-12-31T07:00:00.000Z",
-    "end_time": "1899-12-30T14:00:00.000Z",
+    "start_time": "23:00",
+    "end_time": "6:00",
     "min_price": 8800
   }
 ]
