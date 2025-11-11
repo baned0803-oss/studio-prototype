@@ -226,10 +226,6 @@ function renderCards(items, requestedPeople, requestedArea, searchMode, totalDur
                     <strong class="${areaFitClass}">${areaFitStatus}</strong> 
                 </div>
                 <div class="meta-item">
-                    <span>推奨最大人数</span>
-                    <strong>${(it.room.recommended_max ?? '-')}人</strong>
-                </div>
-                <div class="meta-item">
                     <span>その他/備考</span>
                     <strong>${escapeHtml(notes)}</strong>
                 </div>
