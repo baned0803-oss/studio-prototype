@@ -40,15 +40,22 @@
     </div>
     <div class="form-group">
     <label for="peopleInput">人数</label>
-    <small class="input-note">（狭くても大丈夫な場合は、実際より少なめに入力してください）</small>
+
     <input id="peopleInput" type="number" min="1" step="1" />
 </div>
 </div>
             <p id="areaInfo" class="area-info"></p>
             
-            <button id="searchBtn">🔍 スタジオを検索</button>
+          <button id="searchBtn">🔍 スタジオを検索</button>
+        </div> <div class="notes-area">
+            <button id="toggleNotesBtn" class="toggle-button">
+                利用時の注意事項・規約（タップで開閉）
+            </button>
+            <div id="notesContent" class="notes-content">
+                <p>【人数に関する注意】人数は、推奨収容人数に対するあなたの希望人数です。「狭くても大丈夫」な場合は、実際より少なめに入力することで、より安価なスタジオを見つけやすくなります。</p>
+                
+                </div>
         </div>
-        
         <div class="content-links">
     <a href="column_area.html" class="link-button">一人当たりの広さ算出コラムを読む</a>
     <a href="column_dance.html" class="link-button">ダンススタジオ記事を読む</a>
