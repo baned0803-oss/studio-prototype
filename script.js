@@ -65,7 +65,7 @@ function updateAreaInfo(people) {
     // ... (変更なし) ...
     if (people > 0) {
         const requiredArea = people * AREA_PER_PERSON;
-        areaInfo.innerHTML = `人数 (${people}人) に必要な目安の広さ: <strong>${requiredArea}㎡</strong>`;
+        areaInfo.innerHTML = `人数 (${people}人) に必要な目安の広さ以上で検索します: <strong>${requiredArea}㎡</strong>`;
     } else {
         areaInfo.textContent = '希望人数を入力してください。';
     }
