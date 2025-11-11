@@ -585,7 +585,7 @@ button#searchBtn:active {
         width: 100% !important;
         margin-top: 10px;
     }
-    
+
     /* 全体のパディングを調整 */
     .container {
         padding: 15px 12px;
@@ -774,5 +774,15 @@ button#searchBtn:active {
 
     .cost-per-person .price {
         font-size: 24px;
+    }
+    /* --- 人数入力欄の注意書きのスタイル --- */
+    .input-note {
+    display: block; /* 独立した行として表示 */
+    font-size: 0.8em; /* 文字を小さく */
+    color: #94a3b8; /* labelと同じトーンのグレー */
+    margin-top: 5px; /* 上部にスペースを開ける */
+    margin-bottom: 5px; /* 入力欄との間にスペースを開ける */
+    line-height: 1.5; /* 読みやすくするための行間 */
+    font-weight: 500;
     }
 }
