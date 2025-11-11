@@ -222,7 +222,7 @@ function renderCards(items, requestedPeople, requestedArea, searchMode, totalDur
                     <strong>${formatPrice(totalCost)}</strong>
                 </div>
                 <div class="meta-item">
-                    <span>必要面積 (目安)</span>
+                    <span>面積 </span>
                     <strong class="${areaFitClass}">${areaFitStatus}</strong> 
                 </div>
                 <div class="meta-item">
