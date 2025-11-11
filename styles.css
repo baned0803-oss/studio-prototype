@@ -1,4 +1,6 @@
-/* ベーススタイル */
+/* ==========================================
+   ベーススタイル
+   ========================================== */
 * {
     margin: 0;
     padding: 0;
@@ -15,7 +17,6 @@ body {
     overflow-x: hidden;
 }
 
-/* 背景アニメーション */
 body::before {
     content: '';
     position: fixed;
@@ -37,7 +38,9 @@ body::before {
     z-index: 1;
 }
 
-/* ヘッダー */
+/* ==========================================
+   ヘッダー
+   ========================================== */
 header {
     text-align: center;
     margin-bottom: 50px;
@@ -62,7 +65,70 @@ h1 {
     letter-spacing: 2px;
 }
 
-/* 検索フォーム */
+/* ==========================================
+   🎯 新規追加: 検索時の注意点セクション
+   ========================================== */
+.search-tips {
+    background: rgba(15, 23, 42, 0.8);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(148, 163, 184, 0.2);
+    border-radius: 20px;
+    padding: 30px;
+    margin-bottom: 40px;
+    animation: fadeInUp 0.8s ease 0.1s both;
+}
+
+.search-tips h2 {
+    font-size: 20px;
+    color: #60a5fa;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.tips-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+.tip-item {
+    display: flex;
+    gap: 15px;
+    align-items: flex-start;
+    padding: 15px;
+    background: rgba(30, 41, 59, 0.4);
+    border-radius: 12px;
+    border: 1px solid rgba(148, 163, 184, 0.1);
+    transition: all 0.3s ease;
+}
+
+.tip-item:hover {
+    background: rgba(30, 41, 59, 0.6);
+    border-color: rgba(59, 130, 246, 0.3);
+    transform: translateY(-2px);
+}
+
+.tip-icon {
+    font-size: 28px;
+    flex-shrink: 0;
+}
+
+.tip-item strong {
+    display: block;
+    color: #e0e7ff;
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+.tip-item p {
+    color: #94a3b8;
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+/* ==========================================
+   検索フォーム
+   ========================================== */
 .controls {
     background: rgba(15, 23, 42, 0.8);
     backdrop-filter: blur(20px);
@@ -73,6 +139,34 @@ h1 {
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4),
                 0 0 0 1px rgba(255, 255, 255, 0.05) inset;
     animation: fadeInUp 0.8s ease 0.2s both;
+}
+
+.search-toggle {
+    display: flex;
+    margin-bottom: 25px;
+    border: 1px solid rgba(148, 163, 184, 0.2);
+    border-radius: 12px;
+    padding: 5px;
+    background: rgba(30, 41, 59, 0.6);
+}
+
+.search-toggle button {
+    flex-grow: 1;
+    padding: 10px 15px;
+    border: none;
+    background: transparent;
+    color: #94a3b8;
+    font-weight: 600;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+    font-size: 14px;
+}
+
+.search-toggle button.active {
+    background: linear-gradient(135deg, #3b82f6 0%, #6366f1 100%);
+    color: white;
+    box-shadow: 0 4px 10px rgba(59, 130, 246, 0.3);
 }
 
 .form-grid {
@@ -96,7 +190,6 @@ h1 {
     letter-spacing: 1px;
 }
 
-/* 日付、時間、数値の入力欄を統一 */
 input[type="date"],
 input[type="time"], 
 input[type="number"] {
@@ -110,7 +203,6 @@ input[type="number"] {
     font-family: inherit;
 }
 
-/* フォーカス時のスタイル */
 input[type="date"]:focus,
 input[type="time"]:focus, 
 input[type="number"]:focus {
@@ -122,11 +214,23 @@ input[type="number"]:focus {
     transform: translateY(-2px);
 }
 
-/* カレンダーアイコンなどをダークテーマに適合させる */
 input[type="date"]::-webkit-calendar-picker-indicator,
 input[type="time"]::-webkit-calendar-picker-indicator,
 input[type="number"]::-webkit-inner-spin-button {
     filter: invert(0.7);
+}
+
+.area-info {
+    font-size: 14px;
+    color: #94a3b8;
+    margin-bottom: 25px;
+    padding: 0 5px;
+    text-align: center;
+}
+
+.area-info strong {
+    color: #60a5fa;
+    font-weight: 700;
 }
 
 button#searchBtn {
@@ -143,6 +247,7 @@ button#searchBtn {
     box-shadow: 0 10px 30px rgba(59, 130, 246, 0.3);
     position: relative;
     overflow: hidden;
+    width: 100%;
 }
 
 button#searchBtn::before {
@@ -165,34 +270,94 @@ button#searchBtn:hover {
     box-shadow: 0 15px 40px rgba(59, 130, 246, 0.4);
 }
 
-button#searchBtn:active {
-    transform: translateY(0);
+/* ==========================================
+   コンテンツリンク
+   ========================================== */
+.content-links {
+    text-align: center;
+    margin-top: 30px;
+    margin-bottom: 50px;
+    display: flex;
+    justify-content: center;
+    gap: 20px; 
 }
 
-/* 検索結果 */
+.link-button {
+    display: inline-block;
+    background: rgba(148, 163, 184, 0.1);
+    color: #94a3b8;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.3s;
+    border: 1px solid rgba(148, 163, 184, 0.2);
+}
+
+.link-button:hover {
+    background: rgba(148, 163, 184, 0.2);
+    color: #e0e7ff;
+    border-color: #60a5fa;
+    transform: translateY(-2px);
+}
+
+/* ==========================================
+   検索結果ページ
+   ========================================== */
+.is-results .container {
+    padding-top: 20px;
+}
+
+.results-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.results-header h1 {
+    font-size: 32px;
+    margin-bottom: 5px;
+}
+
+.results-header .subtitle {
+    font-size: 16px;
+    color: #94a3b8;
+}
+
+.summary-details {
+    color: #cbd5e1;
+    font-weight: normal;
+    margin-left: 15px;
+    font-size: 14px;
+}
+
+.back-link-top {
+    display: block;
+    text-align: left;
+    color: #60a5fa;
+    font-weight: 600;
+    text-decoration: none;
+    margin-bottom: 20px;
+    font-size: 14px;
+}
+
+.back-link-top:hover {
+    text-decoration: underline;
+}
+
+/* ==========================================
+   カード表示
+   ========================================== */
 #result {
     animation: fadeIn 0.8s ease 0.4s both;
 }
 
-.summary {
-    font-size: 18px;
-    font-weight: 700;
-    color: #60a5fa;
-    margin-bottom: 30px;
-    padding: 20px;
-    background: rgba(59, 130, 246, 0.1);
-    border-left: 4px solid #3b82f6;
-    border-radius: 12px;
-}
-
-/* カードグリッド */
 .card-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
     gap: 30px;
 }
 
-/* カード */
 .card {
     background: rgba(15, 23, 42, 0.8);
     backdrop-filter: blur(20px);
@@ -253,17 +418,23 @@ button#searchBtn:active {
     font-weight: 500;
 }
 
-/* 価格表示 */
-.cost-per-person {
+/* ==========================================
+   💰 改善された料金表示
+   ========================================== */
+.cost-display {
+    margin: 20px 0;
+}
+
+.total-cost {
     background: linear-gradient(135deg, rgba(236, 72, 153, 0.2), rgba(139, 92, 246, 0.2));
     border: 2px solid rgba(236, 72, 153, 0.3);
     border-radius: 16px;
     padding: 20px;
-    margin: 20px 0;
     text-align: center;
+    margin-bottom: 12px;
 }
 
-.cost-per-person .label {
+.total-cost .label {
     font-size: 12px;
     color: #cbd5e1;
     font-weight: 600;
@@ -272,7 +443,7 @@ button#searchBtn:active {
     margin-bottom: 8px;
 }
 
-.cost-per-person .price {
+.total-cost .price {
     font-size: 36px;
     font-weight: 900;
     background: linear-gradient(135deg, #ec4899, #a78bfa);
@@ -281,20 +452,16 @@ button#searchBtn:active {
     background-clip: text;
 }
 
-.cost-per-person.disabled {
-    background: rgba(148, 163, 184, 0.1);
-    border-color: rgba(148, 163, 184, 0.2);
-}
-
-.cost-per-person.disabled .price {
-    color: #64748b;
-    background: none;
-    -webkit-text-fill-color: #64748b;
-    font-size: 18px;
+.per-person-cost {
+    text-align: center;
+    font-size: 14px;
+    color: #94a3b8;
     font-weight: 600;
 }
 
-/* メタ情報 */
+/* ==========================================
+   メタ情報
+   ========================================== */
 .meta-item {
     display: flex;
     justify-content: space-between;
@@ -319,7 +486,14 @@ button#searchBtn:active {
     font-size: 16px;
 }
 
-/* 予約ボタン */
+.meta-item strong.warning {
+    color: #fb7185;
+    font-weight: 800;
+}
+
+/* ==========================================
+   予約ボタン
+   ========================================== */
 .card a {
     display: block;
     margin-top: 20px;
@@ -346,7 +520,9 @@ button#searchBtn:active {
     box-shadow: 0 12px 30px rgba(16, 185, 129, 0.4);
 }
 
-/* 該当なしメッセージ */
+/* ==========================================
+   その他
+   ========================================== */
 .no-results {
     text-align: center;
     padding: 60px 20px;
@@ -357,7 +533,53 @@ button#searchBtn:active {
     font-size: 18px;
 }
 
-/* アニメーション */
+.advertisement-space {
+    text-align: center;
+    padding: 20px;
+    margin-bottom: 40px;
+    background: rgba(148, 163, 184, 0.1);
+    border: 1px dashed rgba(148, 163, 184, 0.3);
+    border-radius: 8px;
+    color: #94a3b8;
+    font-size: 14px;
+}
+
+.footer-ad {
+    margin-top: 50px;
+}
+
+.content-section {
+    background: rgba(15, 23, 42, 0.8);
+    border: 1px solid rgba(148, 163, 184, 0.2);
+    border-radius: 20px;
+    padding: 40px;
+    margin-top: 50px;
+    color: #e0e7ff;
+}
+
+.content-section h2 {
+    font-size: 28px;
+    color: #60a5fa;
+    margin-bottom: 20px;
+    border-bottom: 2px solid rgba(148, 163, 184, 0.2);
+    padding-bottom: 10px;
+}
+
+.content-section p {
+    margin-bottom: 15px;
+    line-height: 1.8;
+}
+
+.content-section ul {
+    list-style: disc;
+    margin-left: 20px;
+    margin-bottom: 20px;
+    padding-left: 10px;
+}
+
+/* ==========================================
+   アニメーション
+   ========================================== */
 @keyframes fadeInDown {
     from {
         opacity: 0;
@@ -396,357 +618,98 @@ button#searchBtn:active {
     }
 }
 
-/* --- 追加CSS（コラム、結果ページ調整） --- */
-
-/* 検索モード切り替えボタン */
-.search-toggle {
-    display: flex;
-    margin-bottom: 25px;
-    border: 1px solid rgba(148, 163, 184, 0.2);
-    border-radius: 12px;
-    padding: 5px;
-    background: rgba(30, 41, 59, 0.6);
-}
-
-.search-toggle button {
-    flex-grow: 1;
-    padding: 10px 15px;
-    border: none;
-    background: transparent;
-    color: #94a3b8;
-    font-weight: 600;
-    cursor: pointer;
-    border-radius: 8px;
-    transition: all 0.2s ease;
-    font-size: 14px;
-}
-
-.search-toggle button.active {
-    background: linear-gradient(135deg, #3b82f6 0%, #6366f1 100%);
-    color: white;
-    box-shadow: 0 4px 10px rgba(59, 130, 246, 0.3);
-}
-
-/* 面積情報表示 */
-.area-info {
-    font-size: 14px;
-    color: #94a3b8;
-    margin-bottom: 25px;
-    padding: 0 5px;
-    text-align: center;
-}
-
-.area-info strong {
-    color: #60a5fa;
-    font-weight: 700;
-}
-
-
-/* コンテンツリンクボタン */
-.content-links {
-    text-align: center;
-    margin-top: -30px; /* controlsの下に少し食い込ませる */
-    margin-bottom: 50px;
-    /* PC向け横並び */
-    display: flex;
-    justify-content: center;
-    gap: 20px; 
-}
-
-.link-button {
-    display: inline-block;
-    background: rgba(148, 163, 184, 0.1);
-    color: #94a3b8;
-    text-decoration: none;
-    padding: 10px 20px;
-    border-radius: 8px;
-    font-size: 14px;
-    font-weight: 500;
-    transition: all 0.3s;
-    border: 1px solid rgba(148, 163, 184, 0.2);
-}
-
-.link-button:hover {
-    background: rgba(148, 163, 184, 0.2);
-    color: #e0e7ff;
-    border-color: #60a5fa;
-    transform: translateY(-2px);
-}
-
-/* コンテンツセクション (コラムページ用) */
-.content-section {
-    background: rgba(15, 23, 42, 0.8);
-    border: 1px solid rgba(148, 163, 184, 0.2);
-    border-radius: 20px;
-    padding: 40px;
-    margin-top: 50px;
-    color: #e0e7ff;
-}
-
-.content-section h2 {
-    font-size: 28px;
-    color: #60a5fa;
-    margin-bottom: 20px;
-    border-bottom: 2px solid rgba(148, 163, 184, 0.2);
-    padding-bottom: 10px;
-}
-
-.content-section p {
-    margin-bottom: 15px;
-    line-height: 1.8;
-}
-
-.content-section ul {
-    list-style: disc;
-    margin-left: 20px;
-    margin-bottom: 20px;
-    padding-left: 10px;
-}
-
-/* カード内のメタ情報表示の強化 */
-.card .meta-item strong.warning {
-    color: #fb7185; /* 赤系統 */
-    font-weight: 800;
-}
-
-/* 結果ページ全体調整 */
-.is-results .container {
-    padding-top: 20px;
-}
-
-.results-header {
-    text-align: center;
-    margin-bottom: 40px;
-}
-
-.results-header h1 {
-    font-size: 32px;
-    margin-bottom: 5px;
-}
-
-.results-header .subtitle {
-    font-size: 16px;
-    color: #94a3b8;
-}
-
-.summary-details {
-    color: #cbd5e1;
-    font-weight: normal;
-    margin-left: 15px;
-    font-size: 14px;
-}
-
-.back-link-top {
-    display: block;
-    text-align: left;
-    color: #60a5fa;
-    font-weight: 600;
-    text-decoration: none;
-    margin-bottom: 20px;
-    font-size: 14px;
-}
-
-.back-link-top:hover {
-    text-decoration: underline;
-}
-
-/* 広告スペースのスタイル */
-.advertisement-space {
-    text-align: center;
-    padding: 20px;
-    margin-bottom: 40px;
-    background: rgba(148, 163, 184, 0.1);
-    border: 1px dashed rgba(148, 163, 184, 0.3);
-    border-radius: 8px;
-    color: #94a3b8;
-    font-size: 14px;
-}
-
-.footer-ad {
-    margin-top: 50px;
-}
-
-/* --- レスポンシブ（スマホ対応強化版） --- */
+/* ==========================================
+   レスポンシブ（スマホ対応）
+   ========================================== */
 @media (max-width: 768px) {
-
-    .form-grid {
-        display: flex !important;
-        flex-direction: column !important;
-        gap: 15px;
-    }
-    
-    .form-group {
-        width: 100% !important;
-        flex: none !important;
-    }
-    
-    /* 検索ボタンも幅100%に */
-    button#searchBtn {
-        width: 100% !important;
-        margin-top: 10px;
-    }
-
-    /* 全体のパディングを調整 */
     .container {
         padding: 15px 12px;
     }
 
-    /* ヘッダー */
-    header {
-        margin-bottom: 30px;
-    }
-
     h1 {
         font-size: 28px;
-        margin-bottom: 8px;
     }
 
     .subtitle {
         font-size: 13px;
-        letter-spacing: 1px;
     }
 
-    /* 検索フォーム */
+    /* 注意点セクション */
+    .search-tips {
+        padding: 20px 15px;
+    }
+
+    .tips-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .tip-icon {
+        font-size: 24px;
+    }
+
+    /* フォーム */
     .controls {
         padding: 20px 15px;
-        margin-bottom: 30px;
-    }
-    
-    /* 検索モード切替ボタン (search-toggle) を強制的に幅いっぱいにし、ブロック表示にする */
-    .search-toggle {
-        width: 100%;
-        margin-bottom: 20px; /* フォームとの間にスペースを確保 */
-    }
-    
-    .search-toggle button {
-        padding: 12px 10px; /* タップしやすいように調整 */
     }
 
-    /* フォームグリッドを1列に強制 */
     .form-grid {
-        /* display: grid; は維持しつつ、1列に強制 */
-        grid-template-columns: 1fr; 
+        grid-template-columns: 1fr;
         gap: 15px;
-        margin-bottom: 15px;
-    }
-    
-    /* 🚨 重要な修正: フォームグループを幅100%に強制し、横並びを完全に防ぐ */
-    .form-group {
-        width: 100%;
-        max-width: 100%;
-        margin-bottom: 5px; 
     }
 
-    .form-group label {
-        font-size: 12px;
-        margin-bottom: 6px;
+    .search-toggle button {
+        padding: 12px 10px;
+        font-size: 13px;
     }
 
     input[type="date"],
     input[type="time"], 
     input[type="number"] {
         padding: 12px 14px;
-        font-size: 16px; /* iOSのズーム防止のため16px以上 */
+        font-size: 16px;
     }
 
-    /* 検索ボタン */
     button#searchBtn {
-        width: 100%;
         padding: 14px 20px;
         font-size: 15px;
     }
-    
-    /* コンテンツリンクボタンを縦に並べる（スマホ向け） */
+
+    /* コンテンツリンク */
     .content-links {
         flex-direction: column;
-        gap: 15px; /* ボタン間のスペース */
+        gap: 15px;
         align-items: center;
-        margin-top: 20px; /* フォームとの間隔を再調整 */
     }
 
     .link-button {
-        width: 90%; /* ボタンを横幅いっぱいに近く広げる */
-        margin: 0; /* 左右の余白をリセット */
+        width: 90%;
     }
 
-    /* 検索結果のサマリー */
-    .summary {
-        font-size: 15px;
-        padding: 15px;
-        margin-bottom: 20px;
-    }
-
-    /* カードグリッド */
+    /* カード */
     .card-grid {
         grid-template-columns: 1fr;
         gap: 20px;
     }
 
-    /* カード */
     .card {
         padding: 20px 18px;
     }
 
     .card h3 {
         font-size: 20px;
-        margin-bottom: 6px;
     }
 
-    .room-name {
-        font-size: 13px;
-        margin-bottom: 15px;
-        padding-bottom: 12px;
-    }
-
-    /* 価格表示 */
-    .cost-per-person {
-        padding: 15px;
-        margin: 15px 0;
-    }
-
-    .cost-per-person .label {
-        font-size: 11px;
-        margin-bottom: 6px;
-    }
-
-    .cost-per-person .price {
+    .total-cost .price {
         font-size: 28px;
     }
 
-    /* メタ情報 */
     .meta-item {
         padding: 10px 0;
         font-size: 13px;
-        flex-wrap: wrap; 
-    }
-
-    .meta-item span {
-        font-size: 13px;
-    }
-
-    .meta-item strong {
-        font-size: 14px;
-    }
-
-    /* 予約ボタン */
-    .card button {
-        padding: 12px;
-        font-size: 14px;
-    }
-
-    /* 該当なしメッセージ */
-    .no-results {
-        padding: 40px 15px;
-        font-size: 15px;
-    }
-
-    /* アニメーション遅延を短縮 */
-    .card:nth-child(n) {
-        animation-delay: 0.05s;
     }
 }
 
-/* さらに小さい画面（360px以下）の調整 */
 @media (max-width: 360px) {
     .container {
         padding: 10px 8px;
@@ -754,10 +717,6 @@ button#searchBtn:active {
 
     h1 {
         font-size: 24px;
-    }
-
-    .subtitle {
-        font-size: 12px;
     }
 
     .controls {
@@ -768,11 +727,7 @@ button#searchBtn:active {
         padding: 18px 15px;
     }
 
-    .card h3 {
-        font-size: 18px;
-    }
-
-    .cost-per-person .price {
+    .total-cost .price {
         font-size: 24px;
     }
 }

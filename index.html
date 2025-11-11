@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>レンタルスタジオ比較（プロトタイプ）</title>
     <link rel="stylesheet" href="styles.css"> 
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
@@ -11,9 +10,44 @@
 <body>
     <div class="container">
         <header>
-            <h1>Dance Studio Compass </h1>
+            <h1>Dance Studio Compass</h1>
             <p class="subtitle">あなたに最適なスタジオを見つけよう</p>
         </header>
+
+        <!-- 🎯 新規追加: 検索時の注意点セクション -->
+        <div class="search-tips">
+            <h2>🔍 検索時の注意点</h2>
+            <div class="tips-grid">
+                <div class="tip-item">
+                    <span class="tip-icon">📅</span>
+                    <div>
+                        <strong>曜日によって料金が変わります</strong>
+                        <p>平日・土日で料金が異なるため、正確な日付を入力してください</p>
+                    </div>
+                </div>
+                <div class="tip-item">
+                    <span class="tip-icon">👥</span>
+                    <div>
+                        <strong>必要な広さは人数×5㎡が目安</strong>
+                        <p>激しいダンスなら1人3〜4㎡、ヨガなら2〜3㎡必要です</p>
+                    </div>
+                </div>
+                <div class="tip-item">
+                    <span class="tip-icon">💰</span>
+                    <div>
+                        <strong>表示価格は部屋全体の総額</strong>
+                        <p>人数で割った1人あたりの金額も表示されます</p>
+                    </div>
+                </div>
+                <div class="tip-item">
+                    <span class="tip-icon">🌙</span>
+                    <div>
+                        <strong>深夜パックは7時間定額制</strong>
+                        <p>23:00〜6:00の時間帯でお得に利用できます</p>
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <div class="controls">
             <div class="search-toggle">
@@ -22,40 +56,36 @@
             </div>
             
             <div class="form-grid">
-    <div class="form-group">
-        <label>利用日</label>
-        <input id="dateInput" type="date" />
-    </div>
-    <div class="form-group">
-        <label>開始時間</label>
-        <input id="startTimeInput" type="time" />
-    </div>
-    <div class="form-group">
-        <label>終了時間</label>
-        <input id="endTimeInput" type="time" />
-    </div>
-    <div class="form-group">
-        <label>予算 (円)</label>
-        <input id="priceInput" type="number" min="0" step="100" />
-    </div>
-    <div class="form-group">
-    <label for="peopleInput">人数</label>
-    <input id="peopleInput" type="number" min="1" step="1" />
-</div>
-</div>
+                <div class="form-group">
+                    <label>利用日</label>
+                    <input id="dateInput" type="date" />
+                </div>
+                <div class="form-group">
+                    <label>開始時間</label>
+                    <input id="startTimeInput" type="time" />
+                </div>
+                <div class="form-group">
+                    <label>終了時間</label>
+                    <input id="endTimeInput" type="time" />
+                </div>
+                <div class="form-group">
+                    <label>予算 (円)</label>
+                    <input id="priceInput" type="number" min="0" step="100" />
+                </div>
+                <div class="form-group">
+                    <label for="peopleInput">人数</label>
+                    <input id="peopleInput" type="number" min="1" step="1" />
+                </div>
+            </div>
             <p id="areaInfo" class="area-info"></p>
             
             <button id="searchBtn">🔍 スタジオを検索</button>
         </div>
         
         <div class="content-links">
-    <a href="column_area.html" class="link-button">一人当たりの広さ算出コラムを読む</a>
-    <a href="column_dance.html" class="link-button">ダンススタジオ記事を読む</a>
+            <a href="column_area.html" class="link-button">一人当たりの広さ算出コラムを読む</a>
+            <a href="column_dance.html" class="link-button">ダンススタジオ記事を読む</a>
         </div>
-     
-       
-
-        
     </div>
 
 <script src="https://cdn.jsdelivr.net/npm/papaparse@5.3.2/papaparse.min.js"></script>
