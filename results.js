@@ -1,5 +1,5 @@
 // ==========================================
-// 📌 results.js - 検索ロジックと結果表示 (完全修正版)
+// 📌 results.js - 検索ロジックと結果表示 (完全修正版：曜日判定・デバッグログ入り)
 // ==========================================
 
 // 🔧 定数設定
@@ -63,6 +63,8 @@ async function fetchLocalJson() {
 function getDayOfWeek(dateString) {
     if (!dateString) return '';
     const date = new Date(dateString);
+    // Dateオブジェクトの挙動により、日付の文字列がなければ不正な日付として処理されることがある
+    if (isNaN(date.getTime())) return ''; 
     const days = ['日曜', '月曜', '火曜', '水曜', '木曜', '金曜', '土曜'];
     return days[date.getDay()];
 }
@@ -78,15 +80,15 @@ function getDayOfWeek(dateString) {
  * @returns {Array<Object>} - 検索条件を満たしたユニークなスタジオと価格情報
  */
 function runSearch(allStudios, params) {
-
-    console.log('--- 検索パラメータの確認 ---');
-    console.log('取得された検索条件:', params);
-    console.log('計算された必須面積:', params.people * AREA_PER_PERSON);
-
     const requiredArea = params.people * AREA_PER_PERSON;
     const userStartMinutes = toMinutes(params.startTime);
     const userEndMinutes = toMinutes(params.endTime);
     const dayOfWeek = getDayOfWeek(params.date);
+
+    // 【デバッグログ】検索ロジックの開始と主要変数の確認
+    console.log('--- 実行ロジック確認 ---');
+    console.log('計算された曜日:', dayOfWeek);
+    console.log('必須面積:', requiredArea, '㎡');
 
     // 1. スタジオをroom_nameでグループ化
     const groupedStudios = allStudios.reduce((acc, current) => {
@@ -129,11 +131,33 @@ function runSearch(allStudios, params) {
             const rateStartMinutes = toMinutes(rate.start_time);
             const rateEndMinutes = toMinutes(rate.end_time);
 
-            // 曜日チェック
-            if (!studioDays.includes(dayOfWeek) && rate.days_of_week !== '毎日') {
-                // '毎日'はどの曜日にもマッチさせる
-                return; // この料金区分は曜日不適合
+
+            // 【修正した曜日判定ロジック】
+            if (rate.days_of_week !== '毎日') { // '毎日'でなければ曜日をチェック
+
+                // 検索対象の曜日が、データ内のdays_of_weekに含まれているかを判定
+                let isDayMatch = false;
+
+                if (studioDays.includes(dayOfWeek)) {
+                    // (例: '土曜'のデータに '土曜'の検索日が直接含まれる)
+                    isDayMatch = true;
+                } else if (studioDays.includes('平日')) {
+                    // (例: '平日'のデータに対し、検索日が月〜金であるかをチェック)
+                    if (dayOfWeek !== '土曜' && dayOfWeek !== '日曜') {
+                        isDayMatch = true;
+                    }
+                } else if (studioDays.includes('土日祝')) { 
+                    // (データに'土日祝'がある場合、検索日が土曜か日曜であるかをチェック)
+                    if (dayOfWeek === '土曜' || dayOfWeek === '日曜') {
+                        isDayMatch = true;
+                    }
+                }
+                
+                if (!isDayMatch) {
+                    return; // この料金区分は曜日不適合
+                }
             }
+
 
             // 【新ロジック】時間帯のオーバーラップをチェック (時間帯をまたぐ利用に対応)
             const overlapStart = Math.max(userStartMinutes, rateStartMinutes);
@@ -278,9 +302,8 @@ function getSearchParams() {
 async function initializeApp() {
     try {
         const params = getSearchParams();
-
-        // 【🚨 修正ここから 🚨】
-        // 検索が弾かれるバリデーションを無効化し、強制的なテスト条件を設定
+        
+        // 【強制テストコード開始】: 理想的な検索条件で強制的に上書き
         
         // 1. バリデーションチェックをコメントアウト（無効化）
         /* if (params.people <= 0 || (params.mode === 'day' && (!params.date || params.startTime === params.endTime))) {
@@ -290,20 +313,22 @@ async function initializeApp() {
         }
         */
         
-        // 2. 検索パラメータをテスト用の強制的な値で上書き（火曜日 10:00〜18:00）
-        params.date = '2025-11-11';    // 便宜的に月曜日に固定 (平日判定)
+        // 2. 検索パラメータをテスト用の強制的な値で上書き（月曜日 10:00〜18:00）
+        // 2025-11-11 は月曜日
+        params.date = '2025-11-11';    
         params.startTime = '10:00';
         params.endTime = '18:00';
         params.price = 4000;
         params.people = 10;
-        // 【🚨 修正ここまで 🚨】
+        
+        // 【強制テストコード終了】
         
         // データ読み込み
         const allStudios = await fetchLocalJson();
-
-        // 【🚨 追記箇所：この2行を const allStudios = await fetchLocalJson(); の直後に貼り付けてください 🚨】
+        
+        // 【デバッグログ】読み込まれたデータ件数の確認
         console.log('--- 読み込まれたデータ件数 ---');
-        console.log('件数:', allStudios.length);
+        console.log('件数:', allStudios.length); 
 
         // 検索実行
         const filteredStudios = runSearch(allStudios, params);
