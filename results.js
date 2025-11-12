@@ -493,6 +493,18 @@ function getSearchParams() {
 async function initializeApp() {
     try {
         const params = getSearchParams();
+
+        // 深夜パックのテストのため、検索モードが'night'の場合に条件を上書き
+        if (params.mode === 'night') {
+            console.log("--- 深夜パック強制テストモード実行 ---");
+            // 2025-11-11 は火曜日（平日）
+            params.date = '2025-11-11';    
+            params.price = 10000;         // 予算を高く設定
+            params.people = 10;           // 人数を設定
+            params.startTime = '23:00';   // 深夜パックの開始時間
+            params.endTime = '06:00';     // 深夜パックの終了時間
+        }
+        // 【🚨 追記ここまで 🚨】
         
         // 📌 正常なバリデーション (無効な検索条件を防ぐ)
         if (params.people <= 0 || (params.mode === 'day' && (!params.date || params.startTime === params.endTime))) {
