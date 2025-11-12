@@ -1,5 +1,5 @@
 // ==========================================
-// 📌 results.js - 検索ロジックと結果表示 (深夜パック時間非表示対応版)
+// 📌 results.js - 検索ロジックと結果表示 (SyntaxError修正版)
 // ==========================================
 
 // 🔧 定数設定
@@ -76,8 +76,8 @@ function cleanRateData(r) {
     let price = (r.min_price || '').toString().replace(/[^\d.]/g, '');
     price = price ? Number(price) : null;
     
-    const startTimeMatch = (r.start_time || '').match(/(\d{2}:\d{2})$/);
-    const endTimeMatch = (r.end_time || '').match(/(\d{2}:\d{2})$/);
+    const startTimeMatch = (r.start_time || '').match(/(\d{1,2}:\d{2})$/);
+    const endTimeMatch = (r.end_time || '').match(/(\d{1,2}:\d{2})$/);
 
     return {
         rate_name: (r.rate_name || '').trim(),
@@ -177,7 +177,7 @@ function isNightPackRate(rate) {
     const endMin = toMinutes(rate.end_time);
     
     // 終了時刻が開始時刻より前 (日をまたぐ) かつ、パック料金の特徴的な時間帯 (〜6:00)
-    if (endMin < startMin && endMin <= 6 * 60) {
+    if (endMin !== null && startMin !== null && endMin < startMin && endMin <= 6 * 60) {
         let duration = endMin - startMin;
         duration += 24 * 60; // 日をまたぐので24時間を加算
         
@@ -188,6 +188,7 @@ function isNightPackRate(rate) {
     
     return false;
 }
+ 
  /** * 1. 利用時間を1時間ごとに分割（端数は切り上げ）
  * 2. 各1時間について、該当する料金帯を検索
  * 3. 曜日と時間帯が一致する料金を合計
@@ -259,14 +260,6 @@ function calculateTotalCost(rates, startMin, endMin, targetDayOfWeek) {
 
 /**
  * 検索結果をカード形式で表示
- * * @param {Array} items - 検索結果リスト
- * @param {number} requestedPeople - リクエスト人数
- * @param {number} requestedArea - 必要面積
- * @param {string} searchMode - 検索モード ('day' or 'night')
- * @param {number} totalDuration - 利用時間（時間）
- * @param {string} targetDayOfWeek - 曜日
- * @param {string} startTime - 開始時刻 (HH:MM) 🎯 追加
- * @param {string} endTime - 終了時刻 (HH:MM) 🎯 追加
  */
 function renderCards(items, requestedPeople, requestedArea, searchMode, totalDuration, targetDayOfWeek, startTime, endTime) {
     const resultElement = document.getElementById('result');
@@ -379,7 +372,7 @@ function runSearch(studios, params) {
     const totalDurationHours = Math.ceil((endMin - startMin) / 60);
 
     // 🚫 無効な検索条件
-    if (requestedPeople <= 0 || (searchMode === 'day' && startMin >= endMin)) {
+    if (requestedPeople <= 0 || (searchMode === 'day' && (startMin === null || endMin === null || startMin >= endMin))) {
         renderCards([], 0, 0, searchMode, 0, targetDayOfWeek, params.startTime, params.endTime);
         return;
     }
@@ -417,8 +410,19 @@ function runSearch(studios, params) {
                     // 🎯 深夜パック判定
                     if (!isNightPackRate(rate)) return;
                     
-                    const dayMatches = rate.days_of_week === '毎日' || 
-                                     rate.days_of_week.includes(targetDayOfWeek);
+                    const studioDays = rate.days_of_week.split(',').map(d => d.trim());
+                    let dayMatches = false;
+
+                    // 曜日チェックロジック（時間貸し計算と共有すべきだが、ここではパック用としてシンプルに）
+                    if (rate.days_of_week === '毎日') {
+                        dayMatches = true;
+                    } else if (studioDays.includes(targetDayOfWeek)) {
+                        dayMatches = true;
+                    } else if (studioDays.includes('平日') && targetDayOfWeek !== '土曜' && targetDayOfWeek !== '日曜') {
+                        dayMatches = true;
+                    } else if (studioDays.includes('土日祝') && (targetDayOfWeek === '土曜' || targetDayOfWeek === '日曜')) {
+                        dayMatches = true;
+                    }
                     
                     if (dayMatches) {
                         const totalCost = rate.min_price;
@@ -452,7 +456,7 @@ function runSearch(studios, params) {
         return (a.totalCost ?? Infinity) - (b.totalCost ?? Infinity);
     });
 
-    // 🎯 修正: startTime, endTimeを渡す
+    // startTime, endTimeを渡す
     renderCards(results, requestedPeople, requiredArea, searchMode, totalDurationHours, targetDayOfWeek, params.startTime, params.endTime);
 }
 
@@ -497,9 +501,10 @@ async function initializeApp() {
         
     } catch (err) {
         console.error('データの読み込みまたは検索処理に失敗しました。', err);
-        document.getElementById('result').innerHTML = '<div class="no-results" style="color:#ef4444;">データの読み込みに失敗しました。<br>コンソール (F12) のエラーを確認してください。</div>';
+        // JSONファイルの構文エラーが発生した場合のメッセージ
+        document.getElementById('result').innerHTML = '<div class="no-results" style="color:#ef4444;">データの読み込みに失敗しました。<br>データ形式（data.json）かJavaScriptの構文を確認してください。</div>';
     }
-}
+} // <--- 忘れられていた閉じ括弧
 
 // ページ読み込み時に実行
 document.addEventListener('DOMContentLoaded', initializeApp);
