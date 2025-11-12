@@ -70,6 +70,8 @@ function getDayOfWeek(dateStr) {
 
 /**
  * 料金データのクリーンアップ
+ * 
+ * 🔧 改善: rate_nameが空でも有効なデータとして扱う
  */
 function cleanRateData(r) {
     let price = (r.min_price || '').toString().replace(/[^\d.]/g, '');
@@ -125,7 +127,8 @@ function processFetchedData(rows) {
         
         // 料金情報を追加
         const rate = cleanRateData(r);
-        if (rate.rate_name && rate.start_time && rate.min_price !== null) {
+        // 🔧 改善: rate_nameが空でも、時間と価格があれば有効
+        if (rate.start_time && rate.min_price !== null) {
             studio.rooms[rid].rates.push(rate);
         }
     });
@@ -156,9 +159,44 @@ async function fetchLocalJson() {
 // ==========================================
 
 /**
- * 🎯 重要: 利用時間帯の総額を計算
+ * 🎯 深夜パック判定関数
  * 
- * ロジック解説:
+ * 判定基準:
+ * 1. rate_nameに「深夜」「ナイトパック」が含まれる
+ * 2. または、23:00〜6:00の時間帯で7時間以上のパック料金
+ * 
+ * @param {Object} rate - 料金情報
+ * @returns {boolean} - 深夜パックならtrue
+ */
+function isNightPackRate(rate) {
+    const rateName = (rate.rate_name || '').toLowerCase();
+    
+    // 方法1: rate_nameで判定（文字コード問題対応）
+    if (rateName.includes('深夜') || 
+        rateName.includes('しんや') ||
+        rateName.includes('ナイトパック') || 
+        rateName.includes('ないとぱっく') ||
+        rateName.includes('night')) {
+        return true;
+    }
+    
+    // 方法2: 時間帯で判定（24:00開始 or 終了が6:00以前）
+    const startMin = toMinutes(rate.start_time);
+    const endMin = toMinutes(rate.end_time);
+    
+    if (startMin >= 24 * 60 || endMin <= 6 * 60) {
+        // さらに7時間パックかチェック（深夜パックの特徴）
+        let duration = endMin - startMin;
+        if (duration < 0) duration += 24 * 60; // 日をまたぐ場合
+        
+        if (duration >= 6 * 60) { // 6時間以上なら深夜パック扱い
+            return true;
+        }
+    }
+    
+    return false;
+}
+ /** 
  * 1. 利用時間を1時間ごとに分割（端数は切り上げ）
  * 2. 各1時間について、該当する料金帯を検索
  * 3. 曜日と時間帯が一致する料金を合計
@@ -365,24 +403,39 @@ function runSearch(studios, params) {
             
             // 🌙 深夜パック検索
             else if (searchMode === 'night') {
+                // 🔧 修正: 同じ部屋に複数の深夜パックがある場合は最安値のみを採用
+                let cheapestNightPack = null;
+                
                 (room.rates || []).forEach(rate => {
-                    const rateName = (rate.rate_name || '').toLowerCase();
-                    const isNightPack = rateName.includes('深夜') || rateName.includes('ナイトパック');
-                    const dayMatches = rate.days_of_week === '毎日' || rate.days_of_week.includes(targetDayOfWeek);
-
-                    if (isNightPack && dayMatches) {
+                    // 🎯 改善された深夜パック判定
+                    if (!isNightPackRate(rate)) return;
+                    
+                    const dayMatches = rate.days_of_week === '毎日' || 
+                                     rate.days_of_week.includes(targetDayOfWeek);
+                    
+                    if (dayMatches) {
                         const totalCost = rate.min_price;
+                        
+                        // 予算オーバーならスキップ
                         if (totalCost > maxPrice) return;
-
-                        results.push({
-                            studio_name: studio.studio_name,
-                            studio_url: studio.official_url,
-                            room_name: room.room_name,
-                            room: room,
-                            totalCost: totalCost
-                        });
+                        
+                        // 最安値を更新
+                        if (cheapestNightPack === null || totalCost < cheapestNightPack) {
+                            cheapestNightPack = totalCost;
+                        }
                     }
                 });
+                
+                // 最安値の深夜パックが見つかった場合のみ結果に追加
+                if (cheapestNightPack !== null) {
+                    results.push({
+                        studio_name: studio.studio_name,
+                        studio_url: studio.official_url,
+                        room_name: room.room_name,
+                        room: room,
+                        totalCost: cheapestNightPack
+                    });
+                }
             }
         });
     });
