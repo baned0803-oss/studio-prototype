@@ -82,7 +82,7 @@ function runSearch(allStudios, params) {
     console.log('--- 検索パラメータの確認 ---');
     console.log('取得された検索条件:', params);
     console.log('計算された必須面積:', params.people * AREA_PER_PERSON);
-    
+
     const requiredArea = params.people * AREA_PER_PERSON;
     const userStartMinutes = toMinutes(params.startTime);
     const userEndMinutes = toMinutes(params.endTime);
@@ -278,17 +278,33 @@ function getSearchParams() {
 async function initializeApp() {
     try {
         const params = getSearchParams();
+
+        // 【🚨 修正ここから 🚨】
+        // 検索が弾かれるバリデーションを無効化し、強制的なテスト条件を設定
         
-        // バリデーション
-        if (params.people <= 0 || (!params.date || params.startTime === params.endTime)) {
+        // 1. バリデーションチェックをコメントアウト（無効化）
+        /* if (params.people <= 0 || (params.mode === 'day' && (!params.date || params.startTime === params.endTime))) {
             document.getElementById('result').innerHTML = '<div class="no-results">無効な検索条件です。検索ページに戻り、人数または時間帯を指定してください。</div>';
             document.getElementById('searchSummary').textContent = '';
             return;
         }
+        */
+        
+        // 2. 検索パラメータをテスト用の強制的な値で上書き（火曜日 10:00〜18:00）
+        params.date = '2025-11-11';    // 便宜的に月曜日に固定 (平日判定)
+        params.startTime = '10:00';
+        params.endTime = '18:00';
+        params.price = 4000;
+        params.people = 10;
+        // 【🚨 修正ここまで 🚨】
         
         // データ読み込み
         const allStudios = await fetchLocalJson();
-        
+
+        // 【🚨 追記箇所：この2行を const allStudios = await fetchLocalJson(); の直後に貼り付けてください 🚨】
+        console.log('--- 読み込まれたデータ件数 ---');
+        console.log('件数:', allStudios.length);
+
         // 検索実行
         const filteredStudios = runSearch(allStudios, params);
         
