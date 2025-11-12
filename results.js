@@ -388,4 +388,118 @@ function runSearch(studios, params) {
 
     // 全スタジオをチェック
     studios.forEach(studio => {
-        (studio.rooms || []).
+        (studio.rooms || []).forEach(room => {
+            // ❌ 面積が足りない部屋はスキップ
+            if (room.area_sqm == null || room.area_sqm < requiredArea) return; 
+
+            // 🌞 通常検索: 時間帯をまたいだ料金計算
+            if (searchMode === 'day') {
+                const totalCost = calculateTotalCost(room.rates, startMin, endMin, targetDayOfWeek);
+                
+                // ❌ 料金が予算オーバーならスキップ
+                if (totalCost === null || totalCost > maxPrice) return;
+
+                results.push({
+                    studio_name: studio.studio_name,
+                    studio_url: studio.official_url,
+                    room_name: room.room_name,
+                    room: room,
+                    totalCost: totalCost
+                });
+            } 
+            
+            // 🌙 深夜パック検索
+            else if (searchMode === 'night') {
+                // 同じ部屋に複数の深夜パックがある場合は最安値のみを採用
+                let cheapestNightPack = null;
+                
+                (room.rates || []).forEach(rate => {
+                    // 🎯 深夜パック判定
+                    if (!isNightPackRate(rate)) return;
+                    
+                    const dayMatches = rate.days_of_week === '毎日' || 
+                                     rate.days_of_week.includes(targetDayOfWeek);
+                    
+                    if (dayMatches) {
+                        const totalCost = rate.min_price;
+                        
+                        // 予算オーバーならスキップ
+                        if (totalCost > maxPrice) return;
+                        
+                        // 最安値を更新
+                        if (cheapestNightPack === null || totalCost < cheapestNightPack) {
+                            cheapestNightPack = totalCost;
+                        }
+                    }
+                });
+                
+                // 最安値の深夜パックが見つかった場合のみ結果に追加
+                if (cheapestNightPack !== null) {
+                    results.push({
+                        studio_name: studio.studio_name,
+                        studio_url: studio.official_url,
+                        room_name: room.room_name,
+                        room: room,
+                        totalCost: cheapestNightPack
+                    });
+                }
+            }
+        });
+    });
+
+    // 📊 総額が安い順にソート
+    results.sort((a, b) => {
+        return (a.totalCost ?? Infinity) - (b.totalCost ?? Infinity);
+    });
+
+    // 🎯 修正: startTime, endTimeを渡す
+    renderCards(results, requestedPeople, requiredArea, searchMode, totalDurationHours, targetDayOfWeek, params.startTime, params.endTime);
+}
+
+// ==========================================
+// 🚀 初期化処理
+// ==========================================
+
+/**
+ * URLパラメータから検索条件を取得
+ */
+function getSearchParams() {
+    const urlParams = new URLSearchParams(window.location.search);
+    return {
+        date: urlParams.get('date') || '',
+        startTime: urlParams.get('startTime') || '00:00',
+        endTime: urlParams.get('endTime') || '00:00',
+        price: Number(urlParams.get('price')) || Infinity,
+        people: Number(urlParams.get('people')) || 0,
+        mode: urlParams.get('mode') || 'day'
+    };
+}
+
+/**
+ * アプリケーション初期化
+ */
+async function initializeApp() {
+    try {
+        const params = getSearchParams();
+        
+        // バリデーション
+        if (params.people <= 0 || (params.mode === 'day' && (!params.date || params.startTime === params.endTime))) {
+            document.getElementById('result').innerHTML = '<div class="no-results">無効な検索条件です。検索ページに戻り、人数または時間帯を指定してください。</div>';
+            document.getElementById('searchSummary').textContent = '';
+            return;
+        }
+        
+        // データ読み込み
+        const studios = await fetchLocalJson();
+        
+        // 検索実行
+        runSearch(studios, params);
+        
+    } catch (err) {
+        console.error('データの読み込みまたは検索処理に失敗しました。', err);
+        document.getElementById('result').innerHTML = '<div class="no-results" style="color:#ef4444;">データの読み込みに失敗しました。<br>コンソール (F12) のエラーを確認してください。</div>';
+    }
+}
+
+// ページ読み込み時に実行
+document.addEventListener('DOMContentLoaded', initializeApp);
