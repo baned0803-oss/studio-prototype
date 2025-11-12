@@ -1,5 +1,5 @@
 // ==========================================
-// 📌 results.js - 検索ロジックと結果表示 (完全修正版：曜日判定・デバッグログ入り)
+// 📌 results.js - 検索ロジックと結果表示 (総額計算・料金区分表示対応版)
 // ==========================================
 
 // 🔧 定数設定
@@ -63,14 +63,108 @@ async function fetchLocalJson() {
 function getDayOfWeek(dateString) {
     if (!dateString) return '';
     const date = new Date(dateString);
-    // Dateオブジェクトの挙動により、日付の文字列がなければ不正な日付として処理されることがある
     if (isNaN(date.getTime())) return ''; 
     const days = ['日曜', '月曜', '火曜', '水曜', '木曜', '金曜', '土曜'];
     return days[date.getDay()];
 }
 
+/**
+ * 深夜パック料金かどうかを判定
+ */
+function isNightPackRate(rate) {
+    return rate.rate_name && rate.rate_name.includes('深夜');
+}
+
 // ==========================================
-// 💡 検索ロジック：時間帯をまたぐ検索対応 (修正版)
+// 💰 料金計算ロジック (総額と適用料金区分を算出)
+// ==========================================
+
+/** * 1. 利用時間を1時間ごとに分割（端数は切り上げ）
+ * 2. 各1時間について、該当する料金帯を検索
+ * 3. 曜日と時間帯が一致する料金を合計
+ * * @param {Array} rates - 部屋の料金体系リスト
+ * @param {number} startMin - 利用開始時刻（分）
+ * @param {number} endMin - 利用終了時刻（分）
+ * @param {string} targetDayOfWeek - 利用する曜日
+ * @returns {Object} - { totalCost: number | null, appliedRates: Array }
+ */
+function calculateTotalCost(rates, startMin, endMin, targetDayOfWeek) {
+    let totalCost = 0;
+    const appliedRates = []; // 適用された料金区分オブジェクト
+    const appliedRateKeys = new Set(); // 重複を防ぐためのキーセット
+    
+    // 例: 18:00〜20:30 → 3時間分の料金を計算 (端数は切り上げ)
+    const totalHours = Math.ceil((endMin - startMin) / 60);
+
+    // 1時間ごとにループ
+    for (let hour = 0; hour < totalHours; hour++) {
+        const currentStartMin = startMin + hour * 60;
+        
+        // 最終時間チェック (例: 10:00-10:30の場合、1時間目の料金計算後に終了)
+        if (currentStartMin >= endMin) continue;
+
+        let hourlyCost = null;
+        let matchingRate = null;
+
+        // この1時間に該当する料金帯を検索
+        for (const rate of rates) {
+            // 深夜パックは時間貸し計算から除外
+            if (isNightPackRate(rate)) continue; 
+            
+            const rateStartMin = toMinutes(rate.start_time);
+            const rateEndMin = toMinutes(rate.end_time);
+            
+            // ✅ 条件1: 曜日が一致するか
+            let dayMatches = false;
+            const studioDays = rate.days_of_week.split(',').map(d => d.trim());
+            
+            if (rate.days_of_week === '毎日') {
+                dayMatches = true;
+            } else if (studioDays.includes(targetDayOfWeek)) {
+                dayMatches = true;
+            } else if (studioDays.includes('平日') && targetDayOfWeek !== '土曜' && targetDayOfWeek !== '日曜') {
+                dayMatches = true;
+            } else if (studioDays.includes('土日祝') && (targetDayOfWeek === '土曜' || targetDayOfWeek === '日曜')) {
+                dayMatches = true;
+            }
+            
+            // ✅ 条件2: 時間帯が一致するか
+            const timeMatches = (rateStartMin <= currentStartMin && currentStartMin < rateEndMin);
+
+            if (dayMatches && timeMatches) {
+                hourlyCost = rate.min_price;
+                matchingRate = rate; // マッチした料金オブジェクトを保存
+                break; // 最初にマッチした料金を採用
+            }
+        }
+
+        if (hourlyCost === null) {
+            // 料金設定がない時間帯が含まれる → 利用不可
+            console.warn(`料金設定が見つからない時間帯が含まれています: ${currentStartMin}分 (${targetDayOfWeek})`);
+            return { totalCost: null, appliedRates: [] }; 
+        }
+
+        totalCost += hourlyCost;
+
+        // 適用された料金をリストに追加（重複排除）
+        const rateKey = `${matchingRate.days_of_week}-${matchingRate.start_time}-${matchingRate.end_time}-${matchingRate.min_price}`;
+        if (!appliedRateKeys.has(rateKey)) {
+            appliedRateKeys.add(rateKey);
+            // 料金区分名、時間帯、価格を保存
+            appliedRates.push({
+                rate_name: matchingRate.rate_name,
+                start_time: matchingRate.start_time,
+                end_time: matchingRate.end_time,
+                min_price: matchingRate.min_price
+            });
+        }
+    }
+
+    return { totalCost: totalCost, appliedRates: appliedRates };
+}
+
+// ==========================================
+// 💡 検索ロジック (修正版)
 // ==========================================
 
 /**
@@ -80,19 +174,25 @@ function getDayOfWeek(dateString) {
  * @returns {Array<Object>} - 検索条件を満たしたユニークなスタジオと価格情報
  */
 function runSearch(allStudios, params) {
-    const requiredArea = params.people * AREA_PER_PERSON;
-    const userStartMinutes = toMinutes(params.startTime);
-    const userEndMinutes = toMinutes(params.endTime);
-    const dayOfWeek = getDayOfWeek(params.date);
+    const dateStr = params.date;
+    const startMin = toMinutes(params.startTime);
+    const endMin = toMinutes(params.endTime);
+    const maxPrice = params.price;
+    const requestedPeople = params.people; 
+    const searchMode = params.mode;
+
+    const targetDayOfWeek = getDayOfWeek(dateStr);
+    const requiredArea = requestedPeople * AREA_PER_PERSON;
+    const totalDurationHours = Math.ceil((endMin - startMin) / 60);
 
     // 【デバッグログ】検索ロジックの開始と主要変数の確認
     console.log('--- 実行ロジック確認 ---');
-    console.log('計算された曜日:', dayOfWeek);
+    console.log('計算された曜日:', targetDayOfWeek);
     console.log('必須面積:', requiredArea, '㎡');
 
     // 1. スタジオをroom_nameでグループ化
     const groupedStudios = allStudios.reduce((acc, current) => {
-        // studio_idとroom_idをキーとして使用 (未入力の場合はnameを使用)
+        // studio_idとroom_idをキーとして使用
         const studioId = current.studio_id && current.studio_id !== '-' ? current.studio_id : current.studio_name;
         const roomId = current.room_id && current.room_id !== '-' ? current.room_id : current.room_name;
         const key = `${studioId}-${roomId}`;
@@ -100,142 +200,220 @@ function runSearch(allStudios, params) {
         if (!acc[key]) {
             acc[key] = {
                 studio_name: current.studio_name,
-                room_name: current.room_name,
                 official_url: current.official_url,
-                area_sqm: current.area_sqm,
-                recommended_max: current.recommended_max,
-                rates: [],
-                min_available_price: Infinity, // 最小価格の追跡用
-                isAvailable: false,            // 利用可否フラグ
-                matchingRates: []              // マッチした料金区分
+                // ratesをroomオブジェクトに追加
+                rooms: {
+                    [current.room_name]: {
+                        room_name: current.room_name,
+                        area_sqm: current.area_sqm,
+                        recommended_max: current.recommended_max,
+                        notes: current.notes,
+                        rates: [] 
+                    }
+                }
             };
         }
-        acc[key].rates.push(current);
+        
+        // 部屋が存在しない場合は作成（通常ありえないが安全のため）
+        if (!acc[key].rooms[current.room_name]) {
+            acc[key].rooms[current.room_name] = {
+                room_name: current.room_name,
+                area_sqm: current.area_sqm,
+                recommended_max: current.recommended_max,
+                notes: current.notes,
+                rates: []
+            };
+        }
+        
+        // 料金情報をrates配列に追加
+        acc[key].rooms[current.room_name].rates.push(current);
+        
         return acc;
     }, {});
 
+
     const uniqueStudios = Object.values(groupedStudios);
+    const results = [];
 
     // 2. グループ化された各スタジオに対して検索条件を適用
-    const filteredStudios = uniqueStudios.filter(studio => {
-        // 広さチェック
-        if (studio.area_sqm < requiredArea) {
-            return false;
-        }
+    uniqueStudios.forEach(studio => {
+        // 各部屋をチェック
+        Object.values(studio.rooms).forEach(room => {
+            // ❌ 面積が足りない部屋はスキップ
+            const requiredArea = params.people * AREA_PER_PERSON;
+            if (room.area_sqm == null || room.area_sqm < requiredArea) return; 
 
-        let isTimeAndDayMatch = false;
-        
-        // 3. 各スタジオの料金区分をチェックし、時間帯のオーバーラップを探索
-        studio.rates.forEach(rate => {
-            const studioDays = rate.days_of_week.split(',').map(d => d.trim());
-            const rateStartMinutes = toMinutes(rate.start_time);
-            const rateEndMinutes = toMinutes(rate.end_time);
-
-
-            // 【修正した曜日判定ロジック】
-            if (rate.days_of_week !== '毎日') { // '毎日'でなければ曜日をチェック
-
-                // 検索対象の曜日が、データ内のdays_of_weekに含まれているかを判定
-                let isDayMatch = false;
-
-                if (studioDays.includes(dayOfWeek)) {
-                    // (例: '土曜'のデータに '土曜'の検索日が直接含まれる)
-                    isDayMatch = true;
-                } else if (studioDays.includes('平日')) {
-                    // (例: '平日'のデータに対し、検索日が月〜金であるかをチェック)
-                    if (dayOfWeek !== '土曜' && dayOfWeek !== '日曜') {
-                        isDayMatch = true;
-                    }
-                } else if (studioDays.includes('土日祝')) { 
-                    // (データに'土日祝'がある場合、検索日が土曜か日曜であるかをチェック)
-                    if (dayOfWeek === '土曜' || dayOfWeek === '日曜') {
-                        isDayMatch = true;
-                    }
-                }
+            // 🌞 通常検索: 時間帯をまたいだ料金計算
+            if (searchMode === 'day') {
+                const { totalCost, appliedRates } = calculateTotalCost(room.rates, startMin, endMin, targetDayOfWeek);
                 
-                if (!isDayMatch) {
-                    return; // この料金区分は曜日不適合
-                }
-            }
+                // ❌ 料金が予算オーバー or nullならスキップ
+                if (totalCost === null || totalCost > maxPrice) return;
 
-
-            // 【新ロジック】時間帯のオーバーラップをチェック (時間帯をまたぐ利用に対応)
-            const overlapStart = Math.max(userStartMinutes, rateStartMinutes);
-            const overlapEnd = Math.min(userEndMinutes, rateEndMinutes);
+                results.push({
+                    studio_name: studio.studio_name,
+                    studio_url: studio.official_url,
+                    room_name: room.room_name,
+                    room: room,
+                    totalCost: totalCost,
+                    appliedRates: appliedRates // 適用された料金を結果に追加
+                });
+            } 
             
-            // オーバーラップが存在し、かつユーザーの予算内であること
-            if (overlapStart < overlapEnd && rate.min_price <= params.price) {
-                isTimeAndDayMatch = true;
+            // 🌙 深夜パック検索 (ここは変更なし)
+            else if (searchMode === 'night') {
+                let cheapestNightPack = null;
+                let nightRate = null;
                 
-                // 利用可能な最小料金を更新
-                studio.min_available_price = Math.min(studio.min_available_price, rate.min_price);
+                (room.rates || []).forEach(rate => {
+                    if (!isNightPackRate(rate)) return; // 深夜パック料金のみチェック
+                    
+                    // 曜日チェック（深夜パックの場合、料金計算関数は使わない）
+                    let dayMatches = false;
+                    const studioDays = rate.days_of_week.split(',').map(d => d.trim());
+                    
+                    if (rate.days_of_week === '毎日') {
+                        dayMatches = true;
+                    } else if (studioDays.includes(targetDayOfWeek)) {
+                        dayMatches = true;
+                    } else if (studioDays.includes('平日') && targetDayOfWeek !== '土曜' && targetDayOfWeek !== '日曜') {
+                        dayMatches = true;
+                    } else if (studioDays.includes('土日祝') && (targetDayOfWeek === '土曜' || targetDayOfWeek === '日曜')) {
+                        dayMatches = true;
+                    }
+
+                    if (dayMatches) {
+                        const totalCost = rate.min_price;
+                        if (totalCost > maxPrice) return;
+                        
+                        if (cheapestNightPack === null || totalCost < cheapestNightPack) {
+                            cheapestNightPack = totalCost;
+                            nightRate = rate; // 最安値のパック料金を保存
+                        }
+                    }
+                });
                 
-                // マッチした料金区分を保存
-                studio.matchingRates.push(rate);
+                if (cheapestNightPack !== null) {
+                    results.push({
+                        studio_name: studio.studio_name,
+                        studio_url: studio.official_url,
+                        room_name: room.room_name,
+                        room: room,
+                        totalCost: cheapestNightPack,
+                        // 深夜パックの場合、appliedRatesはパック料金そのもの
+                        appliedRates: [{
+                            rate_name: nightRate.rate_name,
+                            start_time: nightRate.start_time,
+                            end_time: nightRate.end_time,
+                            min_price: nightRate.min_price
+                        }] 
+                    });
+                }
             }
         });
-
-        // 4. 最終判定: 広さ、予算、そして時間帯/曜日をクリアしたか
-        if (isTimeAndDayMatch && studio.min_available_price <= params.price) {
-            studio.isAvailable = true;
-            return true;
-        }
-
-        return false;
     });
 
-    return filteredStudios;
+
+    // 📊 総額が安い順にソート
+    results.sort((a, b) => {
+        return (a.totalCost ?? Infinity) - (b.totalCost ?? Infinity);
+    });
+
+    // 結果表示
+    renderResults(results, params);
 }
 
 
 // ==========================================
-// 🖥️ 結果表示ロジック
+// 🖥️ 結果表示ロジック (総額と料金区分リスト表示に対応)
 // ==========================================
 
 /**
  * スタジオの結果カードを作成
  */
-function createStudioCard(studio) {
-    // マッチした料金区分をユニークな名称で表示
-    const uniqueRateNames = Array.from(new Set(
-        studio.matchingRates.map(rate => 
-            `${escapeHtml(rate.rate_name || '料金区分')} | ${escapeHtml(rate.start_time)} - ${escapeHtml(rate.end_time)} | ${formatPrice(rate.min_price)}/h`
-        )
-    ));
+function createStudioCard(item, params) {
     
-    const matchingRatesHtml = uniqueRateNames.map(rateText => `
-        <span class="rate-tag">${rateText}</span>
-    `).join('');
+    // 💰 総額と1人あたり金額を計算
+    const totalCost = item.totalCost;
+    const requestedPeople = params.people;
+    const perPersonCost = requestedPeople > 0 
+        ? totalCost / requestedPeople 
+        : null;
+    
+    // 部屋の面積チェック
+    const roomArea = item.room.area_sqm;
+    const requiredArea = params.people * AREA_PER_PERSON;
+    
+    const areaFitStatus = roomArea != null && roomArea >= requiredArea 
+        ? `適合 (${roomArea}㎡)` 
+        : `**注意** (${roomArea ?? '未記載'}㎡)`;
+    const areaFitClass = roomArea != null && roomArea >= requiredArea ? '' : 'warning';
+    
+    const notes = item.room.notes || '特記事項なし';
+    
+    // 📌 修正: 料金データ一覧HTMLの生成
+    // 重複を排除した料金区分一覧
+    const uniqueAppliedRates = Array.from(new Set(
+        item.appliedRates.map(rate => `${rate.start_time}-${rate.end_time}-${rate.min_price}`)
+    )).map(key => {
+        const rate = item.appliedRates.find(r => `${r.start_time}-${r.end_time}-${r.min_price}` === key);
+        return rate;
+    });
 
-    const minPriceDisplay = studio.min_available_price !== Infinity 
-        ? formatPrice(studio.min_available_price) 
-        : '要問合せ';
+    const appliedRatesHtml = (uniqueAppliedRates || []).map(rate => {
+        // 深夜パックの場合は「パック料金」と表示
+        const isPack = isNightPackRate(rate); 
+        const priceText = isPack ? formatPrice(rate.min_price) : `${formatPrice(rate.min_price)}/h`;
+        const timeRange = isPack 
+            ? `${escapeHtml(rate.start_time)} - ${escapeHtml(rate.end_time)}`
+            : `${escapeHtml(rate.start_time)} - ${escapeHtml(rate.end_time)}`;
+        
+        return `
+            <div class="rate-data-row">
+                <span>| ${timeRange} |</span>
+                <strong>${priceText}</strong>
+            </div>
+        `;
+    }).join('');
 
+    // 料金表示HTML（総額と適用された料金データ一覧）
+    const costHtml = `
+        <div class="cost-display">
+            <div class="total-cost-line">
+                💰利用料金: <strong>${formatPrice(totalCost)}</strong> (${escapeHtml(params.startTime)} - ${escapeHtml(params.endTime)})
+            </div>
+        </div>
+        ${perPersonCost !== null ? `<div class="per-person-cost-line">1人あたり: ${formatPrice(perPersonCost)}</div>` : ''}
+
+        ${uniqueAppliedRates && uniqueAppliedRates.length > 0 ? `
+            <div class="rate-data-container">
+                <strong>〇スタジオ料金データ</strong>
+                ${appliedRatesHtml}
+            </div>
+        ` : ''}
+    `;
+    
+    // カードのHTML構造を生成
     return `
         <div class="result-card">
-            <h2 class="card-title">${escapeHtml(studio.studio_name)} (${escapeHtml(studio.room_name)})</h2>
+            <h2 class="card-title">${escapeHtml(item.studio_name)} (${escapeHtml(item.room_name)})</h2>
             <div class="card-body">
-                <p class="card-area">
-                    <span class="icon">📐</span> 広さ: <strong>${studio.area_sqm}㎡</strong> 
-                    <span class="note">(推奨最大人数: ${studio.recommended_max}人)</span>
-                </p>
-                <p class="card-price">
-                    <span class="icon">💰</span> 最低料金: <strong>${minPriceDisplay}</strong> /時間
-                </p>
-                
-                <div class="rate-details">
-                    <h3>マッチした料金区分</h3>
-                    <div class="rate-tags-container">
-                        ${matchingRatesHtml || '<p class="no-rate-match">検索時間帯にマッチする料金区分が見つかりませんでした。</p>'}
-                    </div>
+                <div class="meta-item">
+                    <span>📐広さ</span>
+                    <strong class="${areaFitClass}">${escapeHtml(areaFitStatus)}</strong> 
+                    <span class="note">(推奨最大人数: ${item.room.recommended_max ?? '未記載'}人)</span>
                 </div>
 
-                <div class="card-footer">
-                    <a href="${escapeAttr(studio.official_url)}" target="_blank" class="detail-link">
-                        公式サイトで詳細を見る →
-                    </a>
+                ${costHtml}
+
+                <div class="meta-item notes-display">
+                    <span>その他/備考</span>
+                    <strong>${escapeHtml(notes)}</strong>
                 </div>
             </div>
+            <a href="${escapeAttr(item.studio_url || '#')}" target="_blank" class="detail-link">
+                <button>公式サイトで詳細を見る →</button>
+            </a>
         </div>
     `;
 }
@@ -246,16 +424,20 @@ function createStudioCard(studio) {
 function renderResults(filteredStudios, params) {
     const resultElement = document.getElementById('result');
     const summaryElement = document.getElementById('searchSummary');
-
-    const requiredArea = params.people * AREA_PER_PERSON;
     
+    const targetDayOfWeek = getDayOfWeek(params.date);
+    const requiredArea = params.people * AREA_PER_PERSON;
+
     // サマリーの表示
+    const modeName = params.mode === 'night' 
+        ? '🌜 深夜パック' 
+        : `🌞 時間貸し (${Math.ceil((toMinutes(params.endTime) - toMinutes(params.startTime)) / 60)}時間利用)`;
+
     const summaryText = `
-        ${params.date} (${getDayOfWeek(params.date)}) / ${params.startTime} - ${params.endTime} / 
-        人数: ${params.people}人 / 必須面積: ${requiredArea}㎡ / 
-        予算: ${params.price === Infinity ? '無制限' : formatPrice(params.price)}
+        ✨ <strong>${filteredStudios.length}件</strong>のスタジオが見つかりました (${targetDayOfWeek} ${modeName}) 
+        <span class="summary-details">| 希望人数: ${params.people}名 / 必要面積: ${requiredArea}㎡ / 予算: ${params.price === Infinity ? '無制限' : formatPrice(params.price)}</span>
     `;
-    summaryElement.textContent = summaryText;
+    summaryElement.innerHTML = summaryText;
 
     if (filteredStudios.length === 0) {
         resultElement.innerHTML = `
@@ -271,8 +453,17 @@ function renderResults(filteredStudios, params) {
             </div>
         `;
     } else {
-        const resultsHtml = filteredStudios.map(createStudioCard).join('');
-        resultElement.innerHTML = resultsHtml;
+        // カードをグリッド表示に変更
+        const grid = document.createElement('div');
+        grid.className = 'card-grid';
+        
+        filteredStudios.forEach(item => {
+            const cardHtml = createStudioCard(item, params);
+            grid.innerHTML += cardHtml;
+        });
+
+        resultElement.innerHTML = '';
+        resultElement.appendChild(grid);
     }
 }
 
@@ -313,15 +504,16 @@ async function initializeApp() {
         // データ読み込み
         const allStudios = await fetchLocalJson();
         
-        // 【デバッグログ】件数確認は残しておく
+        // 【デバッグログ】件数確認
         console.log('--- 読み込まれたデータ件数 ---');
         console.log('件数:', allStudios.length); 
 
-        // 検索実行 (URLから取得した条件で実行される)
+        // 検索実行
         const filteredStudios = runSearch(allStudios, params);
         
         // 結果表示
-        renderResults(filteredStudios, params);
+        // runSearchが既にrenderResultsを呼び出しているため、ここはコメントアウト
+        // renderResults(filteredStudios, params);
         
     } catch (err) {
         console.error('データの読み込みまたは検索処理に失敗しました。', err);
