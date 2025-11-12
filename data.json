@@ -97,5 +97,20 @@
     "start_time": "12:00",
     "end_time": "23:00",
     "min_price": 3100
+  },
+
+  {
+    "studio_id": "S_Z_S",
+    "studio_name": "スタジオジパング",
+    "official_url": "https://studiozipang.com/shinjuku-pro/",
+    "room_id": "R_Z_S_PRO",
+    "room_name": "新宿スタジオPRO",
+    "area_sqm": 87,
+    "recommended_max": 17,
+    "rate_name": "深夜パック (7h一括)",
+    "days_of_week": "毎日",
+    "start_time": "23:00",
+    "end_time": "6:00",
+    "min_price": 7500
   }
 ]
