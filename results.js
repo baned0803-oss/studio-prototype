@@ -303,34 +303,21 @@ async function initializeApp() {
     try {
         const params = getSearchParams();
         
-        // 【強制テストコード開始】: 理想的な検索条件で強制的に上書き
-        
-        // 1. バリデーションチェックをコメントアウト（無効化）
-        /* if (params.people <= 0 || (params.mode === 'day' && (!params.date || params.startTime === params.endTime))) {
+        // 📌 正常なバリデーション (無効な検索条件を防ぐ)
+        if (params.people <= 0 || (params.mode === 'day' && (!params.date || params.startTime === params.endTime))) {
             document.getElementById('result').innerHTML = '<div class="no-results">無効な検索条件です。検索ページに戻り、人数または時間帯を指定してください。</div>';
             document.getElementById('searchSummary').textContent = '';
             return;
         }
-        */
-        
-        // 2. 検索パラメータをテスト用の強制的な値で上書き（月曜日 10:00〜18:00）
-        // 2025-11-11 は月曜日
-        params.date = '2025-11-11';    
-        params.startTime = '10:00';
-        params.endTime = '18:00';
-        params.price = 4000;
-        params.people = 10;
-        
-        // 【強制テストコード終了】
         
         // データ読み込み
         const allStudios = await fetchLocalJson();
         
-        // 【デバッグログ】読み込まれたデータ件数の確認
+        // 【デバッグログ】件数確認は残しておく
         console.log('--- 読み込まれたデータ件数 ---');
         console.log('件数:', allStudios.length); 
 
-        // 検索実行
+        // 検索実行 (URLから取得した条件で実行される)
         const filteredStudios = runSearch(allStudios, params);
         
         // 結果表示
