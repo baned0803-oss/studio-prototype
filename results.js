@@ -196,7 +196,7 @@ function isNightPackRate(rate) {
     
     return false;
 }
- * 
+/**
  * ロジック解説:
  * 1. 利用時間を1時間ごとに分割（端数は切り上げ）
  * 2. 各1時間について、該当する料金帯を検索
