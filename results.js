@@ -78,6 +78,11 @@ function getDayOfWeek(dateString) {
  * @returns {Array<Object>} - 検索条件を満たしたユニークなスタジオと価格情報
  */
 function runSearch(allStudios, params) {
+
+    console.log('--- 検索パラメータの確認 ---');
+    console.log('取得された検索条件:', params);
+    console.log('計算された必須面積:', params.people * AREA_PER_PERSON);
+    
     const requiredArea = params.people * AREA_PER_PERSON;
     const userStartMinutes = toMinutes(params.startTime);
     const userEndMinutes = toMinutes(params.endTime);
