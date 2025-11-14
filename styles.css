@@ -1017,4 +1017,61 @@ button#searchBtn:active {
     .detail-link {
         padding: 16px 18px;
     }
+
+        /* styles.cssに追加 */
+    .legal-notice {
+        background: rgba(254, 243, 199, 0.1);
+        border: 2px solid rgba(251, 191, 36, 0.3);
+        border-radius: var(--radius-large);
+        padding: 24px;
+        margin: 30px 0;
+    }
+
+    .legal-notice h3 {
+        color: #fbbf24;
+        font-size: 18px;
+        margin-bottom: 16px;
+    }
+
+    .legal-notice ul {
+        list-style: none;
+        padding: 0;
+    }
+
+    .legal-notice li {
+        padding: 8px 0;
+        border-bottom: 1px solid rgba(148, 163, 184, 0.1);
+        line-height: 1.6;
+    }
+
+    .site-footer {
+        margin-top: 80px;
+        padding: 30px 20px;
+        border-top: 1px solid var(--color-border-subtle);
+        text-align: center;
+    }
+
+    .footer-links {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        margin-bottom: 15px;
+        flex-wrap: wrap;
+    }
+
+    .footer-links a {
+        color: #ffffff;
+        text-decoration: none;
+        font-size: 14px;
+        transition: color 0.2s;
+    }
+
+    .footer-links a:hover {
+        color: var(--color-primary);
+    }
+
+    .copyright {
+        color: var(--color-text-muted);
+        font-size: 13px;
+    }
 }
