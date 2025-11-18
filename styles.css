@@ -1,4 +1,27 @@
-/* ベーススタイル */
+/* ==========================================
+ * ベーススタイル - 改善＆変数導入版
+ * ========================================== */
+
+/* CSS Variables (カスタムプロパティ) の定義 */
+:root {
+    /* カラーパレット */
+    --color-primary: #60a5fa; /* Blue-400 */
+    --color-secondary: #a78bfa; /* Violet-400 */
+    --color-accent: #ec4899; /* Pink-500 */
+    --color-text-light: #e0e7ff; /* Indigo-100 */
+    --color-text-subtle: #cbd5e1; /* Slate-300 */
+    --color-text-muted: #94a3b8; /* Slate-400 */
+    --color-bg-dark: #0f0c29; /* Primary Gradient Start */
+    --color-bg-medium: #1e293b; /* Slate-800 Semi-opaque */
+    --color-border-subtle: rgba(148, 163, 184, 0.3); /* Slate-400 30% */
+    --color-bg-blur: rgba(15, 23, 42, 0.9); /* Dark Blue Semi-opaque */
+    --color-success: #10b981; /* Emerald-500 */
+
+    /* その他の設定 */
+    --radius-large: 20px;
+    --radius-medium: 12px;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -7,15 +30,17 @@
 
 body {
     font-family: 'Inter', 'Noto Sans JP', sans-serif;
-    background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
-    color: #e0e7ff;
+    /* グラデーションに変数を使用しないことで、背景の複雑なデザインを維持 */
+    background: linear-gradient(135deg, var(--color-bg-dark) 0%, #302b63 50%, #24243e 100%);
+    color: var(--color-text-light);
     min-height: 100vh;
     padding: 0;
     position: relative;
     overflow-x: hidden;
+    /* 背景のブレンドを改善 */
+    background-attachment: fixed;
 }
 
-/* 背景アニメーション */
 body::before {
     content: '';
     position: fixed;
@@ -23,6 +48,7 @@ body::before {
     left: 0;
     width: 100%;
     height: 100%;
+    /* radial-gradient の rgba 値は維持 */
     background: radial-gradient(circle at 20% 50%, rgba(59, 130, 246, 0.1) 0%, transparent 50%),
                 radial-gradient(circle at 80% 80%, rgba(99, 102, 241, 0.1) 0%, transparent 50%);
     pointer-events: none;
@@ -37,7 +63,9 @@ body::before {
     z-index: 1;
 }
 
-/* ヘッダー */
+/* ==========================================
+ * ヘッダー - 改善版
+ * ========================================== */
 header {
     text-align: center;
     margin-bottom: 50px;
@@ -47,32 +75,133 @@ header {
 h1 {
     font-size: 48px;
     font-weight: 900;
-    background: linear-gradient(135deg, #60a5fa 0%, #a78bfa 50%, #ec4899 100%);
+    /* グラデーションに変数を使用 */
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 50%, var(--color-accent) 100%);
+    /* WebKit プレフィックスを維持し、標準プロパティを追加 */
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
     margin-bottom: 12px;
     letter-spacing: -1px;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
 }
 
 .subtitle {
-    color: #94a3b8;
-    font-size: 16px;
+    color: var(--color-text-subtle);
+    font-size: 17px;
     font-weight: 500;
-    letter-spacing: 2px;
+    letter-spacing: 1.5px;
 }
 
-/* 検索フォーム */
-.controls {
-    background: rgba(15, 23, 42, 0.8);
+/* ==========================================
+ * 検索時の注意点セクション - 改善版
+ * ========================================== */
+.search-tips {
+    background: var(--color-bg-blur);
     backdrop-filter: blur(20px);
-    border: 1px solid rgba(148, 163, 184, 0.2);
-    border-radius: 20px;
+    border: 1px solid var(--color-border-subtle);
+    border-radius: var(--radius-large);
+    padding: 30px;
+    margin-bottom: 40px;
+    animation: fadeInUp 0.8s ease 0.1s both;
+}
+
+.search-tips h2 {
+    font-size: 22px;
+    color: var(--color-primary);
+    margin-bottom: 24px;
+    text-align: center;
+    font-weight: 700;
+}
+
+.tips-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+.tip-item {
+    display: flex;
+    gap: 15px;
+    align-items: flex-start;
+    padding: 18px;
+    background: rgba(var(--color-bg-medium), 0.6); /* 変数使用 */
+    border-radius: var(--radius-medium);
+    border: 1px solid rgba(148, 163, 184, 0.15);
+    transition: all 0.3s ease;
+}
+
+.tip-item:hover {
+    background: rgba(var(--color-bg-medium), 0.8);
+    border-color: rgba(59, 130, 246, 0.4);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.2);
+}
+
+.tip-icon {
+    font-size: 32px;
+    flex-shrink: 0;
+    line-height: 1;
+    color: var(--color-primary); /* アイコンの色もPrimaryに統一 */
+}
+
+.tip-item strong {
+    display: block;
+    color: #f1f5f9;
+    font-size: 15px;
+    margin-bottom: 6px;
+    font-weight: 700;
+    line-height: 1.4;
+}
+
+.tip-item p {
+    color: var(--color-text-subtle);
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+/* ==========================================
+ * 検索フォーム - 改善版
+ * ========================================== */
+.controls {
+    background: var(--color-bg-blur);
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--color-border-subtle);
+    border-radius: var(--radius-large);
     padding: 35px;
     margin-bottom: 50px;
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4),
                 0 0 0 1px rgba(255, 255, 255, 0.05) inset;
     animation: fadeInUp 0.8s ease 0.2s both;
+}
+
+.search-toggle {
+    display: flex;
+    margin-bottom: 30px;
+    border: 1px solid var(--color-border-subtle);
+    border-radius: var(--radius-medium);
+    padding: 6px;
+    background: rgba(30, 41, 59, 0.7);
+}
+
+.search-toggle button {
+    flex-grow: 1;
+    padding: 12px 15px;
+    border: none;
+    background: transparent;
+    color: var(--color-text-subtle);
+    font-weight: 600;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+    font-size: 15px;
+}
+
+.search-toggle button.active {
+    background: linear-gradient(135deg, #3b82f6 0%, #6366f1 100%);
+    color: white;
+    box-shadow: 0 4px 10px rgba(59, 130, 246, 0.3);
+    font-weight: 700;
 }
 
 .form-grid {
@@ -88,61 +217,90 @@ h1 {
 }
 
 .form-group label {
-    font-size: 13px;
+    font-size: 14px;
     font-weight: 600;
-    color: #94a3b8;
+    color: var(--color-text-subtle);
     margin-bottom: 10px;
     text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing: 0.5px;
 }
 
-/* 日付、時間、数値の入力欄を統一 */
 input[type="date"],
 input[type="time"], 
 input[type="number"] {
-    padding: 14px 16px;
-    border: 2px solid rgba(148, 163, 184, 0.2);
-    border-radius: 12px;
+    padding: 16px 18px;
+    border: 2px solid var(--color-border-subtle);
+    border-radius: var(--radius-medium);
     font-size: 16px;
-    background: rgba(30, 41, 59, 0.6);
-    color: #e0e7ff;
+    background: rgba(30, 41, 59, 0.8);
+    color: #f1f5f9;
     transition: all 0.3s ease;
     font-family: inherit;
+    font-weight: 500;
+    /* Date/Time Pickerのテキストを白で統一 */
+    caret-color: #f1f5f9;
 }
 
-/* フォーカス時のスタイル */
 input[type="date"]:focus,
 input[type="time"]:focus, 
 input[type="number"]:focus {
-    border-color: #3b82f6;
-    background: rgba(30, 41, 59, 0.9);
-    box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1),
+    border-color: var(--color-primary);
+    background: rgba(30, 41, 59, 1);
+    box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.15),
                 0 8px 16px rgba(59, 130, 246, 0.2);
     outline: none;
     transform: translateY(-2px);
 }
 
-/* カレンダーアイコンなどをダークテーマに適合させる */
+/* カレンダー/時計/スピンボタンのアイコンの色を調整 */
 input[type="date"]::-webkit-calendar-picker-indicator,
-input[type="time"]::-webkit-calendar-picker-indicator,
-input[type="number"]::-webkit-inner-spin-button {
-    filter: invert(0.7);
+input[type="time"]::-webkit-calendar-picker-indicator {
+    filter: invert(0.8) brightness(1.2) hue-rotate(180deg); /* 明るい色に調整 */
+    cursor: pointer;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+    /* スピンボタンを非表示にしたい場合は上記の2行を使用。表示したい場合は以下の1行を使用 */
+    /* filter: invert(0.8) brightness(1.2); */ 
+}
+
+
+.area-info {
+    font-size: 15px;
+    color: var(--color-text-subtle);
+    margin-bottom: 25px;
+    padding: 12px 16px;
+    text-align: center;
+    background: rgba(59, 130, 246, 0.08);
+    border-radius: 10px;
+    border: 1px solid rgba(59, 130, 246, 0.2);
+}
+
+.area-info strong {
+    color: var(--color-primary);
+    font-weight: 700;
+    font-size: 16px;
 }
 
 button#searchBtn {
+    /* グラデーションを維持 */
     background: linear-gradient(135deg, #3b82f6 0%, #6366f1 100%);
     color: #fff;
     border: none;
-    padding: 16px 40px;
-    border-radius: 12px;
+    padding: 18px 40px;
+    border-radius: var(--radius-medium);
     cursor: pointer;
     font-weight: 700;
-    font-size: 16px;
+    font-size: 17px;
     letter-spacing: 0.5px;
     transition: all 0.3s ease;
     box-shadow: 0 10px 30px rgba(59, 130, 246, 0.3);
     position: relative;
     overflow: hidden;
+    width: 100%;
 }
 
 button#searchBtn::before {
@@ -154,6 +312,8 @@ button#searchBtn::before {
     height: 100%;
     background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
     transition: left 0.5s;
+    /* ポインターイベントを無効化し、ボタン本体のクリックを邪魔しないように */
+    pointer-events: none;
 }
 
 button#searchBtn:hover::before {
@@ -169,44 +329,118 @@ button#searchBtn:active {
     transform: translateY(0);
 }
 
-/* 検索結果 */
+/* ==========================================
+ * コンテンツリンク - 改善版
+ * ========================================== */
+.content-links {
+    text-align: center;
+    margin-top: 30px;
+    margin-bottom: 50px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.link-button {
+    display: inline-block;
+    background: rgba(148, 163, 184, 0.15);
+    color: var(--color-text-subtle);
+    text-decoration: none;
+    padding: 12px 24px;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 600;
+    transition: all 0.3s;
+    border: 1px solid var(--color-border-subtle);
+}
+
+.link-button:hover {
+    background: rgba(148, 163, 184, 0.25);
+    color: #f1f5f9;
+    border-color: var(--color-primary);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.2);
+}
+
+/* ==========================================
+ * 検索結果ページ - 改善版
+ * ========================================== */
+.is-results .container {
+    padding-top: 20px;
+}
+
+.results-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.results-header h1 {
+    font-size: 36px;
+    margin-bottom: 8px;
+}
+
+.results-header .subtitle {
+    font-size: 17px;
+    color: var(--color-text-subtle);
+    line-height: 1.6;
+}
+
+.summary-details {
+    color: var(--color-text-light);
+    font-weight: 500;
+    margin-left: 15px;
+    font-size: 15px;
+}
+
+.back-link-top {
+    display: block;
+    text-align: left;
+    color: var(--color-primary);
+    font-weight: 600;
+    text-decoration: none;
+    margin-bottom: 20px;
+    font-size: 15px;
+    transition: all 0.2s;
+}
+
+.back-link-top:hover {
+    color: #93c5fd;
+    text-decoration: underline;
+    transform: translateX(-4px);
+}
+
+/* ==========================================
+ * カード表示 - 大幅改善版
+ * ========================================== */
 #result {
     animation: fadeIn 0.8s ease 0.4s both;
 }
 
-.summary {
-    font-size: 18px;
-    font-weight: 700;
-    color: #60a5fa;
-    margin-bottom: 30px;
-    padding: 20px;
-    background: rgba(59, 130, 246, 0.1);
-    border-left: 4px solid #3b82f6;
-    border-radius: 12px;
-}
-
-/* カードグリッド */
 .card-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
     gap: 30px;
 }
 
-/* カード */
-.card {
-    background: rgba(15, 23, 42, 0.8);
+.result-card {
+    background: rgba(15, 23, 42, 0.95);
     backdrop-filter: blur(20px);
-    border: 1px solid rgba(148, 163, 184, 0.2);
-    border-radius: 20px;
-    padding: 30px;
+    border: 1px solid var(--color-border-subtle);
+    border-radius: var(--radius-large);
+    overflow: hidden;
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
-    overflow: hidden;
-    animation: slideIn 0.6s ease forwards;
+    /* animation-delay を調整する要素があるため、ここでは animation-name を指定 */
+    animation-name: slideIn; 
+    animation-duration: 0.6s;
+    animation-timing-function: ease;
+    animation-fill-mode: forwards;
     opacity: 0;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
 }
 
-.card::before {
+.result-card::before {
     content: '';
     position: absolute;
     top: 0;
@@ -219,89 +453,129 @@ button#searchBtn:active {
     transition: transform 0.4s ease;
 }
 
-.card:hover::before {
+.result-card:hover::before {
     transform: scaleX(1);
 }
 
-.card:hover {
+.result-card:hover {
     transform: translateY(-8px);
     border-color: rgba(59, 130, 246, 0.5);
-    box-shadow: 0 20px 60px rgba(59, 130, 246, 0.2),
+    box-shadow: 0 20px 60px rgba(59, 130, 246, 0.25),
                 0 0 0 1px rgba(59, 130, 246, 0.3) inset;
 }
 
-.card:nth-child(1) { animation-delay: 0.1s; }
-.card:nth-child(2) { animation-delay: 0.2s; }
-.card:nth-child(3) { animation-delay: 0.3s; }
-.card:nth-child(4) { animation-delay: 0.4s; }
-.card:nth-child(5) { animation-delay: 0.5s; }
+/* animation-delay はそのまま維持 */
+.result-card:nth-child(1) { animation-delay: 0.1s; }
+.result-card:nth-child(2) { animation-delay: 0.2s; }
+.result-card:nth-child(3) { animation-delay: 0.3s; }
+.result-card:nth-child(4) { animation-delay: 0.4s; }
+.result-card:nth-child(5) { animation-delay: 0.5s; }
 
-.card h3 {
-    font-size: 24px;
+.card-title {
+    font-size: 22px;
     font-weight: 800;
-    color: #fff;
-    margin-bottom: 8px;
-    line-height: 1.3;
-}
-
-.room-name {
-    font-size: 14px;
-    color: #94a3b8;
-    margin-bottom: 20px;
-    padding-bottom: 15px;
+    color: #f1f5f9;
+    margin: 0;
+    padding: 24px 24px 20px;
+    line-height: 1.4;
+    background: rgba(30, 41, 59, 0.5);
     border-bottom: 1px solid rgba(148, 163, 184, 0.2);
-    font-weight: 500;
 }
 
-/* 価格表示 */
-.cost-per-person {
-    background: linear-gradient(135deg, rgba(236, 72, 153, 0.2), rgba(139, 92, 246, 0.2));
-    border: 2px solid rgba(236, 72, 153, 0.3);
+.card-body {
+    padding: 24px;
+}
+
+/* ==========================================
+ * 料金表示 - 大幅改善版
+ * ========================================== */
+.cost-display {
+    margin: 0 0 20px 0;
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.12), rgba(139, 92, 246, 0.12));
+    border: 2px solid rgba(59, 130, 246, 0.3);
     border-radius: 16px;
     padding: 20px;
-    margin: 20px 0;
-    text-align: center;
 }
 
-.cost-per-person .label {
-    font-size: 12px;
-    color: #cbd5e1;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 1px;
+.total-cost-line {
+    font-size: 16px;
+    color: var(--color-text-subtle);
     margin-bottom: 8px;
+    text-align: center;
+    line-height: 1.6;
 }
 
-.cost-per-person .price {
-    font-size: 36px;
+.total-cost-line strong {
+    font-size: 32px;
     font-weight: 900;
-    background: linear-gradient(135deg, #ec4899, #a78bfa);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    color: var(--color-primary);
+    display: inline-block;
+    margin: 0 6px;
 }
 
-.cost-per-person.disabled {
-    background: rgba(148, 163, 184, 0.1);
-    border-color: rgba(148, 163, 184, 0.2);
-}
-
-.cost-per-person.disabled .price {
-    color: #64748b;
-    background: none;
-    -webkit-text-fill-color: #64748b;
-    font-size: 18px;
+.per-person-cost-line {
+    text-align: center;
+    font-size: 15px;
+    color: var(--color-text-muted);
     font-weight: 600;
+    padding-top: 8px;
+    border-top: 1px solid rgba(148, 163, 184, 0.2);
+    margin-top: 8px;
 }
 
-/* メタ情報 */
+.rate-data-container {
+    margin-top: 20px;
+    padding: 16px;
+    background: rgba(30, 41, 59, 0.4);
+    border-radius: var(--radius-medium);
+    border: 1px solid rgba(148, 163, 184, 0.15);
+}
+
+.rate-data-container strong {
+    display: block;
+    font-size: 13px;
+    color: var(--color-text-muted);
+    margin-bottom: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.rate-data-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(148, 163, 184, 0.1);
+    font-size: 14px;
+}
+
+.rate-data-row:last-child {
+    border-bottom: none;
+}
+
+.rate-data-row span {
+    color: var(--color-text-subtle);
+}
+
+/* rate-data-container strong の上書き防止 */
+.rate-data-row strong {
+    color: var(--color-primary);
+    font-weight: 700;
+    font-size: 15px;
+    margin: 0;
+    display: inline; /* 必要に応じて display をリセット */
+}
+
+/* ==========================================
+ * メタ情報 - 改善版
+ * ========================================== */
 .meta-item {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 12px 0;
-    border-bottom: 1px solid rgba(148, 163, 184, 0.1);
-    font-size: 14px;
+    padding: 14px 0;
+    border-bottom: 1px solid rgba(148, 163, 184, 0.15);
+    font-size: 15px;
 }
 
 .meta-item:last-of-type {
@@ -309,55 +583,155 @@ button#searchBtn:active {
 }
 
 .meta-item span {
-    color: #94a3b8;
-    font-weight: 500;
+    color: var(--color-text-muted);
+    font-weight: 600;
 }
 
 .meta-item strong {
-    color: #e0e7ff;
+    color: #f1f5f9;
     font-weight: 700;
     font-size: 16px;
 }
 
-/* 予約ボタン */
-.card a {
-    display: block;
-    margin-top: 20px;
+.meta-item strong.warning {
+    color: #fca5a5;
+    font-weight: 800;
 }
 
-.card button {
+.meta-item .note {
+    color: var(--color-text-muted);
+    font-size: 13px;
+    font-weight: normal;
+    margin-left: 8px;
+}
+
+.notes-display {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+}
+
+.notes-display span {
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.notes-display strong {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--color-text-subtle);
+    line-height: 1.6;
+}
+
+/* ==========================================
+ * 予約ボタン - 改善版
+ * ========================================== */
+.detail-link {
+    display: block;
+    margin: 0;
+    padding: 20px 24px;
+    background: rgba(30, 41, 59, 0.3);
+    border-top: 1px solid rgba(148, 163, 184, 0.2);
+}
+
+.detail-link button {
     width: 100%;
-    padding: 14px;
-    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    padding: 16px;
+    /* SUCCESSカラー変数を使用 */
+    background: linear-gradient(135deg, var(--color-success) 0%, #059669 100%);
     color: #fff;
     border: none;
-    border-radius: 12px;
+    border-radius: var(--radius-medium);
     font-weight: 700;
-    font-size: 15px;
+    font-size: 16px;
     cursor: pointer;
     transition: all 0.3s ease;
     letter-spacing: 0.5px;
     box-shadow: 0 8px 20px rgba(16, 185, 129, 0.3);
 }
 
-.card button:hover {
+.detail-link button:hover {
     background: linear-gradient(135deg, #059669 0%, #047857 100%);
     transform: translateY(-2px);
     box-shadow: 0 12px 30px rgba(16, 185, 129, 0.4);
 }
 
-/* 該当なしメッセージ */
-.no-results {
-    text-align: center;
-    padding: 60px 20px;
-    background: rgba(15, 23, 42, 0.6);
-    border: 2px dashed rgba(148, 163, 184, 0.3);
-    border-radius: 20px;
-    color: #94a3b8;
-    font-size: 18px;
+.detail-link button:active {
+    transform: translateY(0);
 }
 
-/* アニメーション */
+/* ==========================================
+ * その他 - 改善版
+ * ========================================== */
+.no-results {
+    text-align: center;
+    padding: 60px 30px;
+    background: rgba(15, 23, 42, 0.8);
+    border: 2px dashed rgba(148, 163, 184, 0.4);
+    border-radius: var(--radius-large);
+    color: var(--color-text-subtle);
+}
+
+.no-results h3 {
+    font-size: 20px;
+    color: #f1f5f9;
+    margin-bottom: 16px;
+    font-weight: 700;
+}
+
+.no-results p {
+    font-size: 15px;
+    line-height: 1.8;
+    margin-bottom: 16px;
+}
+
+.no-results ul {
+    text-align: left;
+    max-width: 400px;
+    margin: 20px auto;
+    padding-left: 24px;
+}
+
+.no-results li {
+    margin-bottom: 8px;
+    line-height: 1.6;
+}
+
+.back-link-bottom {
+    display: inline-block;
+    margin-top: 20px;
+    color: var(--color-primary);
+    font-weight: 600;
+    text-decoration: none;
+    font-size: 15px;
+    transition: all 0.2s;
+}
+
+.back-link-bottom:hover {
+    color: #93c5fd;
+    text-decoration: underline;
+}
+
+.advertisement-space {
+    text-align: center;
+    padding: 24px;
+    margin-bottom: 40px;
+    background: rgba(148, 163, 184, 0.08);
+    border: 1px dashed var(--color-border-subtle);
+    border-radius: var(--radius-medium);
+    color: var(--color-text-muted);
+    font-size: 14px;
+}
+
+.footer-ad {
+    margin-top: 50px;
+}
+
+/* ==========================================
+ * アニメーション
+ * ========================================== */
+/* アニメーションキーフレームはそのまま維持 */
 @keyframes fadeInDown {
     from {
         opacity: 0;
@@ -396,365 +770,308 @@ button#searchBtn:active {
     }
 }
 
-/* --- 追加CSS（コラム、結果ページ調整） --- */
-
-/* 検索モード切り替えボタン */
-.search-toggle {
-    display: flex;
-    margin-bottom: 25px;
-    border: 1px solid rgba(148, 163, 184, 0.2);
-    border-radius: 12px;
-    padding: 5px;
-    background: rgba(30, 41, 59, 0.6);
-}
-
-.search-toggle button {
-    flex-grow: 1;
-    padding: 10px 15px;
-    border: none;
-    background: transparent;
-    color: #94a3b8;
-    font-weight: 600;
-    cursor: pointer;
-    border-radius: 8px;
-    transition: all 0.2s ease;
-    font-size: 14px;
-}
-
-.search-toggle button.active {
-    background: linear-gradient(135deg, #3b82f6 0%, #6366f1 100%);
-    color: white;
-    box-shadow: 0 4px 10px rgba(59, 130, 246, 0.3);
-}
-
-/* 面積情報表示 */
-.area-info {
-    font-size: 14px;
-    color: #94a3b8;
-    margin-bottom: 25px;
-    padding: 0 5px;
-    text-align: center;
-}
-
-.area-info strong {
-    color: #60a5fa;
-    font-weight: 700;
-}
-
-
-/* コンテンツリンクボタン */
-.content-links {
-    text-align: center;
-    margin-top: -30px; /* controlsの下に少し食い込ませる */
-    margin-bottom: 50px;
-    /* PC向け横並び */
-    display: flex;
-    justify-content: center;
-    gap: 20px; 
-}
-
-.link-button {
-    display: inline-block;
-    background: rgba(148, 163, 184, 0.1);
-    color: #94a3b8;
-    text-decoration: none;
-    padding: 10px 20px;
-    border-radius: 8px;
-    font-size: 14px;
-    font-weight: 500;
-    transition: all 0.3s;
-    border: 1px solid rgba(148, 163, 184, 0.2);
-}
-
-.link-button:hover {
-    background: rgba(148, 163, 184, 0.2);
-    color: #e0e7ff;
-    border-color: #60a5fa;
-    transform: translateY(-2px);
-}
-
-/* コンテンツセクション (コラムページ用) */
-.content-section {
-    background: rgba(15, 23, 42, 0.8);
-    border: 1px solid rgba(148, 163, 184, 0.2);
-    border-radius: 20px;
-    padding: 40px;
-    margin-top: 50px;
-    color: #e0e7ff;
-}
-
-.content-section h2 {
-    font-size: 28px;
-    color: #60a5fa;
-    margin-bottom: 20px;
-    border-bottom: 2px solid rgba(148, 163, 184, 0.2);
-    padding-bottom: 10px;
-}
-
-.content-section p {
-    margin-bottom: 15px;
-    line-height: 1.8;
-}
-
-.content-section ul {
-    list-style: disc;
-    margin-left: 20px;
-    margin-bottom: 20px;
-    padding-left: 10px;
-}
-
-/* カード内のメタ情報表示の強化 */
-.card .meta-item strong.warning {
-    color: #fb7185; /* 赤系統 */
-    font-weight: 800;
-}
-
-/* 結果ページ全体調整 */
-.is-results .container {
-    padding-top: 20px;
-}
-
-.results-header {
-    text-align: center;
-    margin-bottom: 40px;
-}
-
-.results-header h1 {
-    font-size: 32px;
-    margin-bottom: 5px;
-}
-
-.results-header .subtitle {
-    font-size: 16px;
-    color: #94a3b8;
-}
-
-.summary-details {
-    color: #cbd5e1;
-    font-weight: normal;
-    margin-left: 15px;
-    font-size: 14px;
-}
-
-.back-link-top {
-    display: block;
-    text-align: left;
-    color: #60a5fa;
-    font-weight: 600;
-    text-decoration: none;
-    margin-bottom: 20px;
-    font-size: 14px;
-}
-
-.back-link-top:hover {
-    text-decoration: underline;
-}
-
-/* 広告スペースのスタイル */
-.advertisement-space {
-    text-align: center;
-    padding: 20px;
-    margin-bottom: 40px;
-    background: rgba(148, 163, 184, 0.1);
-    border: 1px dashed rgba(148, 163, 184, 0.3);
-    border-radius: 8px;
-    color: #94a3b8;
-    font-size: 14px;
-}
-
-.footer-ad {
-    margin-top: 50px;
-}
-
-/* --- レスポンシブ（スマホ対応強化版） --- */
+/* ==========================================
+ * レスポンシブ（スマホ対応）- 改善版
+ * ========================================== */
 @media (max-width: 768px) {
-    /* 全体のパディングを調整 */
     .container {
-        padding: 15px 12px;
-    }
-
-    /* ヘッダー */
-    header {
-        margin-bottom: 30px;
+        padding: 20px 16px;
     }
 
     h1 {
-        font-size: 28px;
-        margin-bottom: 8px;
+        font-size: 32px;
     }
 
     .subtitle {
-        font-size: 13px;
+        font-size: 15px;
         letter-spacing: 1px;
     }
 
-    /* 検索フォーム */
-    .controls {
-        padding: 20px 15px;
-        margin-bottom: 30px;
-    }
-    
-    /* 検索モード切替ボタン (search-toggle) を強制的に幅いっぱいにし、ブロック表示にする */
-    .search-toggle {
-        width: 100%;
-        margin-bottom: 20px; /* フォームとの間にスペースを確保 */
-    }
-    
-    .search-toggle button {
-        padding: 12px 10px; /* タップしやすいように調整 */
+    /* 注意点セクション */
+    .search-tips {
+        padding: 24px 18px;
     }
 
-    /* フォームグリッドを1列に強制 */
-    .form-grid {
-        /* display: grid; は維持しつつ、1列に強制 */
-        grid-template-columns: 1fr; 
-        gap: 15px;
-        margin-bottom: 15px;
+    .search-tips h2 {
+        font-size: 18px;
     }
-    
-    /* 🚨 重要な修正: フォームグループを幅100%に強制し、横並びを完全に防ぐ */
-    .form-group {
-        width: 100%;
-        max-width: 100%;
-        margin-bottom: 5px; 
+
+    .tips-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .tip-icon {
+        font-size: 28px;
+    }
+
+    .tip-item {
+        padding: 16px;
+    }
+
+    .tip-item strong {
+        font-size: 14px;
+    }
+
+    .tip-item p {
+        font-size: 12px;
+    }
+
+    /* フォーム */
+    .controls {
+        padding: 24px 18px;
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr;
+        gap: 18px;
+    }
+
+    .search-toggle {
+        margin-bottom: 25px;
+    }
+
+    .search-toggle button {
+        padding: 12px 10px;
+        font-size: 14px;
     }
 
     .form-group label {
-        font-size: 12px;
-        margin-bottom: 6px;
+        font-size: 13px;
     }
 
     input[type="date"],
     input[type="time"], 
     input[type="number"] {
-        padding: 12px 14px;
-        font-size: 16px; /* iOSのズーム防止のため16px以上 */
+        padding: 14px 16px;
+        font-size: 16px;
     }
 
-    /* 検索ボタン */
-    button#searchBtn {
-        width: 100%;
-        padding: 14px 20px;
+    .area-info {
+        font-size: 14px;
+        padding: 10px 14px;
+    }
+
+    .area-info strong {
         font-size: 15px;
     }
-    
-    /* コンテンツリンクボタンを縦に並べる（スマホ向け） */
+
+    button#searchBtn {
+        padding: 16px 20px;
+        font-size: 16px;
+    }
+
+    /* コンテンツリンク */
     .content-links {
         flex-direction: column;
-        gap: 15px; /* ボタン間のスペース */
-        align-items: center;
-        margin-top: 20px; /* フォームとの間隔を再調整 */
+        gap: 15px;
+        align-items: stretch;
     }
 
     .link-button {
-        width: 90%; /* ボタンを横幅いっぱいに近く広げる */
-        margin: 0; /* 左右の余白をリセット */
+        width: 100%;
+        padding: 14px 20px;
     }
 
-    /* 検索結果のサマリー */
-    .summary {
-        font-size: 15px;
-        padding: 15px;
-        margin-bottom: 20px;
-    }
-
-    /* カードグリッド */
-    .card-grid {
-        grid-template-columns: 1fr;
-        gap: 20px;
-    }
-
-    /* カード */
-    .card {
-        padding: 20px 18px;
-    }
-
-    .card h3 {
-        font-size: 20px;
-        margin-bottom: 6px;
-    }
-
-    .room-name {
-        font-size: 13px;
-        margin-bottom: 15px;
-        padding-bottom: 12px;
-    }
-
-    /* 価格表示 */
-    .cost-per-person {
-        padding: 15px;
-        margin: 15px 0;
-    }
-
-    .cost-per-person .label {
-        font-size: 11px;
-        margin-bottom: 6px;
-    }
-
-    .cost-per-person .price {
+    /* 検索結果 */
+    .results-header h1 {
         font-size: 28px;
     }
 
-    /* メタ情報 */
-    .meta-item {
-        padding: 10px 0;
-        font-size: 13px;
-        flex-wrap: wrap; 
-    }
-
-    .meta-item span {
-        font-size: 13px;
-    }
-
-    .meta-item strong {
-        font-size: 14px;
-    }
-
-    /* 予約ボタン */
-    .card button {
-        padding: 12px;
-        font-size: 14px;
-    }
-
-    /* 該当なしメッセージ */
-    .no-results {
-        padding: 40px 15px;
+    .results-header .subtitle {
         font-size: 15px;
     }
 
-    /* アニメーション遅延を短縮 */
-    .card:nth-child(n) {
-        animation-delay: 0.05s;
-    }
-}
-
-/* さらに小さい画面（360px以下）の調整 */
-@media (max-width: 360px) {
-    .container {
-        padding: 10px 8px;
+    .summary-details {
+        display: block;
+        margin-left: 0;
+        margin-top: 8px;
+        font-size: 14px;
     }
 
-    h1 {
-        font-size: 24px;
+    /* カード */
+    .card-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
     }
 
-    .subtitle {
+    .result-card {
+        border-radius: 16px;
+    }
+
+    .card-title {
+        font-size: 20px;
+        padding: 20px 20px 16px;
+    }
+
+    .card-body {
+        padding: 20px;
+    }
+
+    .total-cost-line {
+        font-size: 15px;
+    }
+
+    .total-cost-line strong {
+        font-size: 28px;
+        display: block;
+        margin: 8px 0;
+    }
+
+    .per-person-cost-line {
+        font-size: 14px;
+    }
+
+    .rate-data-container {
+        padding: 14px;
+    }
+
+    .rate-data-row {
+        padding: 8px 0;
+        font-size: 13px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 4px;
+    }
+
+    .rate-data-row strong {
+        font-size: 14px;
+    }
+
+    .meta-item {
+        padding: 12px 0;
+        font-size: 14px;
+        flex-wrap: wrap;
+        gap: 6px;
+    }
+
+    .meta-item strong {
+        font-size: 15px;
+    }
+
+    .meta-item .note {
         font-size: 12px;
     }
 
-    .controls {
-        padding: 15px 12px;
+    .detail-link {
+        padding: 18px 20px;
     }
 
-    .card {
-        padding: 18px 15px;
+    .detail-link button {
+        padding: 14px;
+        font-size: 15px;
     }
 
-    .card h3 {
+    /* その他 */
+    .no-results {
+        padding: 40px 20px;
+    }
+
+    .no-results h3 {
         font-size: 18px;
     }
 
-    .cost-per-person .price {
+    .no-results p {
+        font-size: 14px;
+    }
+
+    .advertisement-space {
+        padding: 20px;
+    }
+}
+
+@media (max-width: 360px) {
+    .container {
+        padding: 15px 12px;
+    }
+
+    h1 {
+        font-size: 28px;
+    }
+
+    .subtitle {
+        font-size: 14px;
+    }
+
+    .search-tips {
+        padding: 20px 15px;
+    }
+
+    .controls {
+        padding: 20px 15px;
+    }
+
+    .card-title {
+        font-size: 18px;
+        padding: 18px 18px 14px;
+    }
+
+    .card-body {
+        padding: 18px;
+    }
+
+    .total-cost-line strong {
         font-size: 24px;
+    }
+
+    .detail-link {
+        padding: 16px 18px;
+    }
+
+        /* styles.cssに追加 */
+    .legal-notice {
+        background: rgba(254, 243, 199, 0.1);
+        border: 2px solid rgba(251, 191, 36, 0.3);
+        border-radius: var(--radius-large);
+        padding: 24px;
+        margin: 30px 0;
+    }
+
+    .legal-notice h3 {
+        color: #fbbf24;
+        font-size: 18px;
+        margin-bottom: 16px;
+    }
+
+    .legal-notice ul {
+        list-style: none;
+        padding: 0;
+    }
+
+    .legal-notice li {
+        padding: 8px 0;
+        border-bottom: 1px solid rgba(148, 163, 184, 0.1);
+        line-height: 1.6;
+    }
+
+    .site-footer {
+        margin-top: 80px;
+        padding: 30px 20px;
+        border-top: 1px solid var(--color-border-subtle);
+        text-align: center;
+    }
+
+    .footer-links {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        margin-bottom: 15px;
+        flex-wrap: wrap;
+    }
+
+    .footer-links a {
+        color: #ffffff;
+        text-decoration: none;
+        font-size: 14px;
+        transition: color 0.2s;
+    }
+
+    .footer-links a:hover {
+        color: var(--color-primary);
+    }
+
+    .copyright {
+        color: var(--color-text-muted);
+        font-size: 13px;
     }
 }

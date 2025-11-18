@@ -1,0 +1,295 @@
+@media (max-width: 768px) {
+    .container {
+        padding: 20px 16px;
+    }
+
+    h1 {
+        font-size: 32px;
+    }
+
+    .subtitle {
+        font-size: 15px;
+        letter-spacing: 1px;
+    }
+
+    /* 注意点セクション */
+    .search-tips {
+        padding: 24px 18px;
+    }
+
+    .search-tips h2 {
+        font-size: 18px;
+    }
+
+    .tips-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .tip-icon {
+        font-size: 28px;
+    }
+
+    .tip-item {
+        padding: 16px;
+    }
+
+    .tip-item strong {
+        font-size: 14px;
+    }
+
+    .tip-item p {
+        font-size: 12px;
+    }
+
+    /* エリアフィルター */
+    .area-checkbox-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
+
+    .area-checkbox {
+        padding: 10px 12px;
+    }
+
+    .area-checkbox span {
+        font-size: 14px;
+    }
+
+    .area-actions {
+        flex-direction: column;
+    }
+
+    .area-action-btn {
+        width: 100%;
+    }
+
+    /* フォーム */
+    .controls {
+        padding: 24px 18px;
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr;
+        gap: 18px;
+    }
+
+    .search-toggle {
+        margin-bottom: 25px;
+    }
+
+    .search-toggle button {
+        padding: 12px 10px;
+        font-size: 14px;
+    }
+
+    .form-group label {
+        font-size: 13px;
+    }
+
+    input[type="date"],
+    input[type="time"], 
+    input[type="number"] {
+        padding: 14px 16px;
+        font-size: 16px;
+    }
+
+    .area-info {
+        font-size: 14px;
+        padding: 10px 14px;
+    }
+
+    .area-info strong {
+        font-size: 15px;
+    }
+
+    button#searchBtn {
+        padding: 16px 20px;
+        font-size: 16px;
+    }
+
+    /* コンテンツリンク */
+    .content-links {
+        flex-direction: column;
+        gap: 15px;
+        align-items: stretch;
+    }
+
+    .link-button {
+        width: 100%;
+        padding: 14px 20px;
+    }
+
+    /* 検索結果 */
+    .results-header h1 {
+        font-size: 28px;
+    }
+
+    .results-header .subtitle {
+        font-size: 15px;
+    }
+
+    .summary-details {
+        display: block;
+        margin-left: 0;
+        margin-top: 8px;
+        font-size: 14px;
+    }
+
+    /* カード */
+    .card-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+
+    .result-card {
+        border-radius: 16px;
+    }
+
+    .card-title {
+        font-size: 20px;
+        padding: 20px 20px 16px;
+    }
+
+    .studio-area-tag {
+        display: block;
+        width: fit-content;
+        margin-bottom: 8px;
+        margin-right: 0;
+    }
+
+    .card-body {
+        padding: 20px;
+    }
+
+    .total-cost-line {
+        font-size: 15px;
+    }
+
+    .total-cost-line strong {
+        font-size: 28px;
+        display: block;
+        margin: 8px 0;
+    }
+
+    .per-person-cost-line {
+        font-size: 14px;
+    }
+
+    .rate-data-container {
+        padding: 14px;
+    }
+
+    .rate-data-row {
+        padding: 8px 0;
+        font-size: 13px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 4px;
+    }
+
+    .rate-data-row strong {
+        font-size: 14px;
+    }
+
+    .meta-item {
+        padding: 12px 0;
+        font-size: 14px;
+        flex-wrap: wrap;
+        gap: 6px;
+    }
+
+    .meta-item strong {
+        font-size: 15px;
+    }
+
+    .meta-item .note {
+        font-size: 12px;
+    }
+
+    .detail-link {
+        padding: 18px 20px;
+    }
+
+    .detail-link button {
+        padding: 14px;
+        font-size: 15px;
+    }
+
+    /* その他 */
+    .no-results {
+        padding: 40px 20px;
+    }
+
+    .no-results h3 {
+        font-size: 18px;
+    }
+
+    .no-results p {
+        font-size: 14px;
+    }
+
+    .advertisement-space {
+        padding: 20px;
+    }
+
+    /* コンテンツページ */
+    .content-section {
+        padding: 30px 24px;
+    }
+
+    .content-section h2 {
+        font-size: 22px;
+    }
+
+    .content-section h3 {
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 360px) {
+    .container {
+        padding: 15px 12px;
+    }
+
+    h1 {
+        font-size: 28px;
+    }
+
+    .subtitle {
+        font-size: 14px;
+    }
+
+    .search-tips {
+        padding: 20px 15px;
+    }
+
+    .controls {
+        padding: 20px 15px;
+    }
+
+    .area-checkbox-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .card-title {
+        font-size: 18px;
+        padding: 18px 18px 14px;
+    }
+
+    .card-body {
+        padding: 18px;
+    }
+
+    .total-cost-line strong {
+        font-size: 24px;
+    }
+
+    .detail-link {
+        padding: 16px 18px;
+    }
+
+    .content-section {
+        padding: 24px 18px;
+    }
+}

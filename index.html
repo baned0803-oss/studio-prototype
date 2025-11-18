@@ -1,58 +1,196 @@
-<title>レンタルスタジオ比較（プロトタイプ）</title>
-    <link rel="stylesheet" href="styles.css"> 
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
-</head>
-<body>
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>レンタルスタジオ比較（プロトタイプ）</title>
+    <link rel="stylesheet" href="./css/base.css" />
+    <link rel="stylesheet" href="./css/components.css" />
+    <link rel="stylesheet" href="./css/pages.css" />
+    <link rel="stylesheet" href="./css/responsive.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+JP:wght@400;500;700;900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
     <div class="container">
-        <header>
-            <h1>レンタルスタジオ比較（プロトタイプ）</h1>
-            <p class="subtitle">あなたに最適なスタジオを見つけよう</p>
-        </header>
+      <header>
+        <h1>Dance Studio Compass</h1>
+        <p class="subtitle">あなたに最適なスタジオを見つけよう</p>
+      </header>
 
-        <div class="controls">
-            <div class="search-toggle">
-                <button id="searchModeDay" class="active">🌞 通常/時間貸し検索</button>
-                <button id="searchModeNight">🌜 深夜パック検索</button>
+      <!-- 🎯 新規追加: 検索時の注意点セクション -->
+      <div class="search-tips">
+        <h2>🔍 検索時の注意点</h2>
+        <div class="tips-grid">
+          <div class="tip-item">
+            <span class="tip-icon">📅</span>
+            <div>
+              <strong>曜日によって料金が変わります</strong>
+              <p>
+                平日・土日で料金が異なります。祝日は公式サイトを確認してください
+              </p>
             </div>
-            
-            <div class="form-grid">
-    <div class="form-group">
-        <label>利用日</label>
-        <input id="dateInput" type="date" />
-    </div>
-    <div class="form-group">
-        <label>開始時間</label>
-        <input id="startTimeInput" type="time" />
-    </div>
-    <div class="form-group">
-        <label>終了時間</label>
-        <input id="endTimeInput" type="time" />
-    </div>
-    <div class="form-group">
-        <label>最大価格 (円)</label>
-        <input id="priceInput" type="number" min="0" step="100" />
-    </div>
-    <div class="form-group">
-        <label>希望人数</label>
-        <input id="peopleInput" type="number" min="1" step="1" />
-    </div>
-</div>
-            <p id="areaInfo" class="area-info"></p>
-            
-            <button id="searchBtn">🔍 スタジオを検索</button>
+          </div>
+          <div class="tip-item">
+            <span class="tip-icon">👥</span>
+            <div>
+              <strong>必要な広さは人数×5㎡が目安</strong>
+              <p>ジャンルや練習目的によって必要な広さは変わります</p>
+            </div>
+          </div>
+          <div class="tip-item">
+            <span class="tip-icon">💰</span>
+            <div>
+              <strong>表示価格は部屋全体の総額</strong>
+              <p>
+                入力した時間分の料金が表示されます。利用時間は1時間単位でご検索ください
+              </p>
+            </div>
+          </div>
+          <div class="tip-item">
+            <span class="tip-icon">🌙</span>
+            <div>
+              <strong>深夜パック</strong>
+              <p>深夜スタジオの比較は、「深夜パック検索」をご利用ください。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="controls">
+        <div class="search-toggle">
+          <button id="searchModeDay" class="active">
+            🌞 通常/時間貸し検索
+          </button>
+          <button id="searchModeNight">🌜 深夜パック検索</button>
+        </div>
+
+        <!-- エリア選択セクション -->
+        <div class="area-filter-section">
+          <label class="filter-label">🗺️ エリアで絞り込み</label>
+          <div class="area-checkbox-grid">
+            <label class="area-checkbox">
+              <input type="checkbox" name="area" value="新宿" checked />
+              <span>新宿</span>
+            </label>
+            <label class="area-checkbox">
+              <input type="checkbox" name="area" value="池袋" checked />
+              <span>池袋</span>
+            </label>
+            <label class="area-checkbox">
+              <input type="checkbox" name="area" value="渋谷" checked />
+              <span>渋谷</span>
+            </label>
+            <label class="area-checkbox">
+              <input type="checkbox" name="area" value="高円寺" checked />
+              <span>高円寺</span>
+            </label>
+            <label class="area-checkbox">
+              <input type="checkbox" name="area" value="中野" checked />
+              <span>中野</span>
+            </label>
+            <label class="area-checkbox">
+              <input type="checkbox" name="area" value="上野" checked />
+              <span>上野</span>
+            </label>
+            <label class="area-checkbox">
+              <input type="checkbox" name="area" value="錦糸町" checked />
+              <span>錦糸町</span>
+            </label>
+            <label class="area-checkbox">
+              <input type="checkbox" name="area" value="市川" checked />
+              <span>市川</span>
+            </label>
+            <label class="area-checkbox">
+              <input type="checkbox" name="area" value="その他" checked />
+              <span>その他</span>
+            </label>
+          </div>
+          <div class="area-actions">
+            <button type="button" id="selectAllAreas" class="area-action-btn">
+              すべて選択
+            </button>
+            <button type="button" id="deselectAllAreas" class="area-action-btn">
+              すべて解除
+            </button>
+          </div>
         </div>
         
-        <div class="content-links">
-    <a href="column_area.html" class="link-button">一人当たりの広さ算出コラムを読む</a>
-    <a href="column_dance.html" class="link-button">ダンススタジオ記事を読む</a>
+        <div class="form-grid">
+          <div class="form-group">
+            <label>利用日</label>
+            <input id="dateInput" type="date" />
+          </div>
+          <div class="form-group">
+            <label>開始時間</label>
+            <input id="startTimeInput" type="time" />
+          </div>
+          <div class="form-group">
+            <label>終了時間</label>
+            <input id="endTimeInput" type="time" />
+          </div>
+          <div class="form-group">
+            <label>予算 (円)</label>
+            <input id="priceInput" type="number" min="0" step="100" />
+          </div>
+          <div class="form-group">
+            <label for="peopleInput">人数</label>
+            <input id="peopleInput" type="number" min="1" step="1" />
+          </div>
         </div>
-     
-       
+        <p id="areaInfo" class="area-info"></p>
 
-        
+        <button id="searchBtn">🔍 スタジオを検索</button>
+      </div>
+
+      <!-- 検索フォームの下、content-linksの前に追加 -->
+      <div class="legal-notice">
+        <h3>⚠️ ご利用上の注意</h3>
+        <ul>
+          <li>
+            <strong>価格情報について:</strong>
+            表示されている料金は各スタジオの最低価格(税込)です。時期や条件により変動する可能性があります。
+          </li>
+          <li>
+            <strong>最新情報の確認:</strong>
+            予約前に必ず各スタジオの公式サイトで最新の料金・空室状況をご確認ください。
+          </li>
+          <li>
+            <strong>免責事項:</strong>
+            当サイトは情報提供を目的としており、予約代行や仲介は行っておりません。掲載情報の正確性は保証いたしかねます。
+          </li>
+          <li>
+            <strong>データ更新:</strong>
+            料金データは定期的に更新していますが、タイムラグが生じる場合があります。
+          </li>
+        </ul>
+      </div>
+      <div class="content-links">
+        <a href="column_area.html" class="link-button"
+          >一人当たりの広さ算出コラムを読む</a
+        >
+        <a href="column_dance.html" class="link-button"
+          >ダンススタジオ記事を読む</a
+        >
+      </div>
     </div>
 
-<script src="https://cdn.jsdelivr.net/npm/papaparse@5.3.2/papaparse.min.js"></script>
-<script src="script.js"></script>
-</body>
+    <script src="https://cdn.jsdelivr.net/npm/papaparse@5.3.2/papaparse.min.js"></script>
+    <script type="module" src="./js/search-form.js"></script>
+
+    <!-- body終了タグの直前に追加 -->
+    <footer class="site-footer">
+      <div class="footer-links">
+        <a href="privacy.html">プライバシーポリシー</a>
+        <a href="terms.html">利用規約</a>
+        <a href="disclaimer.html">免責事項</a>
+      </div>
+      <p class="copyright">
+        © 2025 Dance Studio Compass. 本サイトは個人運営の情報提供サイトです。
+      </p>
+    </footer>
+  </body>
 </html>
