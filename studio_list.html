@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-0195TBJ7KJ"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-0195TBJ7KJ');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>掲載スタジオ一覧 | Dance Space Scanner</title>
+    <meta name="description" content="Dance Space Scannerに掲載されている東京都内（新宿・渋谷・池袋など）のレンタルスタジオ一覧です。エリア別に探せます。">
+    <link rel="stylesheet" href="./css/base.css">
+    <link rel="stylesheet" href="./css/components.css">
+    <link rel="stylesheet" href="./css/pages.css">
+    <link rel="stylesheet" href="./css/responsive.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        /* 一覧ページ専用スタイル */
+        .area-section {
+            margin-bottom: 50px;
+            animation: fadeInUp 0.8s ease both;
+        }
+        .area-title {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--color-primary);
+            border-bottom: 2px solid rgba(96, 165, 250, 0.3);
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .studio-directory-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        .directory-card {
+            background: rgba(30, 41, 59, 0.6);
+            border: 1px solid rgba(148, 163, 184, 0.2);
+            border-radius: 12px;
+            padding: 20px;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+        .directory-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--color-primary);
+            background: rgba(30, 41, 59, 0.8);
+        }
+        .dir-studio-name {
+            font-size: 18px;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 8px;
+            display: block;
+            text-decoration: none;
+        }
+        .dir-room-list {
+            font-size: 13px;
+            color: #cbd5e1;
+            list-style: none;
+            padding: 0;
+            margin-top: 10px;
+            border-top: 1px solid rgba(148, 163, 184, 0.1);
+            padding-top: 10px;
+        }
+        .dir-room-list li {
+            margin-bottom: 4px;
+            display: flex;
+            justify-content: space-between;
+        }
+    </style>
+</head>
+<body>
+ <div class="container">
+        
+        <header class="results-header" style="margin-bottom: 40px;">
+            <a href="index.html" class="back-link-top">← トップページに戻る</a>
+            <h1>掲載スタジオ一覧</h1>
+    
+        </header> 
+<div id="simple-list-container" class="simple-list-container">
+    <p style="text-align:center; color:#ccc;">読み込み中...</p>
+    </div>
+
+    <footer class="site-footer">
+        <div class="footer-links">
+          <a href="privacy.html">プライバシーポリシー</a>
+          <a href="terms.html">利用規約</a>
+          <a href="disclaimer.html">免責事項</a>
+        </div>
+        <p class="copyright">
+          © 2025 Dance Space Scanner. 本サイトは個人運営の情報提供サイトです。
+        </p>
+    </footer>
+
+    <script type="module" src="./js/studio-list.js"></script>
+</body>
+</html>
