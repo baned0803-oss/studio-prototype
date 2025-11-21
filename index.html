@@ -1,6 +1,23 @@
 <!DOCTYPE html>
 <html lang="ja">
   <head>
+    <meta
+      name="google-site-verification"
+      content="9gSGYDV1AmuVjfqyhBlFfm67Dxeto87xy4uFJ1nsIbE"
+    />
+
+    <script
+      async
+      src="[https://www.googletagmanager.com/gtag/js?id=G-0195TBJ7KJ](https://www.googletagmanager.com/gtag/js?id=G-0195TBJ7KJ)"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-0195TBJ7KJ");
+    </script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>レンタルスタジオ比較（プロトタイプ）</title>
@@ -8,8 +25,10 @@
     <link rel="stylesheet" href="./css/components.css" />
     <link rel="stylesheet" href="./css/pages.css" />
     <link rel="stylesheet" href="./css/responsive.css" />
+    <link rel="apple-touch-icon" href="./images/icon-180.png">
+    <meta name="theme-color" content="#0f0c29">
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+JP:wght@400;500;700;900&display=swap"
+      href="[https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+JP:wght@400;500;700;900&display=swap](https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+JP:wght@400;500;700;900&display=swap)"
       rel="stylesheet"
     />
   </head>
@@ -17,11 +36,10 @@
   <body>
     <div class="container">
       <header>
-        <h1>Dance Studio Compass</h1>
+        <h1>Dance Space Scanner</h1>
         <p class="subtitle">あなたに最適なスタジオを見つけよう</p>
       </header>
 
-      <!-- 🎯 新規追加: 検索時の注意点セクション -->
       <div class="search-tips">
         <h2>🔍 検索時の注意点</h2>
         <div class="tips-grid">
@@ -68,7 +86,6 @@
           <button id="searchModeNight">🌜 深夜パック検索</button>
         </div>
 
-        <!-- エリア選択セクション -->
         <div class="area-filter-section">
           <label class="filter-label">🗺️ エリアで絞り込み</label>
           <div class="area-checkbox-grid">
@@ -118,7 +135,7 @@
             </button>
           </div>
         </div>
-        
+
         <div class="form-grid">
           <div class="form-group">
             <label>利用日</label>
@@ -126,11 +143,11 @@
           </div>
           <div class="form-group">
             <label>開始時間</label>
-            <input id="startTimeInput" type="time" />
+            <input id="startTimeInput" type="time" step="1800" />
           </div>
           <div class="form-group">
             <label>終了時間</label>
-            <input id="endTimeInput" type="time" />
+            <input id="endTimeInput" type="time" step="1800" />
           </div>
           <div class="form-group">
             <label>予算 (円)</label>
@@ -140,13 +157,29 @@
             <label for="peopleInput">人数</label>
             <input id="peopleInput" type="number" min="1" step="1" />
           </div>
+          <div class="form-group">
+            <label for="usageInput">利用スタイル</label>
+            <select
+              id="usageInput"
+              style="
+                padding: 16px 18px;
+                border-radius: 12px;
+                background: rgba(30, 41, 59, 0.8);
+                color: #fff;
+                border: 2px solid rgba(148, 163, 184, 0.3);
+              "
+            >
+              <option value="5">💃 ゆったり (5㎡/人)</option>
+              <option value="3" selected>🎵 標準 (3㎡/人)</option>
+              <option value="1.5">🧘 詰め込み (1.5㎡/人)</option>
+            </select>
+          </div>
         </div>
         <p id="areaInfo" class="area-info"></p>
 
         <button id="searchBtn">🔍 スタジオを検索</button>
       </div>
 
-      <!-- 検索フォームの下、content-linksの前に追加 -->
       <div class="legal-notice">
         <h3>⚠️ ご利用上の注意</h3>
         <ul>
@@ -168,20 +201,36 @@
           </li>
         </ul>
       </div>
+      
       <div class="content-links">
-        <a href="column_area.html" class="link-button"
-          >一人当たりの広さ算出コラムを読む</a
-        >
-        <a href="column_dance.html" class="link-button"
-          >ダンススタジオ記事を読む</a
-        >
+        <a href="column_area.html" class="link-button">一人当たりの広さ算出コラムを読む</a>
+        <a href="column_dance.html" class="link-button">ダンススタジオ記事を読む</a>
+      </div>
+
+      <div class="nav-banner-grid">
+          <a href="index.html" class="nav-banner">
+              <span class="nav-banner-icon">💃</span>
+              <span class="nav-banner-title">当サイトについて</span>
+              <span class="nav-banner-sub">About Us</span>
+          </a>
+          <a href="studio_list.html" class="nav-banner">
+              <span class="nav-banner-icon">🏢</span>
+              <span class="nav-banner-title">掲載スタジオ一覧</span>
+              <span class="nav-banner-sub">Studio List</span>
+          </a>
+          <a href="column_dance.html" class="nav-banner">
+              <span class="nav-banner-icon">📝</span>
+              <span class="nav-banner-title">お役立ちコラム</span>
+              <span class="nav-banner-sub">Columns</span>
+          </a>
+          <a href="[https://forms.gle/5Ca8sXftyWH1fkFi9](https://forms.gle/5Ca8sXftyWH1fkFi9)" target="_blank" class="nav-banner">
+              <span class="nav-banner-icon">📮</span>
+              <span class="nav-banner-title">お問い合わせ</span>
+              <span class="nav-banner-sub">Contact</span>
+          </a>
       </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/papaparse@5.3.2/papaparse.min.js"></script>
-    <script type="module" src="./js/search-form.js"></script>
-
-    <!-- body終了タグの直前に追加 -->
     <footer class="site-footer">
       <div class="footer-links">
         <a href="privacy.html">プライバシーポリシー</a>
@@ -189,8 +238,30 @@
         <a href="disclaimer.html">免責事項</a>
       </div>
       <p class="copyright">
-        © 2025 Dance Studio Compass. 本サイトは個人運営の情報提供サイトです。
+        © 2025 Dance Space Scanner. 本サイトは個人運営の情報提供サイトです。
       </p>
     </footer>
+
+    <script src="[https://cdn.jsdelivr.net/npm/papaparse@5.3.2/papaparse.min.js](https://cdn.jsdelivr.net/npm/papaparse@5.3.2/papaparse.min.js)"></script>
+    <script type="module" src="./js/search-form.js"></script>
+
+    <nav class="bottom-nav">
+        <a href="index.html" class="bottom-nav-item">
+            <span class="bottom-nav-icon">🔍</span>
+            <span>検索</span>
+        </a>
+        <a href="studio_list.html" class="bottom-nav-item">
+            <span class="bottom-nav-icon">🏢</span>
+            <span>一覧</span>
+        </a>
+        <a href="column_dance.html" class="bottom-nav-item">
+            <span class="bottom-nav-icon">📝</span>
+            <span>コラム</span>
+        </a>
+        <a href="[https://forms.gle/5Ca8sXftyWH1fkFi9](https://forms.gle/5Ca8sXftyWH1fkFi9)" target="_blank" class="bottom-nav-item">
+            <span class="bottom-nav-icon">📮</span>
+            <span>依頼</span>
+        </a>
+    </nav>
   </body>
 </html>

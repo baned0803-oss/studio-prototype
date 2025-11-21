@@ -1,6 +1,20 @@
 <!DOCTYPE html>
 <html lang="ja">
-<head>
+  <head>
+    <!-- Google tag (gtag.js) -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-0195TBJ7KJ"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-0195TBJ7KJ");
+    </script>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>検索結果 | レンタルスタジオ比較</title>
@@ -8,30 +22,57 @@
     <link rel="stylesheet" href="./css/components.css" />
     <link rel="stylesheet" href="./css/pages.css" />
     <link rel="stylesheet" href="./css/responsive.css" />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
-</head>
-<body class="is-results">
+    <link rel="apple-touch-icon" href="./images/icon-180.png" />
+    <meta name="theme-color" content="#0f0c29" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+JP:wght@400;500;700;900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="is-results">
     <div class="container">
-        <header class="results-header">
-            <p><a href="index.html" class="back-link-top">← 検索条件を変更する</a></p>
-            <h1>スタジオ検索結果</h1>
-            <p class="subtitle" id="searchSummary">検索中です...</p>
-        </header>
+      <header class="results-header">
+        <p>
+          <a href="index.html" class="back-link-top">← 検索条件を変更する</a>
+        </p>
+        <h1>スタジオ検索結果</h1>
+        <p class="subtitle" id="searchSummary">検索中です...</p>
+      </header>
 
-        <div class="advertisement-space">
-            <p>【広告スペース 728x90】</p>
-        </div>
-     
-        <div id="result">
-            </div>
+      <div class="advertisement-space">
+        <p>【広告スペース 728x90】</p>
+      </div>
 
-        <div class="advertisement-space footer-ad">
-            <p>【広告スペース 300x250】</p>
-        </div>
+      <div id="result"></div>
 
+      <div class="advertisement-space footer-ad">
+        <p>【広告スペース 300x250】</p>
+      </div>
     </div>
 
-<script src="https://cdn.jsdelivr.net/npm/papaparse@5.3.2/papaparse.min.js"></script>
-<script type="module" src="./js/search-results.js"></script>
-</body>
+    <script src="https://cdn.jsdelivr.net/npm/papaparse@5.3.2/papaparse.min.js"></script>
+    <script type="module" src="./js/search-results.js"></script>
+    <nav class="bottom-nav">
+      <a href="index.html" class="bottom-nav-item">
+        <span class="bottom-nav-icon">🔍</span>
+        <span>検索</span>
+      </a>
+      <a href="studio_list.html" class="bottom-nav-item">
+        <span class="bottom-nav-icon">🏢</span>
+        <span>一覧</span>
+      </a>
+      <a href="column_dance.html" class="bottom-nav-item">
+        <span class="bottom-nav-icon">📝</span>
+        <span>コラム</span>
+      </a>
+      <a
+        href="https://forms.gle/あなたのフォームID"
+        target="_blank"
+        class="bottom-nav-item"
+      >
+        <span class="bottom-nav-icon">📮</span>
+        <span>依頼</span>
+      </a>
+    </nav>
+  </body>
 </html>

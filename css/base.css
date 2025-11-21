@@ -36,7 +36,6 @@ body {
     padding: 0;
     position: relative;
     overflow-x: hidden;
-    background-attachment: fixed;
 }
 
 body::before {

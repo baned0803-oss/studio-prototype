@@ -11,6 +11,7 @@ const startTimeInput = document.getElementById('startTimeInput');
 const endTimeInput = document.getElementById('endTimeInput');
 const priceInput = document.getElementById('priceInput');
 const peopleInput = document.getElementById('peopleInput');
+const usageInput = document.getElementById('usageInput');
 const searchBtn = document.getElementById('searchBtn');
 const areaInfo = document.getElementById('areaInfo');
 const searchModeDayBtn = document.getElementById('searchModeDay');
@@ -34,6 +35,7 @@ if (saved.startTime) startTimeInput.value = saved.startTime;
 if (saved.endTime) endTimeInput.value = saved.endTime;
 if (saved.price) priceInput.value = saved.price;
 if (saved.people) peopleInput.value = saved.people;
+if (saved.areaPerPerson) usageInput.value = saved.areaPerPerson;
 
 // デフォルト値
 if (!dateInput.value) dateInput.value = getTodayDateString();
@@ -98,18 +100,25 @@ function getSelectedAreas() {
 /**
  * 必要な広さを表示
  */
-function updateAreaInfo(people) {
+function updateAreaInfo() {
+    const people = Number(peopleInput.value) || 0;
+    // 利用スタイルが選択されていればその値を、なければデフォルトの5を使う
+    const areaPerPerson = usageInput ? Number(usageInput.value) : 5;
+    
     if (people > 0) {
-        const requiredArea = people * CONFIG.AREA_PER_PERSON;
+        // 人数 × 選んだスタイル係数 で計算
+        const requiredArea = Math.ceil(people * areaPerPerson); // 小数点が出ないよう念のため切り上げ
+        
         areaInfo.innerHTML = `人数 (${people}人) に必要な目安の広さ以上で検索します: <strong>${requiredArea}㎡</strong>`;
     } else {
         areaInfo.textContent = '希望人数を入力してください。';
     }
 }
 
-peopleInput.addEventListener('input', () => {
-    updateAreaInfo(Number(peopleInput.value));
-});
+peopleInput.addEventListener('input', updateAreaInfo);
+if (usageInput) {
+    usageInput.addEventListener('change', updateAreaInfo);
+}
 
 // 検索モード切り替え
 searchModeDayBtn.addEventListener('click', () => {
@@ -146,6 +155,7 @@ function handleSearch() {
     const maxPrice = priceInput.value || 999999;
     const requestedPeople = peopleInput.value || 0;
     const selectedAreas = getSelectedAreas();
+    const areaPerPerson = usageInput ? usageInput.value : 5;
     
     // Dayモードでのバリデーション
     if (searchMode === SEARCH_MODE.DAY && (!date || !st || !et)) {
@@ -180,7 +190,8 @@ function handleSearch() {
         price: priceInput.value,
         people: requestedPeople,
         mode: searchMode,
-        areas: selectedAreas
+        areas: selectedAreas,
+        areaPerPerson: areaPerPerson
     }));
 
     // URLパラメータを作成して results.html へ遷移
@@ -192,6 +203,7 @@ function handleSearch() {
     params.append('people', requestedPeople);
     params.append('mode', searchMode);
     params.append('areas', selectedAreas.join(','));
+    params.append('usage', areaPerPerson);
     
     window.location.href = `results.html?${params.toString()}`;
 }
@@ -210,7 +222,7 @@ searchBtn.addEventListener('click', handleSearch);
 // ==========================================
 
 document.addEventListener('DOMContentLoaded', () => {
-    updateAreaInfo(Number(peopleInput.value));
+    updateAreaInfo();
     
     // 保存されたエリア選択を復元
     if (saved.areas && Array.isArray(saved.areas)) {

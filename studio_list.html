@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <script async src="[https://www.googletagmanager.com/gtag/js?id=G-0195TBJ7KJ](https://www.googletagmanager.com/gtag/js?id=G-0195TBJ7KJ)"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-0195TBJ7KJ');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>掲載スタジオ一覧 | Dance Space Scanner</title>
+    <meta name="description" content="Dance Space Scannerに掲載されている東京都内（新宿・渋谷・池袋など）のレンタルスタジオ一覧です。エリア別に探せます。">
+    <link rel="stylesheet" href="./css/base.css">
+    <link rel="stylesheet" href="./css/components.css">
+    <link rel="stylesheet" href="./css/pages.css">
+    <link rel="stylesheet" href="./css/responsive.css">
+    <link rel="apple-touch-icon" href="./images/icon-180.png">
+    <meta name="theme-color" content="#0f0c29">
+    <link href="[https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+JP:wght@400;500;700;900&display=swap](https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+JP:wght@400;500;700;900&display=swap)" rel="stylesheet">
+    <style>
+        /* シンプルリスト用スタイル */
+        .simple-list-container {
+            max-width: 800px;
+            margin: 0 auto 60px;
+        }
+        .simple-area-section {
+            margin-bottom: 40px;
+            animation: fadeInUp 0.8s ease both;
+        }
+        .simple-area-title {
+            font-size: 20px;
+            font-weight: 700;
+            color: #60a5fa;
+            border-bottom: 1px solid rgba(148, 163, 184, 0.3);
+            padding-bottom: 8px;
+            margin-bottom: 16px;
+        }
+        .simple-studio-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 10px 20px;
+        }
+        .simple-studio-list li a {
+            color: #e0e7ff;
+            text-decoration: none;
+            font-size: 15px;
+            transition: color 0.2s;
+            display: block;
+            padding: 4px 0;
+        }
+        .simple-studio-list li a:hover {
+            color: #60a5fa;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        
+        <header class="results-header" style="margin-bottom: 40px;">
+            <a href="index.html" class="back-link-top">← トップページに戻る</a>
+            <h1>掲載スタジオ一覧</h1>
+            <p class="subtitle">エリア別・スタジオディレクトリ</p>
+        </header>
+
+        <div id="simple-list-container" class="simple-list-container">
+            <p style="text-align:center; color:#ccc;">読み込み中...</p>
+        </div>
+        
+        <div class="content-links">
+            <a href="index.html" class="link-button">スタジオを条件で検索する</a>
+        </div>
+
+    </div>
+
+    <footer class="site-footer">
+        <div class="footer-links">
+          <a href="privacy.html">プライバシーポリシー</a>
+          <a href="[https://forms.gle/5Ca8sXftyWH1fkFi9](https://forms.gle/5Ca8sXftyWH1fkFi9)" target="_blank">お問い合わせ・掲載依頼</a>
+          <a href="terms.html">利用規約</a>
+          <a href="disclaimer.html">免責事項</a>
+        </div>
+        <p class="copyright">
+          © 2025 Dance Space Scanner. 本サイトは個人運営の情報提供サイトです。
+        </p>
+    </footer>
+
+    <script type="module" src="./js/studio-list.js"></script>
+
+    <nav class="bottom-nav">
+        <a href="index.html" class="bottom-nav-item">
+            <span class="bottom-nav-icon">🔍</span>
+            <span>検索</span>
+        </a>
+        <a href="studio_list.html" class="bottom-nav-item">
+            <span class="bottom-nav-icon">🏢</span>
+            <span>一覧</span>
+        </a>
+        <a href="column_dance.html" class="bottom-nav-item">
+            <span class="bottom-nav-icon">📝</span>
+            <span>コラム</span>
+        </a>
+        <a href="[https://forms.gle/5Ca8sXftyWH1fkFi9](https://forms.gle/5Ca8sXftyWH1fkFi9)" target="_blank" class="bottom-nav-item">
+            <span class="bottom-nav-icon">📮</span>
+            <span>依頼</span>
+        </a>
+    </nav>
+</body>
+</html>

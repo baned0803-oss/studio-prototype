@@ -3,6 +3,7 @@
  * ========================================== */
 .search-tips {
     background: var(--color-bg-blur);
+    -webkit-backdrop-filter: blur(20px); /* ★追加 */
     backdrop-filter: blur(20px);
     border: 1px solid var(--color-border-subtle);
     border-radius: var(--radius-large);
@@ -165,6 +166,7 @@
  * ========================================== */
 .controls {
     background: var(--color-bg-blur);
+    -webkit-backdrop-filter: blur(20px); /* ★追加 */
     backdrop-filter: blur(20px);
     border: 1px solid var(--color-border-subtle);
     border-radius: var(--radius-large);
@@ -337,6 +339,7 @@ button#searchBtn:active {
 
 .result-card {
     background: rgba(15, 23, 42, 0.95);
+    -webkit-backdrop-filter: blur(20px); /* ★追加 */
     backdrop-filter: blur(20px);
     border: 1px solid var(--color-border-subtle);
     border-radius: var(--radius-large);
@@ -368,11 +371,20 @@ button#searchBtn:active {
     transform: scaleX(1);
 }
 
-.result-card:hover {
-    transform: translateY(-8px);
-    border-color: rgba(59, 130, 246, 0.5);
-    box-shadow: 0 20px 60px rgba(59, 130, 246, 0.25),
-                0 0 0 1px rgba(59, 130, 246, 0.3) inset;
+/* マウスがあるデバイス（PCなど）のみホバーを適用 */
+@media (hover: hover) {
+    .result-card:hover {
+        transform: translateY(-8px);
+        border-color: rgba(59, 130, 246, 0.5);
+        box-shadow: 0 20px 60px rgba(59, 130, 246, 0.25),
+                    0 0 0 1px rgba(59, 130, 246, 0.3) inset;
+    }
+}
+
+/* スマホ向け：指で押している間だけ少し沈むアニメーション */
+.result-card:active {
+    transform: scale(0.98);
+    transition: transform 0.1s;
 }
 
 .result-card:nth-child(1) { animation-delay: 0.1s; }
@@ -581,3 +593,68 @@ button#searchBtn:active {
 .detail-link button:active {
     transform: translateY(0);
 }
+
+/* ==========================================
+ * タイル型ナビゲーション（バナー）
+ * ========================================== */
+.nav-banner-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 15px;
+    margin: 40px 0;
+}
+
+.nav-banner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: rgba(30, 41, 59, 0.6);
+    border: 1px solid rgba(148, 163, 184, 0.2);
+    border-radius: 16px;
+    padding: 20px 10px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    color: #fff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* PCのみホバー有効 */
+@media (hover: hover) {
+    .nav-banner:hover {
+        background: linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(139, 92, 246, 0.2));
+        border-color: var(--color-primary);
+        transform: translateY(-4px);
+        box-shadow: 0 10px 20px rgba(59, 130, 246, 0.2);
+    }
+}
+.nav-banner:active {
+    transform: scale(0.98);
+}
+
+.nav-banner-icon {
+    font-size: 32px;
+    margin-bottom: 10px;
+}
+.nav-banner-title {
+    font-size: 15px;
+    font-weight: 700;
+    margin-bottom: 4px;
+    color: #e0e7ff;
+}
+.nav-banner-sub {
+    font-size: 11px;
+    color: #94a3b8;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 600;
+}
+
+@media (max-width: 480px) {
+    .nav-banner-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+    }
+}
+

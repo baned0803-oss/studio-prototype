@@ -1,6 +1,20 @@
 <!DOCTYPE html>
 <html lang="ja">
   <head>
+    <!-- Google tag (gtag.js) -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-0195TBJ7KJ"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-0195TBJ7KJ");
+    </script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ダンススタジオ記事 - Coming Soon</title>
@@ -8,6 +22,8 @@
     <link rel="stylesheet" href="./css/components.css" />
     <link rel="stylesheet" href="./css/pages.css" />
     <link rel="stylesheet" href="./css/responsive.css" />
+    <link rel="apple-touch-icon" href="./images/icon-180.png" />
+    <meta name="theme-color" content="#0f0c29" />
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Noto+Sans+JP:wght@400;500;700;900&display=swap"
       rel="stylesheet"
@@ -40,5 +56,27 @@
         >
       </div>
     </div>
+    <nav class="bottom-nav">
+      <a href="index.html" class="bottom-nav-item">
+        <span class="bottom-nav-icon">🔍</span>
+        <span>検索</span>
+      </a>
+      <a href="studio_list.html" class="bottom-nav-item">
+        <span class="bottom-nav-icon">🏢</span>
+        <span>一覧</span>
+      </a>
+      <a href="column_dance.html" class="bottom-nav-item">
+        <span class="bottom-nav-icon">📝</span>
+        <span>コラム</span>
+      </a>
+      <a
+        href="https://forms.gle/あなたのフォームID"
+        target="_blank"
+        class="bottom-nav-item"
+      >
+        <span class="bottom-nav-icon">📮</span>
+        <span>依頼</span>
+      </a>
+    </nav>
   </body>
 </html>
