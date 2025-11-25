@@ -686,7 +686,11 @@ select#usageInput {
     background-repeat: no-repeat;
     background-position: right 12px center;
     background-size: 16px;
-    padding-right: 40px;
+    padding-right: 50px;
+    height: auto;        /* 高さを固定しない */
+    padding-top: 14px;    /* 上の余白で高さを確保 */
+    padding-bottom: 14px; /* 下の余白で高さを確保 */
+    line-height: 1.3;     /* 行間を適切に設定 */
 }
 
 /* 入力中の枠線の色 */

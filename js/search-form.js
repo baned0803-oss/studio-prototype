@@ -109,7 +109,9 @@ function updateAreaInfo() {
         // 人数 × 選んだスタイル係数 で計算
         const requiredArea = Math.ceil(people * areaPerPerson); // 小数点が出ないよう念のため切り上げ
         
-        areaInfo.innerHTML = `人数 (${people}人) に必要な目安の広さ以上で検索します: <strong>${requiredArea}㎡</strong>`;
+        areaInfo.innerHTML = `人数 (${people}人) に必要な目安の広さ以上で検索します:<br>
+            <strong style="font-size: 1.5em; display:inline-block; margin-top:5px;">${requiredArea}㎡</strong>
+        `;
     } else {
         areaInfo.textContent = '希望人数を入力してください。';
     }
