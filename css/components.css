@@ -666,7 +666,7 @@ input[type="time"],
 input[type="number"],
 select#usageInput {
     width: 100%;
-    height: 64px; /* 高さを揃える */
+    height: 54px; /* 高さを揃える */
     padding: 0 16px;
     border: 2px solid rgba(148, 163, 184, 0.3);
     border-radius: 12px;
