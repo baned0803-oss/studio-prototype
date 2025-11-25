@@ -14,8 +14,26 @@ async function initSimpleList() {
         // エリアごとにスタジオ名をまとめる（重複排除）
         const areaGroups = {};
         
+        // 1. 定義済みの主要エリアリスト（これ以外は「その他」にする）
+        const validAreas = [
+            "新宿", "代々木", "高田馬場",
+            "渋谷", "原宿", "三軒茶屋", "学芸大", "都立大",
+            "池袋", "巣鴨", 
+            "銀座", "赤坂", "赤坂見附", "六本木", "浜松町", "神田",
+            "上野", "秋葉原", "日暮里", "西日暮里", "鶯谷",
+            "中野", "高円寺", "立川",
+            "錦糸町", "市川",
+            "町田"
+        ];
+
+        // データをループして振り分け
         allStudios.forEach(record => {
-            const area = record.area;
+            // 2. エリア判定ロジック
+            let area = record.area;
+            if (!validAreas.includes(area)) {
+                area = "その他"; // リストになければ強制的に「その他」にする
+            }
+
             const name = record.studio_name;
             const url = record.official_url;
 
@@ -30,7 +48,17 @@ async function initSimpleList() {
         });
 
         // 表示順序の定義
-        const areaOrder = ["新宿", "渋谷", "池袋", "高円寺", "中野", "上野", "錦糸町", "市川", "その他"];
+        const areaOrder = [
+            "新宿", "代々木", "高田馬場",
+            "渋谷", "原宿", "三軒茶屋", "学芸大", "都立大",
+            "池袋", "巣鴨", 
+            "銀座", "赤坂", "赤坂見附", "六本木", "浜松町", "神田",
+            "上野", "秋葉原", "日暮里", "西日暮里", "鶯谷",
+            "中野", "高円寺", "立川",
+            "錦糸町", "市川",
+            "町田",
+            "その他"
+        ];
 
         // エリア順にソート
         const sortedAreas = Object.keys(areaGroups).sort((a, b) => {
