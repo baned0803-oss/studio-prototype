@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://dancespacescanner.com/sitemap.xml
