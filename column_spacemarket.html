@@ -1,0 +1,262 @@
+<link rel="stylesheet" href="./css/base.css" />
+<link rel="stylesheet" href="./css/components.css" />
+<link rel="stylesheet" href="./css/pages.css" />
+<link rel="stylesheet" href="./css/responsive.css" />
+<link rel="apple-touch-icon" href="./images/favicon.png" />
+<link rel="icon" href="./images/favicon.png" />
+<meta name="theme-color" content="#0f0c29" />
+<link href="[https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+JP:wght@400;500;700;900&display=swap](https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+JP:wght@400;500;700;900&display=swap)" rel="stylesheet" />
+
+<style>
+  /* 記事固有スタイル */
+ .highlight-box {
+    background: rgba(59, 130, 246, 0.1);
+    border: 1px solid rgba(59, 130, 246, 0.3);
+    border-radius: 12px;
+    padding: 20px;
+    margin: 25px 0;
+  }
+ .check-list {
+    list-style: none;
+    padding: 0;
+  }
+ .check-list li {
+    position: relative;
+    padding-left: 28px;
+    margin-bottom: 12px;
+    font-weight: 600;
+    color: #e0e7ff;
+  }
+ .check-list li::before {
+    content: '✅';
+    position: absolute;
+    left: 0;
+    top: 2px;
+  }
+ .ranking-badge {
+    background: linear-gradient(135deg, #ffd700 0%, #fdb931 100%);
+    color: #000;
+    padding: 5px 12px;
+    border-radius: 4px;
+    font-weight: 800;
+    font-size: 0.9em;
+    margin-right: 10px;
+    display: inline-block;
+  }
+ .studio-card {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 20px;
+  }
+ .studio-meta {
+    display: flex;
+    gap: 15px;
+    font-size: 0.9em;
+    color: #94a3b8;
+    margin: 10px 0;
+    flex-wrap: wrap;
+  }
+ .studio-meta span {
+    display: flex;
+    align-items: center;
+  }
+ .price-tag {
+    color: #4ade80;
+    font-weight: bold;
+    font-size: 1.1em;
+  }
+ .cta-button {
+    display: block;
+    width: 100%;
+    max-width: 400px;
+    margin: 10px auto;
+    padding: 18px;
+    background: linear-gradient(135deg, #00bfa5 0%, #00897b 100%);
+    color: white;
+    font-weight: 700;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 50px;
+    font-size: 18px;
+    box-shadow: 0 4px 15px rgba(0, 191, 165, 0.3);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+ .cta-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0, 191, 165, 0.5);
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    color: #e2e8f0;
+  }
+  th, td {
+    border: 1px solid #334155;
+    padding: 12px;
+    text-align: left;
+  }
+  th {
+    background-color: #1e293b;
+  }
+</style>
+  <div class="content-section">
+    <p>
+      「いつも使っているスタジオが予約でいっぱい…」<br>
+      「深夜練のスタジオ代、もっと安く抑えたい…」
+    </p>
+    <p>
+      そんな悩みを持つダンサーのために、都内3大エリア（渋谷・新宿・池袋）のレンタルスタジオ情報を徹底分析しました。
+      大手スタジオではなく、<strong>「スペースマーケット」に掲載されている穴場スタジオ</strong>を活用することで、練習コストを劇的に下げることが可能です。
+    </p>
+    <p>
+      本記事では、動画撮影用の高額なスタジオは除外。あくまで<strong>「練習効率」と「コストパフォーマンス」</strong>に特化した、ダンサーのためのリアルなランキングを紹介します。
+    </p>
+
+    <div class="highlight-box">
+       <h3 style="margin-top:0; color:#60a5fa;">📊 この記事でわかること</h3>
+       <ul class="check-list">
+           <li><strong>池袋エリア：</strong>都内最安値＆広さ重視の「コスパ最強」地帯</li>
+           <li><strong>新宿エリア：</strong>鏡の幅・天井高など「機能性」重視のプロ向け</li>
+           <li><strong>渋谷エリア：</strong>高い中でも使える「駅近・穴場」スポット</li>
+       </ul>
+    </div>
+
+    <h2>🏆 部門別：コスパ最強スタジオランキング</h2>
+    <p>
+        単純な「1時間あたりの料金」だけでなく、広さや立地を加味した独自のコスパ評価で選定しました。
+    </p>
+
+    <h3>1. 【個人・少人数】激安でコソ練するなら</h3>
+    
+    <div class="studio-card">
+        <h4><span class="ranking-badge">1位</span>レインボーミュージックスタジオ（池袋）</h4>
+        <div class="studio-meta">
+            <span>📍 池袋駅 徒歩5分</span>
+            <span>📏 26㎡（〜5名推奨）</span>
+        </div>
+        <p>
+            <strong>目安料金：¥1,270〜/時間</strong><br>
+            池袋エリアの価格破壊スタジオ。26㎡という広さがありながら、この価格帯は驚異的。2人で使えば1人あたり約600円。個人練習なら王族のような広さを使えます[1]。
+        </p>
+    </div>
+
+    <div class="studio-card">
+        <h4><span class="ranking-badge">2位</span>STUDIO ROZE 渋谷店</h4>
+        <div class="studio-meta">
+            <span>📍 渋谷駅 徒歩3分</span>
+            <span>📏 19㎡（〜3名推奨）</span>
+        </div>
+        <p>
+            <strong>目安料金：¥1,270〜/時間</strong><br>
+            地価の高い渋谷で、駅徒歩3分かつこの低価格は希少。広さは控えめですが、仕事帰りや学校帰りの「隙間時間」練習には最適です[[5]]。
+        </p>
+    </div>
+
+    <h3>2. 【チーム練習】5人以上でフォーメーション確認</h3>
+
+    <div class="studio-card">
+        <h4><span class="ranking-badge">1位</span>Studio Piace 池袋店</h4>
+        <div class="studio-meta">
+            <span>📍 池袋駅 徒歩10分</span>
+            <span>📏 100㎡（〜20名推奨）</span>
+        </div>
+        <p>
+            <strong>目安料金：¥2,000前後/時間</strong><br>
+            100㎡で約2,000円という、都心の相場を無視したバグのような広さ。駅から少し歩きますが、大人数のナンバー練習やフォーメーション確認ならここ一択です[1]。
+        </p>
+    </div>
+
+    <div class="studio-card">
+        <h4><span class="ranking-badge">2位</span>KS レンタルスタジオ（新宿三丁目）</h4>
+        <div class="studio-meta">
+            <span>📍 新宿三丁目駅 徒歩2分</span>
+            <span>📏 30㎡（〜6名推奨）</span>
+        </div>
+        <p>
+            <strong>目安料金：¥1,980/時間</strong><br>
+            30㎡の広さに加え、計5.7mの大型鏡を完備。チーム練習で重要な「全員が鏡に映る」環境が整っています。新宿エリアでの集合しやすさも魅力[2]。
+        </p>
+    </div>
+
+    <h3>3. 【穴場】特定のニーズに刺さる高機能スタジオ</h3>
+    <p>検索上位には埋もれがちですが、知っておくと便利なスタジオです。</p>
+    <ul>
+        <li>
+            <strong>in the house（西早稲田/新宿）：</strong><br>
+            天井高5m！アクロバットや長尺の道具を使うパフォーマンスに最適。副都心線ユーザーならアクセス抜群です[3]。
+        </li>
+        <li>
+            <strong>レンタルスタジオ おどルーム（大久保）：</strong><br>
+            「ジャンプOK」を明記している貴重なスタジオ。24時間営業で、深夜のストイックな個人練習に[4]。
+        </li>
+    </ul>
+
+    <div style="text-align: center; margin: 50px 0; padding: 30px 20px; background: rgba(15, 23, 42, 0.8); border-radius: 16px; border: 1px solid rgba(59, 130, 246, 0.3);">
+        <p style="font-size: 18px; font-weight: bold; margin-bottom: 15px; color: #fff;">＼ 空き状況をリアルタイムで確認 ／</p>
+        <p style="font-size: 14px; color: #cbd5e1; margin-bottom: 25px;">※登録は無料。Amazonアカウントでもログイン可能です。</p>
+        
+        <a href="[https://px.a8.net/svt/ejp?a8mat=45II8Z+3K07UA+5SHA+5YJRM](https://px.a8.net/svt/ejp?a8mat=45II8Z+3K07UA+5SHA+5YJRM)" rel="nofollow" target="_blank" class="cta-button">
+            スペースマーケットで予約する ↗
+        </a>
+
+        <img border="0" width="1" height="1" src="[https://www14.a8.net/0.gif?a8mat=45II8Z+3K07UA+5SHA+5YJRM](https://www14.a8.net/0.gif?a8mat=45II8Z+3K07UA+5SHA+5YJRM)" alt="">
+    </div>
+
+    <h2>💡 データアナリストからのアドバイス</h2>
+    <p>
+        失敗しないスタジオ選びのために、予約前に必ずチェックすべき3つのポイントを紹介します。
+    </p>
+
+    <h3>1. 床材を確認せよ（リノリウム vs その他）</h3>
+    <p>
+        格安スタジオの中には、コンクリート打ちっ放しや滑りやすいフローリングの場所があります。「リノリウム」と記載がある場所は膝への負担が少なく、本格的なダンスに最適です。
+    </p>
+
+    <h3>2. 鏡の「継ぎ目」と「幅」</h3>
+    <p>
+        写真では広く見えても、実際は鏡が細かく分断されていることがあります。今回の調査で紹介した<strong>Studio Green（池袋）</strong>のように「鏡幅9m」など具体的な数値がある場所や、「一枚鏡」の記載がある場所を選びましょう[1]。
+    </p>
+
+    <h3>3. インボイス対応の有無</h3>
+    <p>
+        フリーランスのダンサーやインストラクターにとって、経費精算は重要です。<strong>STUDIO LIKEMAD.（渋谷）</strong>や<strong>Aivicグループ</strong>など、「インボイス対応」を明記しているスタジオを選ぶことで、実質的なコスト削減につながります[5, 1]。
+    </p>
+  </div>
+
+  <div class="content-links" style="margin-top: 50px">
+    <a href="index.html" class="link-button">トップページに戻る</a>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="footer-links">
+    <a href="privacy.html">プライバシーポリシー</a>
+    <a href="terms.html">利用規約</a>
+    <a href="disclaimer.html">免責事項</a>
+  </div>
+  <p class="copyright">
+    © 2025 Dance Space Scanner. 本サイトは個人運営の情報提供サイトです。
+  </p>
+</footer>
+
+<nav class="bottom-nav">
+  <a href="index.html" class="bottom-nav-item">
+    <span class="bottom-nav-icon">🔍</span>
+    <span>検索</span>
+  </a>
+  <a href="studio_list.html" class="bottom-nav-item">
+    <span class="bottom-nav-icon">🏢</span>
+    <span>一覧</span>
+  </a>
+  <a href="columns.html" class="bottom-nav-item">
+    <span class="bottom-nav-icon">📝</span>
+    <span>コラム</span>
+  </a>
+  <a href="[https://forms.gle/3aRmJg4bVeNiYKuz5](https://forms.gle/3aRmJg4bVeNiYKuz5)" target="_blank" class="bottom-nav-item">
+    <span class="bottom-nav-icon">📮</span>
+    <span>依頼</span>
+  </a>
+</nav>
